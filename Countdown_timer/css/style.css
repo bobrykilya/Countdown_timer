@@ -76,11 +76,12 @@ body {
   min-height: 70vh;
   color: white;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 h1 {
-  font-size: 8rem;
-  margin: -8rem 0 8rem;
+  font-size: 7rem;
+  margin: -10% 0 10rem;
   color: rgba(255, 255, 255, 0.8901960784);
   text-shadow: 0.1rem 0.1rem 5rem rgba(35, 6, 116, 0.6352941176);
 }
@@ -90,7 +91,7 @@ h1 {
 }
 .counter_container .bigNumber {
   font-size: 15rem;
-  margin: 0 7rem;
+  margin: 0 6rem;
   line-height: 1;
   text-shadow: 0.2rem 0.2rem 3rem #230674;
 }
