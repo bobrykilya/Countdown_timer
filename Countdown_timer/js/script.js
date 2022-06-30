@@ -42,6 +42,7 @@ function inputCleaning(){
 function toggleOfBtn(){
     nameOfHoliday.classList.toggle('active');
     nameOfHoliday.focus();
+    if (!nameOfHoliday.classList.contains('active')) nameOfHoliday.blur();
 };
 
 //Writing without opened input
@@ -65,6 +66,8 @@ document.addEventListener('keyup', function(event){
         toggleOfBtn ();
         nameOfHoliday.blur(); //focus deleting from input
     };
+    if (event.code === 'Escape' &
+        nameOfHoliday.classList.contains('active')) toggleOfBtn()
 });
 
 document.addEventListener("DOMContentLoaded", function(){
