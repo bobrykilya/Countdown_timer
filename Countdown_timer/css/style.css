@@ -80,16 +80,20 @@ body {
 }
 
 h1 {
+  text-transform: capitalize;
   font-size: 7rem;
-  margin: -10% 0 10rem;
+  margin: -10% 0 10rem 1rem;
   color: rgba(255, 255, 255, 0.8901960784);
   text-shadow: 0.1rem 0.1rem 5rem rgba(35, 6, 116, 0.6352941176);
 }
 
 .counter_container {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-.counter_container .bigNumber {
+.counter_container p {
   font-size: 15rem;
   margin: 0 6rem;
   line-height: 1;
@@ -101,4 +105,17 @@ h1 {
 }
 .counter_container div {
   text-align: center;
+}
+
+.nameOfHoliday {
+  padding: 1% 1% 1% 1.7%;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  font-size: 1.1rem;
+  font-style: italic;
+  width: 15%;
+  min-width: 4rem;
 }

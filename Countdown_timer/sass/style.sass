@@ -12,15 +12,19 @@ body
     overflow: hidden
 
 
-h1 
+h1
+    text-transform: capitalize
     font-size: 7rem
-    margin: -10% 0 10rem
+    margin: -10% 0  10rem 1rem
     color: #ffffffe3
     text-shadow: 0.1rem 0.1rem 5rem #230674a2
 
 .counter_container
     display: flex
-    .bigNumber
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    p
         font-size: 15rem
         margin: 0 6rem
         line-height: 1
@@ -30,3 +34,23 @@ h1
         color: #c3c6e6
     div
         text-align: center
+
+// .top_container
+//     display: flex
+//     text-align: right
+//     justify-items: top
+//     // margin: -20%
+
+.nameOfHoliday
+    padding: 1% 1% 1% 1.7%
+    border-radius: 0.8rem
+    overflow: hidden
+    position: absolute
+    top: 2rem
+    right: 3rem
+    font-size: 1.1rem
+    font-style: italic
+    width: 15%
+    min-width: 4rem
+
+
