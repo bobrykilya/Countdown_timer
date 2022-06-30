@@ -1,4 +1,8 @@
-const myCelebration = "4 Sept 2022"; //12.00
+const myCelebration = "1 Jan 2023"; //12.00
+
+const nameOfHoliday = document.querySelector('.nameOfHoliday');
+const button = document.querySelector('.input_btn');
+const input_cont = document.querySelector('.input_container');
 
 //Countdown timer algorithm
 function countdown(){
@@ -29,14 +33,44 @@ function htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds){
     secondsNumber.innerText = resultSeconds;
 };
 
-setInterval(countdown, 1000);
+// Input area cleaning
+function inputCleaning(){
+    nameOfHoliday.value = "";
+};
+
+//Input openning and closing 
+function toggleOfBtn(){
+    nameOfHoliday.classList.toggle('active');
+    nameOfHoliday.focus();
+};
+
+//Writing without opened input
+/*
+document.addEventListener('keydown', function(event){
+    if (!nameOfHoliday.classList.contains('active')){
+        toggleOfBtn()
+    };
+});
+*/
+
+//Clicking on the button 
+button.addEventListener('click', toggleOfBtn);
 
 //Writer of celebration name from text area and cleaning of area
 document.addEventListener('keyup', function(event){
-    const nameOfHoliday = document.querySelector('.nameOfHoliday');
     if (event.code === 'Enter' & nameOfHoliday.value != "") {
         const celebName = document.querySelector('h1');
         celebName.innerText = nameOfHoliday.value;
-        nameOfHoliday.value = "";
+        inputCleaning();
+        toggleOfBtn ();
+        nameOfHoliday.blur(); //focus deleting from input
     };
 });
+
+document.addEventListener("DOMContentLoaded", function(){
+    inputCleaning();
+    nameOfHoliday.blur();
+});
+
+//Heart of the timer
+setInterval(countdown, 1000);
