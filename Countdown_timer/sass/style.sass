@@ -1,9 +1,11 @@
 @import "./_stylereset"
 
 $hi : 2.5rem
+$top : 3vh
+$right : 5vh
 
 body
-    background: url('../img/bg.jpg') center center / cover no-repeat 
+    background: url('../img/bg.jpg') center center / cover no-repeat, url('../img/smoke.gif') center center / cover no-repeat
     display: flex
     flex-direction: column
     align-items: center
@@ -37,11 +39,28 @@ body
 .input_container
     border-radius: $hi
     position: absolute
-    top: 3vh
-    right: 5vh
-    padding: 1vh //match left padding 
+    top: $top
+    right: $right
+    padding: 1vh //change left padding
     background-color: #fff
-    .nameOfHoliday
+    .clear_btn
+        display: none
+        float: left
+        margin: 0.4rem 0 0 0.6rem
+        width: $hi - 1rem
+        height: $hi - 1rem
+        transition: 0.2s
+        font-size: 1.2rem
+        rotate: 7deg
+        color: #6427aa
+        :hover 
+            font-size: 1.3rem
+            rotate: 15deg
+        :active
+            color: #385ab9
+    a.active
+        display: flex
+    .input_area
         display: flex
         float: left
         border: none
@@ -50,8 +69,8 @@ body
         text-decoration: none
         font-size: 1.1rem
         font-style: italic
-        width: 0 //match
-        min-width: 0 //match
+        width: 0 //change
+        min-width: 0 //change
         transition: 0.3s
         line-height: $hi
     input.active
@@ -70,10 +89,12 @@ body
         font-size: 1.6rem
         color: #6427aa
         transition: 0.5s
-    a.active
+        :hover 
+            font-size: 1.7rem
+    a.rotation
         rotate: -360deg
         color: #88279bee
     
-// .input_container .nameOfHoliday .active
-//             width: 30vh //match
-//             min-width: 10rem //match
+
+
+    

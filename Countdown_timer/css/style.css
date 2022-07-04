@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  background: url("../img/bg.jpg") center center/cover no-repeat;
+  background: url("../img/bg.jpg") center center/cover no-repeat, url("../img/smoke.gif") center center/cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,7 +113,28 @@ body h1 {
   padding: 1vh;
   background-color: #fff;
 }
-.input_container .nameOfHoliday {
+.input_container .clear_btn {
+  display: none;
+  float: left;
+  margin: 0.4rem 0 0 0.6rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: 0.2s;
+  font-size: 1.2rem;
+  rotate: 7deg;
+  color: #6427aa;
+}
+.input_container .clear_btn :hover {
+  font-size: 1.3rem;
+  rotate: 15deg;
+}
+.input_container .clear_btn :active {
+  color: #385ab9;
+}
+.input_container a.active {
+  display: flex;
+}
+.input_container .input_area {
   display: flex;
   float: left;
   border: none;
@@ -145,7 +166,10 @@ body h1 {
   color: #6427aa;
   transition: 0.5s;
 }
-.input_container a.active {
+.input_container .input_btn :hover {
+  font-size: 1.7rem;
+}
+.input_container a.rotation {
   rotate: -360deg;
   color: rgba(136, 39, 155, 0.9333333333);
 }

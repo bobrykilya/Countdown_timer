@@ -1,8 +1,9 @@
 const myCelebration = "1 Jan 2023"; //12.00
 
-const nameOfHoliday = document.querySelector('.nameOfHoliday');
+const input_area = document.querySelector('.input_area');
 const button = document.querySelector('.input_btn');
 const input_cont = document.querySelector('.input_container');
+const clr_button = document.querySelector('.clear_btn');
 
 //Countdown timer algorithm
 function countdown(){
@@ -35,22 +36,23 @@ function htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds){
 
 // Input area cleaning
 function inputCleaning(){
-    nameOfHoliday.value = "";
+    input_area.value = "";
 };
 
 //Input openning and closing 
 function toggleOfBtn(){
-    nameOfHoliday.classList.toggle('active');
-    button.classList.toggle('active');
-    if (nameOfHoliday.classList.contains('active')) 
-    nameOfHoliday.focus() //focus deleting from input
-    else nameOfHoliday.blur(); //focus on input
+    input_area.classList.toggle('active');
+    button.classList.toggle('rotation');
+    clr_button.classList.toggle('active');
+    if (input_area.classList.contains('active')) 
+    input_area.focus() //focus deleting from input
+    else input_area.blur(); //focus on input
 };
 
 //Writing without opened input
 /*
 document.addEventListener('keydown', function(event){
-    if (!nameOfHoliday.classList.contains('active')){
+    if (!input_area.classList.contains('active')){
         toggleOfBtn()
     };
 });
@@ -58,23 +60,24 @@ document.addEventListener('keydown', function(event){
 
 //Clicking on the button 
 button.addEventListener('click', toggleOfBtn);
+clr_button.addEventListener('click', inputCleaning);
 
 //Writer of celebration name from text area and cleaning of area
 document.addEventListener('keyup', function(event){
-    if (event.code === 'Enter' & nameOfHoliday.value != "" & 
-    nameOfHoliday.classList.contains('active')) {
+    if (event.code === 'Enter' & input_area.value != "" & 
+    input_area.classList.contains('active')) {
         const celebName = document.querySelector('h1');
-        celebName.innerText = nameOfHoliday.value;
+        celebName.innerText = input_area.value;
         inputCleaning();
         toggleOfBtn ();
     };
     if (event.code === 'Escape' &
-        nameOfHoliday.classList.contains('active')) toggleOfBtn()
+        input_area.classList.contains('active')) toggleOfBtn()
 });
 
 document.addEventListener("DOMContentLoaded", function(){
     inputCleaning();
-    nameOfHoliday.blur();
+    input_area.blur();
 });
 
 //Heart of the timer
