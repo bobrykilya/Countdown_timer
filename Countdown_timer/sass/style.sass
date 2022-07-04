@@ -95,6 +95,63 @@ body
         rotate: -360deg
         color: #88279bee
     
-
+.date_container
+    border-radius: $hi
+    position: absolute
+    top: $top + 10vh
+    right: $right
+    padding: 1vh //change left padding
+    background-color: #fff
+    .date_clear_btn
+        display: none
+        float: left
+        margin: 0.4rem 0 0 0.6rem
+        width: $hi - 1rem
+        height: $hi - 1rem
+        transition: 0.2s
+        font-size: 1.2rem
+        rotate: 7deg
+        color: #6427aa
+        :hover 
+            font-size: 1.3rem
+            rotate: 15deg
+        :active
+            color: #385ab9
+    a.active
+        display: flex
+    .date_input_area
+        display: flex
+        float: left
+        border: none
+        outline: none
+        background: none
+        text-decoration: none
+        font-size: 1.1rem
+        font-style: italic
+        width: 0 //change
+        min-width: 0 //change
+        transition: 0.3s
+        line-height: $hi
+    input.active
+        width: 30vh
+        min-width: 10rem 
+        padding-left: 2vh
+    .date_input_btn
+        display: flex
+        float: right
+        width: $hi
+        height: $hi
+        align-items: center
+        justify-content: center
+        border-radius: 50%
+        background-color: #ffffff
+        font-size: 1.6rem
+        color: #6427aa
+        transition: 0.5s
+        :hover 
+            font-size: 1.7rem
+    a.rotation
+        rotate: -360deg
+        color: #88279bee
 
     
