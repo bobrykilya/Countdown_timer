@@ -1,25 +1,30 @@
 // Default date (12.00) 
 const nextYear = new Date().getFullYear() + 1;
-let myCelebration = `1 Jan ${nextYear}`;
-
+const newYear = `1 Jan ${nextYear}`;
+let myCelebration = newYear;
 
 // Document elems
 const input_area = document.querySelector('.input_area');
 const button = document.querySelector('.input_btn');
-const input_cont = document.querySelector('.input_container');
+const input_cont = document.querySelector('.text_container');
 const clr_button = document.querySelector('.clear_btn');
 
 const date_input_area = document.querySelector('.date_input_area');
 const date_button = document.querySelector('.date_input_btn');
 const date_input_cont = document.querySelector('.date_container');
 const date_clr_button = document.querySelector('.date_clear_btn');
+const confirm_button = document.querySelector('.confirm_btn');
 
 
 // Countdown timer algorithm
 function countdown(){
     const currentDate = new Date();
     const myCelebrationDate = new Date(myCelebration);
-    const resultDate = myCelebrationDate - currentDate;
+    let resultDate = myCelebrationDate - currentDate;
+    console.log(resultDate);
+    if (resultDate < 0) resultDate = 0;
+    if (resultDate === 0) finishFun();
+
 
     const totalSeconds = Math.floor(resultDate / 1000);
 
@@ -54,6 +59,7 @@ function inputCleaning(){
 
 function date_inputCleaning(){
     date_input_area.value = "";
+    myCelebration = newYear;
 };
 
 
@@ -71,6 +77,7 @@ function date_toggleOfBtn(){
     date_input_area.classList.toggle('active');
     date_button.classList.toggle('rotation');
     date_clr_button.classList.toggle('active');
+    confirm_button.classList.toggle('active');
 };
 
 
@@ -81,6 +88,10 @@ clr_button.addEventListener('click', inputCleaning);
 date_button.addEventListener('click',  date_toggleOfBtn);
 date_clr_button.addEventListener('click',  date_inputCleaning);
 
+confirm_button.addEventListener('click', () => {
+    date_toggleOfBtn();
+    if (date_input_area.value != "") myCelebration = date_input_area.value;
+});
 
 // Writer of celebration name from text area and cleaning of area
 document.addEventListener('keyup', (event) => {
@@ -89,7 +100,6 @@ document.addEventListener('keyup', (event) => {
     input_area.classList.contains('active')) {
         const celebName = document.querySelector('h1');
         celebName.innerText = input_area.value;
-        inputCleaning();
         toggleOfBtn ();
     };
     if (event.code === 'Escape' &
@@ -97,24 +107,24 @@ document.addEventListener('keyup', (event) => {
 });
 
 document.addEventListener('keyup', (event) => {
-    const currentDate = new Date().getDate;
-    console.log(currentDate);
     if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
-    date_input_area.classList.contains('active')) {
+    date_input_area.classList.contains('active') &
+    date_input_area.value != "") {
         myCelebration = date_input_area.value;
-        celebName.innerText = date_input_area.value;
-        date_inputCleaning();
         date_toggleOfBtn ();
     };
     if (event.code === 'Escape' &
         date_input_area.classList.contains('active')) date_toggleOfBtn()
+        date_inputCleaning()
 });
 
 // Areas cleaning after reload
 document.addEventListener("DOMContentLoaded", () => {
     inputCleaning();
     input_area.blur();
-    date_inputCleaning();
+    // date_inputCleaning();
+    const currentDate = new Date();
+    date_input_area.value = currentDate;
 });
 
 
@@ -128,3 +138,10 @@ document.addEventListener('click', (event) => {
 
 // Heart of the timer
 setInterval(countdown, 1000);
+
+
+// Notification of timer finish
+function finishFun(){
+    const celebName = document.querySelector('h1');
+    alert(`Bro, your timer \"${celebName.innerText}\" has been finished. Good luck!!!`);
+};

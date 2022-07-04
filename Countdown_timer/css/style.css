@@ -105,15 +105,15 @@ body h1 {
   text-align: center;
 }
 
-.input_container {
+.text_container {
   border-radius: 2.5rem;
   position: absolute;
-  top: 3vh;
-  right: 5vh;
+  top: 2rem;
+  right: 2em;
   padding: 1vh;
   background-color: #fff;
 }
-.input_container .clear_btn {
+.text_container .clear_btn {
   display: none;
   float: left;
   margin: 0.4rem 0 0 0.6rem;
@@ -124,18 +124,18 @@ body h1 {
   rotate: 7deg;
   color: #6427aa;
 }
-.input_container .clear_btn :hover {
+.text_container .clear_btn :hover {
   font-size: 1.3rem;
   rotate: 15deg;
 }
-.input_container .clear_btn :active {
-  font-size: 1.4rem;
+.text_container .clear_btn :active {
+  font-size: 1.2rem;
   color: #385ab9;
 }
-.input_container a.active {
+.text_container a.active {
   display: flex;
 }
-.input_container .input_area {
+.text_container .input_area {
   display: flex;
   float: left;
   border: none;
@@ -149,12 +149,12 @@ body h1 {
   transition: 0.3s;
   line-height: 2.5rem;
 }
-.input_container input.active {
-  width: 30vh;
+.text_container input.active {
+  width: 15rem;
   min-width: 10rem;
   padding-left: 2vh;
 }
-.input_container .input_btn {
+.text_container .input_btn {
   display: flex;
   float: right;
   width: 2.5rem;
@@ -167,10 +167,10 @@ body h1 {
   color: #6427aa;
   transition: 0.5s;
 }
-.input_container .input_btn :hover {
+.text_container .input_btn :hover {
   font-size: 1.7rem;
 }
-.input_container a.rotation {
+.text_container a.rotation {
   rotate: -360deg;
   color: rgba(136, 39, 155, 0.9333333333);
 }
@@ -178,8 +178,8 @@ body h1 {
 .date_container {
   border-radius: 2.5rem;
   position: absolute;
-  top: 13vh;
-  right: 5vh;
+  top: 7rem;
+  right: 2em;
   padding: 1vh;
   background-color: #fff;
 }
@@ -199,7 +199,7 @@ body h1 {
   rotate: 15deg;
 }
 .date_container .date_clear_btn :active {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #385ab9;
 }
 .date_container a.active {
@@ -218,11 +218,17 @@ body h1 {
   min-width: 0;
   transition: 0.3s;
   line-height: 2.5rem;
+  padding: 0;
+}
+.date_container .date_input_area :-webkit-inner-spin-button, .date_container .date_input_area :-webkit-clear-button {
+  -webkit-appearance: none;
+  display: none;
 }
 .date_container input.active {
-  width: 15vh;
-  min-width: 10rem;
+  width: 9rem;
   padding-left: 2vh;
+  padding-right: 0;
+  margin: 0;
 }
 .date_container .date_input_btn {
   display: flex;
@@ -243,4 +249,23 @@ body h1 {
 .date_container a.rotation {
   rotate: -360deg;
   color: rgba(136, 39, 155, 0.9333333333);
+}
+.date_container .confirm_btn {
+  display: none;
+  float: right;
+  margin: 0.5rem 0.6rem 0 0.6rem;
+  width: 1.5rem;
+  height: 0.5rem;
+  transition: 0.2s;
+  font-size: 1.5rem;
+  rotate: 7deg;
+  color: #6427aa;
+}
+.date_container .confirm_btn :hover {
+  font-size: 1.6rem;
+  text-shadow: 1px 1px 5px rgba(205, 181, 233, 0.5019607843);
+}
+.date_container .confirm_btn :active {
+  font-size: 1.5rem;
+  color: #385ab9;
 }

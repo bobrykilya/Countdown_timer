@@ -1,8 +1,8 @@
 @import "./_stylereset"
 
 $hi : 2.5rem
-$top : 3vh
-$right : 5vh
+$top : 2rem
+$right : 2em
 
 body
     background: url('../img/bg.jpg') center center / cover no-repeat
@@ -36,7 +36,7 @@ body
     div
         text-align: center
 
-.input_container
+.text_container
     border-radius: $hi
     position: absolute
     top: $top
@@ -57,7 +57,7 @@ body
             font-size: 1.3rem
             rotate: 15deg
         :active
-            font-size: 1.4rem
+            font-size: 1.2rem
             color: #385ab9
     a.active
         display: flex
@@ -75,7 +75,7 @@ body
         transition: 0.3s
         line-height: $hi
     input.active
-        width: 30vh
+        width: 15rem
         min-width: 10rem 
         padding-left: 2vh
     .input_btn
@@ -99,11 +99,11 @@ body
 .date_container
     border-radius: $hi
     position: absolute
-    top: $top + 10vh
+    top: $top + 5rem
     right: $right
     padding: 1vh //change left padding
     background-color: #fff
-    .date_clear_btn
+    .date_clear_btn 
         display: none
         float: left
         margin: 0.4rem 0 0 0.6rem
@@ -117,7 +117,7 @@ body
             font-size: 1.3rem
             rotate: 15deg
         :active
-            font-size: 1.4rem
+            font-size: 1.2rem
             color: #385ab9
     a.active
         display: flex
@@ -134,10 +134,15 @@ body
         min-width: 0 //change
         transition: 0.3s
         line-height: $hi
+        padding: 0
+        :-webkit-inner-spin-button, :-webkit-clear-button 
+            -webkit-appearance: none
+            display: none
     input.active
-        width: 15vh
-        min-width: 10rem 
+        width: 9rem
         padding-left: 2vh
+        padding-right: 0
+        margin:0
     .date_input_btn
         display: flex
         float: right
@@ -155,5 +160,22 @@ body
     a.rotation
         rotate: -360deg
         color: #88279bee
+    .confirm_btn
+        display: none
+        float: right
+        margin: 0.5rem 0.6rem 0 0.6rem
+        width: $hi - 1rem
+        height: $hi - 2rem
+        transition: 0.2s
+        font-size: 1.5rem
+        rotate: 7deg
+        color: #6427aa
+        :hover 
+            font-size: 1.6rem
+            text-shadow: 1px 1px 5px #cdb5e980
+        :active
+            font-size: 1.5rem
+            color: #385ab9
+
 
     
