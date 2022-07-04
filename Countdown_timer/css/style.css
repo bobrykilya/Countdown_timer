@@ -129,6 +129,7 @@ body h1 {
   rotate: 15deg;
 }
 .input_container .clear_btn :active {
+  font-size: 1.4rem;
   color: #385ab9;
 }
 .input_container a.active {
@@ -198,6 +199,7 @@ body h1 {
   rotate: 15deg;
 }
 .date_container .date_clear_btn :active {
+  font-size: 1.4rem;
   color: #385ab9;
 }
 .date_container a.active {

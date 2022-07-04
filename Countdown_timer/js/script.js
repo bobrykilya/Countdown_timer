@@ -11,7 +11,7 @@ const clr_button = document.querySelector('.clear_btn');
 
 const date_input_area = document.querySelector('.date_input_area');
 const date_button = document.querySelector('.date_input_btn');
-const date_input_cont = document.querySelector('.date_input_container');
+const date_input_cont = document.querySelector('.date_container');
 const date_clr_button = document.querySelector('.date_clear_btn');
 
 
@@ -49,6 +49,7 @@ function htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds){
 // Input area cleaning
 function inputCleaning(){
     input_area.value = "";
+    input_area.focus();
 };
 
 function date_inputCleaning(){
@@ -82,7 +83,7 @@ date_clr_button.addEventListener('click',  date_inputCleaning);
 
 
 // Writer of celebration name from text area and cleaning of area
-document.addEventListener('keyup', function(event){
+document.addEventListener('keyup', (event) => {
     if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
     input_area.value != "" & 
     input_area.classList.contains('active')) {
@@ -95,7 +96,7 @@ document.addEventListener('keyup', function(event){
         input_area.classList.contains('active')) toggleOfBtn()
 });
 
-document.addEventListener('keyup', function(event){
+document.addEventListener('keyup', (event) => {
     const currentDate = new Date().getDate;
     console.log(currentDate);
     if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
@@ -110,12 +111,20 @@ document.addEventListener('keyup', function(event){
 });
 
 // Areas cleaning after reload
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", () => {
     inputCleaning();
     input_area.blur();
     date_inputCleaning();
 });
 
+
+// Inputs closing by click outside 
+document.addEventListener('click', (event) => {
+    const insideInput1 = event.composedPath().includes(input_cont);
+    const insideInput2 = event.composedPath().includes(date_input_cont);
+    if (!insideInput1 & input_area.classList.contains('active')) toggleOfBtn();
+    if (!insideInput2 & date_input_area.classList.contains('active')) date_toggleOfBtn();
+});
 
 // Heart of the timer
 setInterval(countdown, 1000);
