@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  background: url("../img/bg.jpg") center center/cover no-repeat, url("../img/smoke.gif") center center/cover no-repeat;
+  background: url("../img/bg.jpg") center center/cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -218,7 +218,7 @@ body h1 {
   line-height: 2.5rem;
 }
 .date_container input.active {
-  width: 30vh;
+  width: 15vh;
   min-width: 10rem;
   padding-left: 2vh;
 }
