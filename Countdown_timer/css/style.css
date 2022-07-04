@@ -105,6 +105,14 @@ body h1 {
   text-align: center;
 }
 
+.date_number {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 4vh;
+  color: rgba(195, 198, 230, 0.3215686275);
+  margin-left: 1vh;
+}
+
 .text_container {
   border-radius: 2.5rem;
   position: absolute;
@@ -225,7 +233,7 @@ body h1 {
   display: none;
 }
 .date_container input.active {
-  width: 9rem;
+  width: 10rem;
   padding-left: 2vh;
   padding-right: 0;
   margin: 0;

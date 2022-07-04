@@ -15,16 +15,22 @@ const date_input_cont = document.querySelector('.date_container');
 const date_clr_button = document.querySelector('.date_clear_btn');
 const confirm_button = document.querySelector('.confirm_btn');
 
+const date_number = document.querySelector('.date_number');
+
 
 // Countdown timer algorithm
 function countdown(){
     const currentDate = new Date();
     const myCelebrationDate = new Date(myCelebration);
     let resultDate = myCelebrationDate - currentDate;
-    console.log(resultDate);
+    // console.log(resultDate);
     if (resultDate < 0) resultDate = 0;
     if (resultDate === 0) finishFun();
 
+    year = new Date(myCelebration).getFullYear();
+    month = new Date(myCelebration);
+    day = new Date(myCelebration).getDay() + 1;
+    date_number.innerText = `${day} ${month.toLocaleString('eng', {month: 'short'})} ${year}`;
 
     const totalSeconds = Math.floor(resultDate / 1000);
 
@@ -90,6 +96,7 @@ date_clr_button.addEventListener('click',  date_inputCleaning);
 
 confirm_button.addEventListener('click', () => {
     date_toggleOfBtn();
+    date_number.innerText = myCelebration;
     if (date_input_area.value != "") myCelebration = date_input_area.value;
 });
 
@@ -107,25 +114,18 @@ document.addEventListener('keyup', (event) => {
 });
 
 document.addEventListener('keyup', (event) => {
-    if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
-    date_input_area.classList.contains('active') &
-    date_input_area.value != "") {
-        myCelebration = date_input_area.value;
-        date_toggleOfBtn ();
-    };
     if (event.code === 'Escape' &
-        date_input_area.classList.contains('active')) date_toggleOfBtn()
-        date_inputCleaning()
-});
+        date_input_area.classList.contains('active')) date_toggleOfBtn()});
+
 
 // Areas cleaning after reload
-document.addEventListener("DOMContentLoaded", () => {
-    inputCleaning();
-    input_area.blur();
-    // date_inputCleaning();
-    const currentDate = new Date();
-    date_input_area.value = currentDate;
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//     // inputCleaning();
+//     // input_area.blur();
+//     // date_inputCleaning();
+//     // const currentDate = new Date();
+//     // date_input_area.value = currentDate;
+// });
 
 
 // Inputs closing by click outside 
