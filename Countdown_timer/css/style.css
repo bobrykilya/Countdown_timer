@@ -127,7 +127,7 @@ body h1 {
   transition: 0.3s;
   line-height: 2.5rem;
 }
-.input_container .active {
+.input_container input.active {
   width: 30vh;
   min-width: 10rem;
   padding-left: 2vh;
@@ -145,7 +145,7 @@ body h1 {
   color: #6427aa;
   transition: 0.5s;
 }
-.input_container .rotating {
+.input_container a.active {
   rotate: -360deg;
   color: rgba(136, 39, 155, 0.9333333333);
 }

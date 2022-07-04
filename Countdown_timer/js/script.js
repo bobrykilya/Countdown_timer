@@ -41,9 +41,10 @@ function inputCleaning(){
 //Input openning and closing 
 function toggleOfBtn(){
     nameOfHoliday.classList.toggle('active');
-    button.classList.toggle('rotating');
-    nameOfHoliday.focus();
-    if (!nameOfHoliday.classList.contains('active')) nameOfHoliday.blur();
+    button.classList.toggle('active');
+    if (nameOfHoliday.classList.contains('active')) 
+    nameOfHoliday.focus() //focus deleting from input
+    else nameOfHoliday.blur(); //focus on input
 };
 
 //Writing without opened input
@@ -60,12 +61,12 @@ button.addEventListener('click', toggleOfBtn);
 
 //Writer of celebration name from text area and cleaning of area
 document.addEventListener('keyup', function(event){
-    if (event.code === 'Enter' & nameOfHoliday.value != "") {
+    if (event.code === 'Enter' & nameOfHoliday.value != "" & 
+    nameOfHoliday.classList.contains('active')) {
         const celebName = document.querySelector('h1');
         celebName.innerText = nameOfHoliday.value;
         inputCleaning();
         toggleOfBtn ();
-        nameOfHoliday.blur(); //focus deleting from input
     };
     if (event.code === 'Escape' &
         nameOfHoliday.classList.contains('active')) toggleOfBtn()
