@@ -143,4 +143,9 @@ body h1 {
   background-color: #ffffff;
   font-size: 1.6rem;
   color: #6427aa;
+  transition: 0.5s;
+}
+.input_container .rotating {
+  rotate: -360deg;
+  color: rgba(136, 39, 155, 0.9333333333);
 }

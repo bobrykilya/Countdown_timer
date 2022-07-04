@@ -41,6 +41,7 @@ function inputCleaning(){
 //Input openning and closing 
 function toggleOfBtn(){
     nameOfHoliday.classList.toggle('active');
+    button.classList.toggle('rotating');
     nameOfHoliday.focus();
     if (!nameOfHoliday.classList.contains('active')) nameOfHoliday.blur();
 };
