@@ -23,15 +23,16 @@ function countdown(){
     const currentDate = new Date();
     const myCelebrationDate = new Date(myCelebration);
     let resultDate = myCelebrationDate - currentDate;
-    // console.log(resultDate);
     if (resultDate < 0) resultDate = 0;
     if (resultDate === 0) finishFun();
 
+    // Date signature calculation
     year = new Date(myCelebration).getFullYear();
     month = new Date(myCelebration);
     day = new Date(myCelebration).getDay() + 1;
     date_number.innerText = `${day} ${month.toLocaleString('eng', {month: 'short'})} ${year}`;
 
+    // Timing calculation
     const totalSeconds = Math.floor(resultDate / 1000);
 
     const resultDays = Math.floor(totalSeconds / 60 / 60 / 24);
@@ -56,6 +57,9 @@ function htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds){
     secondsNumber.innerText = resultSeconds;
 };
 
+// Heart beats of the timer
+setInterval(countdown, 1000);
+
 
 // Input area cleaning
 function inputCleaning(){
@@ -69,7 +73,7 @@ function date_inputCleaning(){
 };
 
 
-//Input openning and closing 
+// Input openning and closing 
 function toggleOfBtn(){
     input_area.classList.toggle('active');
     button.classList.toggle('rotation');
@@ -119,13 +123,15 @@ document.addEventListener('keyup', (event) => {
 
 
 // Areas cleaning after reload
-// document.addEventListener("DOMContentLoaded", () => {
-//     // inputCleaning();
-//     // input_area.blur();
-//     // date_inputCleaning();
-//     // const currentDate = new Date();
-//     // date_input_area.value = currentDate;
-// });
+/*
+document.addEventListener("DOMContentLoaded", () => {
+    inputCleaning();
+    input_area.blur();
+    date_inputCleaning();
+    const currentDate = new Date();
+    date_input_area.value = currentDate;
+});
+*/
 
 
 // Inputs closing by click outside 
@@ -135,9 +141,6 @@ document.addEventListener('click', (event) => {
     if (!insideInput1 & input_area.classList.contains('active')) toggleOfBtn();
     if (!insideInput2 & date_input_area.classList.contains('active')) date_toggleOfBtn();
 });
-
-// Heart of the timer
-setInterval(countdown, 1000);
 
 
 // Notification of timer finish
