@@ -191,6 +191,9 @@ body h1 {
   padding: 1vh;
   background-color: #fff;
 }
+.date_container :hover {
+  cursor: pointer;
+}
 .date_container .date_clear_btn {
   display: none;
   float: left;
