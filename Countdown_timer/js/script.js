@@ -17,32 +17,47 @@ const confirm_button = document.querySelector('.confirm_btn');
 
 const date_number = document.querySelector('.date_number');
 
+const currentDate = new Date();
+
+// Calculation short form of current date
+function currentDateShort(){
+    year = currentDate.getFullYear();
+    month = currentDate.getMonth() + 1;
+    day = currentDate.getDate();
+    if (month < 10) month = '0' + month;
+    if (day < 10) day = '0' + day;
+    return [currentDateSh = `${year}-${month}-${day}`, `${year + 200}-${month}-${day}`];
+}
+
 
 // Ban on the use of past dates
 function pastDateCancel(){
-    const currentDate = new Date().toISOString().split('T')[0];
-    document.querySelector('.date_input_area').setAttribute('min', currentDate);
+    minDate = currentDateShort()[0];
+    maxDate = currentDateShort()[1];
+    document.querySelector('.date_input_area').setAttribute('min', minDate);
+    document.querySelector('.date_input_area').setAttribute('max', maxDate);
 }
 pastDateCancel()
 
 
 // Countdown timer algorithm
 function countdown(){
-    const currentDate = new Date();
     const myCelebrationDate = new Date(myCelebration);
     let resultDate = myCelebrationDate - currentDate;
-    if (resultDate === 0) finishFun();
-
-
+    if (resultDate < 0) resultDate = 0;
+    
+    
     // Timing calculation
     const totalSeconds = Math.floor(resultDate / 1000);
-
+    
     const resultDays = Math.floor(totalSeconds / 60 / 60 / 24);
-    const resultHours = Math.floor(totalSeconds / 60 / 60) % 24;
+    let resultHours = Math.floor(totalSeconds / 60 / 60) % 24 - 3;
+    if (resultHours < 0) resultHours = 0;
     const resultMinutes = Math.floor(totalSeconds / 60) % 60;
     const resultSeconds = Math.floor(totalSeconds) % 60;
-
+    
     htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds);
+    if (resultDays + resultHours + resultMinutes + resultSeconds === 0) finishFun();
 }; 
 
 
@@ -101,12 +116,13 @@ date_button.addEventListener('click',  date_toggleOfBtn);
 date_clr_button.addEventListener('click',  date_inputCleaning);
 
 confirm_button.addEventListener('click', () => {
+    if (date_input_area.value == currentDateShort()[0]) return
+
     date_toggleOfBtn();
     if (date_input_area.value != "") myCelebration = date_input_area.value;
 
     // Date signature calculation
     const myCelebrationDate = new Date(myCelebration);
-
     year = myCelebrationDate.getFullYear();
     month = myCelebrationDate.toLocaleString('eng', {month: 'short'});
     day = myCelebrationDate.getDate();
