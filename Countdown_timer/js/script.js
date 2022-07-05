@@ -18,19 +18,21 @@ const confirm_button = document.querySelector('.confirm_btn');
 const date_number = document.querySelector('.date_number');
 
 
+// Ban on the use of past dates
+function pastDateCancel(){
+    const currentDate = new Date().toISOString().split('T')[0];
+    document.querySelector('.date_input_area').setAttribute('min', currentDate);
+}
+pastDateCancel()
+
+
 // Countdown timer algorithm
 function countdown(){
     const currentDate = new Date();
     const myCelebrationDate = new Date(myCelebration);
     let resultDate = myCelebrationDate - currentDate;
-    if (resultDate < 0) resultDate = 0;
     if (resultDate === 0) finishFun();
 
-    // Date signature calculation
-    year = new Date(myCelebration).getFullYear();
-    month = new Date(myCelebration);
-    day = new Date(myCelebration).getDay() + 1;
-    date_number.innerText = `${day} ${month.toLocaleString('eng', {month: 'short'})} ${year}`;
 
     // Timing calculation
     const totalSeconds = Math.floor(resultDate / 1000);
@@ -100,8 +102,15 @@ date_clr_button.addEventListener('click',  date_inputCleaning);
 
 confirm_button.addEventListener('click', () => {
     date_toggleOfBtn();
-    date_number.innerText = myCelebration;
     if (date_input_area.value != "") myCelebration = date_input_area.value;
+
+    // Date signature calculation
+    const myCelebrationDate = new Date(myCelebration);
+
+    year = myCelebrationDate.getFullYear();
+    month = myCelebrationDate.toLocaleString('eng', {month: 'short'});
+    day = myCelebrationDate.getDate();
+    date_number.innerText = `${day} ${month} ${year}`;
 });
 
 // Writer of celebration name from text area and cleaning of area
@@ -148,7 +157,7 @@ function finishFun(){
     const celebName = document.querySelector('h1');
     if (!alert(`Bro, your timer \"${celebName.innerText}\" has been finished. Good luck!!!`)) {
         window.location.reload();
-        inputCleaning();
-        date_inputCleaning();
+        // inputCleaning();
+        // date_inputCleaning();
     }
 };
