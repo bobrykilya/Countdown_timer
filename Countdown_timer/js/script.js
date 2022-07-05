@@ -146,5 +146,9 @@ document.addEventListener('click', (event) => {
 // Notification of timer finish
 function finishFun(){
     const celebName = document.querySelector('h1');
-    alert(`Bro, your timer \"${celebName.innerText}\" has been finished. Good luck!!!`);
+    if (!alert(`Bro, your timer \"${celebName.innerText}\" has been finished. Good luck!!!`)) {
+        window.location.reload();
+        inputCleaning();
+        date_inputCleaning();
+    }
 };
