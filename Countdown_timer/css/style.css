@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -83,7 +84,7 @@ body {
 
 .menu_container, h1 {
   font-family: "Comfortaa";
-  font-weight: 400;
+  font-weight: 700;
 }
 
 h1 {
@@ -91,9 +92,9 @@ h1 {
   text-align: center;
   text-transform: capitalize;
   font-size: 11vmin;
-  margin: -15vmin 0 12vmin 1vh;
-  color: rgba(255, 255, 255, 0.8470588235);
-  text-shadow: 0.1rem 0.1rem 5rem rgba(35, 6, 116, 0.6352941176);
+  margin: -6vmin 0 6vmin 0;
+  color: rgba(255, 255, 255, 0.8235294118);
+  text-shadow: 0.1rem 0.1rem 3rem rgba(35, 6, 116, 0.6352941176);
 }
 
 .first-pair, .second-pair {
@@ -113,10 +114,10 @@ h1 {
   justify-content: center;
 }
 .counter_container p {
+  font-family: "Dosis";
   font-size: 27vmin;
   margin: 0 8vmin;
-  letter-spacing: -0.7vmin;
-  line-height: 0.9;
+  line-height: 1;
   text-shadow: 0.2rem 0.2rem 3rem #230674;
 }
 .counter_container span {
@@ -132,7 +133,6 @@ h1 {
   bottom: 3vmin;
   font-size: 4vmin;
   color: rgba(195, 198, 230, 0.3215686275);
-  margin-left: 0.5vmin;
 }
 
 .text_container {
