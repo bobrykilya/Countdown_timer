@@ -1,6 +1,3 @@
-// @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Quicksand:wght@600&display=swap')
-// @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap')
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap')
 
 @import "./_stylereset"
@@ -18,7 +15,6 @@ body
     min-height: 70vmin
     overflow: hidden
     color: white
-    // font-family: 'Bebas Neue'
     font-family: 'Comfortaa'
     font-weight: 700
 
@@ -30,22 +26,26 @@ h1
     letter-spacing: -0.7vmin
     text-align: center
     text-transform: capitalize
-    font-size: 5.5vmax
+    font-size: 11vmin
+    
     margin: -15vmin 0  12vmin 1vh
     color: #ffffffd8
     text-shadow: 0.1rem 0.1rem 5rem #230674a2
 
 .first-pair, .second-pair
-    display: flex
+    display: inline-flex
     margin-bottom: 5vmin
+
+.second-pair :nth-child(2)
+    width: 40vmin
 
 .counter_container
     display: flex
+    flex-direction: row
     flex-wrap: wrap
     align-items: center
     justify-content: center
     p
-        // font-family: 'IBM Plex Sans'
         font-size: 27vmin
         margin: 0 8vmin
         letter-spacing: -0.7vmin
@@ -57,12 +57,13 @@ h1
     div
         text-align: center
 
+
 .date_number
     position: absolute
     bottom: 3vmin
     font-size: 4vmin
     color: #c3c6e652
-    margin-left: 0.7vmin
+    margin-left: 0.5vmin
 
 .text_container
     display: flex
