@@ -1,8 +1,13 @@
+// @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Quicksand:wght@600&display=swap')
+// @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap')
+
 @import "./_stylereset"
 
 $hi : 2.5rem
 $top : 2rem
-$right : 2em
+$right : 4vh
 
 body
     background: url('../img/bg.jpg') center center / cover no-repeat
@@ -10,15 +15,29 @@ body
     flex-direction: column
     align-items: center
     justify-content: center
-    min-height: 70vh
+    min-height: 70vmin
+    overflow: hidden
     color: white
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif
-    h1
-        text-transform: capitalize
-        font-size: 12vh
-        margin: -15vh 0  12vh 1vh
-        color: #ffffffe3
-        text-shadow: 0.1rem 0.1rem 5rem #230674a2
+    // font-family: 'Bebas Neue'
+    font-family: 'Comfortaa'
+    font-weight: 700
+
+.menu_container, h1
+    font-family: 'Comfortaa'
+    font-weight: 400
+
+h1
+    letter-spacing: -0.7vmin
+    text-align: center
+    text-transform: capitalize
+    font-size: 5.5vmax
+    margin: -15vmin 0  12vmin 1vh
+    color: #ffffffd8
+    text-shadow: 0.1rem 0.1rem 5rem #230674a2
+
+.first-pair, .second-pair
+    display: flex
+    margin-bottom: 5vmin
 
 .counter_container
     display: flex
@@ -26,24 +45,27 @@ body
     align-items: center
     justify-content: center
     p
-        font-size: 22vh
-        margin: 0 8vh
-        line-height: 1
+        // font-family: 'IBM Plex Sans'
+        font-size: 27vmin
+        margin: 0 8vmin
+        letter-spacing: -0.7vmin
+        line-height: 0.9
         text-shadow: 0.2rem 0.2rem 3rem #230674
     span
-        font-size: 1.3rem
-        color: #c3c6e6
+        font-size: 1.5vmax
+        color: #c3c6e6ab
     div
         text-align: center
 
 .date_number
     position: absolute
-    bottom: 2rem
-    font-size: 4vh
+    bottom: 3vmin
+    font-size: 4vmin
     color: #c3c6e652
-    margin-left: 1vh
+    margin-left: 0.7vmin
 
 .text_container
+    display: flex
     border-radius: $hi
     position: absolute
     top: $top
@@ -52,9 +74,9 @@ body
     background-color: #fff
     .clear_btn
         display: none
-        float: left
+        justify-content: start
         margin: 0.4rem 0 0 0.6rem
-        width: $hi - 1rem
+        width: $hi - 1.3rem
         height: $hi - 1rem
         transition: 0.2s
         font-size: 1.2rem
@@ -70,7 +92,7 @@ body
         display: flex
     .input_area
         display: flex
-        float: left
+        justify-content: start
         border: none
         outline: none
         background: none
@@ -82,7 +104,7 @@ body
         transition: 0.3s
         line-height: $hi
     input.active
-        width: 15rem
+        width: 21rem
         min-width: 10rem 
         padding-left: 2vh
     .input_btn
@@ -177,7 +199,6 @@ body
         height: $hi - 2rem
         transition: 0.2s
         font-size: 1.5rem
-        rotate: 7deg
         color: #6427aa
         :hover 
             font-size: 1.6rem
