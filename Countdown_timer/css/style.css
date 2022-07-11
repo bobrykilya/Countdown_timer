@@ -69,8 +69,52 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
-body {
+.bg-image {
   background: url("../img/bg.jpg") center center/cover no-repeat;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-animation: bg-night 120s linear infinite alternate;
+          animation: bg-night 120s linear infinite alternate;
+}
+
+@-webkit-keyframes bg-night {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(0.6);
+  }
+}
+
+@keyframes bg-night {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(0.6);
+  }
+}
+@-webkit-keyframes body-night {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(0.8);
+  }
+}
+@keyframes body-night {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(0.8);
+  }
+}
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,11 +124,8 @@ body {
   color: white;
   font-family: "Comfortaa";
   font-weight: 700;
-}
-
-.menu_container, h1 {
-  font-family: "Comfortaa";
-  font-weight: 700;
+  -webkit-animation: body-night 120s linear infinite alternate;
+          animation: body-night 120s linear infinite alternate;
 }
 
 h1 {

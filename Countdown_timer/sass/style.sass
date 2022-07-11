@@ -3,12 +3,31 @@
 
 @import "./_stylereset"
 
-$hi : 2.5rem
-$top : 3vh
-$right : 2vw
+.bg-image
+    background: url('../img/bg.jpg') center center / cover no-repeat
+    position: absolute
+    z-index: -1
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    animation: bg-night 120s linear infinite alternate
+
+@keyframes bg-night
+    0%
+        filter: brightness(1)
+    100%
+        filter: brightness(0.6)
+
+@keyframes body-night
+    0%
+        filter: brightness(1)
+    100%
+        filter: brightness(0.8)
+
 
 body
-    background: url('../img/bg.jpg') center center / cover no-repeat
+    // background: url('../img/bg.jpg') center center / cover no-repeat
     display: flex
     flex-direction: column
     align-items: center
@@ -18,10 +37,7 @@ body
     color: white
     font-family: 'Comfortaa'
     font-weight: 700
-
-.menu_container, h1
-    font-family: 'Comfortaa'
-    font-weight: 700
+    animation: body-night 120s linear infinite alternate
 
 h1
     letter-spacing: -0.7vmin
