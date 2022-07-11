@@ -131,30 +131,6 @@ h1 {
   text-align: center;
 }
 
-.fog img {
-  display: none;
-}
-
-@media (max-height: 150px) {
-  .counter_container p {
-    font-size: 70px;
-    margin: 0 2.5vw;
-  }
-  h1 {
-    display: none;
-  }
-  .date_number {
-    display: none;
-  }
-  .second-pair :nth-child(2) {
-    width: 80px;
-  }
-}
-@media (max-width: 550px) {
-  .menu_container {
-    display: none;
-  }
-}
 .date_number {
   position: absolute;
   bottom: 3vmin;
@@ -163,166 +139,105 @@ h1 {
 }
 
 .menu_container {
-  display: absolute;
-  z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  bottom: 4vh;
+  right: 2.5vw;
+  align-items: flex-end;
+}
+
+.cont {
+  display: flex;
+  border-radius: size;
+  padding: 1.2vh;
+  background-color: #fff;
+  border-radius: 2.5rem;
+}
+
+.btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #6427aa;
+  transition-duration: 0.5s;
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 2.7rem;
+}
+.btn :hover {
+  font-size: 1.7rem;
+}
+.btn.rotation {
+  transform: rotate(-360deg);
+  color: rgba(136, 39, 155, 0.9333333333);
+}
+
+.input_cl {
+  border: none;
+  outline: none;
+  background: none;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-style: italic;
+  width: 0;
+  transition-duration: 0.3s;
+  line-height: 2.5rem;
+}
+
+.clear {
+  display: none;
+  margin: 0.4rem 0 0 0.6rem;
+  transition-duration: 0.2s;
+  font-size: 1.2rem;
+  width: 1rem;
+  height: 1rem;
+  rotate: 7deg;
+  color: #6427aa;
+}
+.clear :hover {
+  font-size: 1.3rem;
+  rotate: 15deg;
+}
+.clear :active {
+  font-size: 1.2rem;
+  color: #385ab9;
+}
+.clear.active {
+  display: inline-block;
 }
 
 .text_container {
-  display: flex;
-  border-radius: 2.5rem;
-  position: absolute;
-  bottom: 3vh;
-  right: 2vw;
-  padding: 1vh;
-  background-color: #fff;
-}
-.text_container .clear_btn {
-  display: none;
-  justify-content: start;
-  margin: 0.4rem 0 0 0.6rem;
-  width: 1.2rem;
-  height: 1.5rem;
-  transition: 0.2s;
-  font-size: 1.2rem;
-  rotate: 7deg;
-  color: #6427aa;
-}
-.text_container .clear_btn :hover {
-  font-size: 1.3rem;
-  rotate: 15deg;
-}
-.text_container .clear_btn :active {
-  font-size: 1.2rem;
-  color: #385ab9;
-}
-.text_container a.active {
-  display: flex;
+  margin-top: 3vh;
 }
 .text_container .input_area {
-  display: flex;
-  justify-content: start;
-  border: none;
-  outline: none;
-  background: none;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-style: italic;
-  width: 0;
-  min-width: 0;
-  transition: 0.3s;
-  line-height: 2.5rem;
+  max-width: 0;
 }
-.text_container input.active {
-  width: 21rem;
-  min-width: 10rem;
-  padding-left: 2vh;
-}
-.text_container .input_btn {
-  display: flex;
-  float: right;
-  width: 2.5rem;
-  height: 2.5rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: #ffffff;
-  font-size: 1.6rem;
-  color: #6427aa;
-  transition: 0.5s;
-}
-.text_container .input_btn :hover {
-  font-size: 1.7rem;
-}
-.text_container a.rotation {
-  rotate: -360deg;
-  color: rgba(136, 39, 155, 0.9333333333);
+.text_container .input_area.active {
+  width: 28vw;
+  max-width: 20rem;
+  padding-left: 1rem;
 }
 
-.date_container {
-  border-radius: 2.5rem;
-  position: absolute;
-  bottom: 13vh;
-  right: 2vw;
-  padding: 1vh;
-  background-color: #fff;
-}
-.date_container :hover {
-  cursor: pointer;
-}
-.date_container .date_clear_btn {
-  display: none;
-  float: left;
-  margin: 0.4rem 0 0 0.6rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  transition: 0.2s;
-  font-size: 1.2rem;
-  rotate: 7deg;
-  color: #6427aa;
-}
-.date_container .date_clear_btn :hover {
-  font-size: 1.3rem;
-  rotate: 15deg;
-}
-.date_container .date_clear_btn :active {
-  font-size: 1.2rem;
-  color: #385ab9;
-}
-.date_container a.active {
-  display: flex;
-}
-.date_container .date_input_area {
-  display: flex;
-  float: left;
-  border: none;
-  outline: none;
-  background: none;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-style: italic;
-  width: 0;
-  min-width: 0;
-  transition: 0.3s;
-  line-height: 2.5rem;
-  padding: 0;
-}
-.date_container .date_input_area :-webkit-inner-spin-button, .date_container .date_input_area :-webkit-clear-button {
+.date_container .date_input_area :-webkit-inner-spin-button {
   -webkit-appearance: none;
   display: none;
 }
-.date_container input.active {
+.date_container .date_input_area :-webkit-clear-button {
+  -webkit-appearance: none;
+  display: none;
+}
+.date_container .date_input_area.active {
   width: 10rem;
   padding-left: 2vh;
-  padding-right: 0;
-  margin: 0;
-}
-.date_container .date_input_btn {
-  display: flex;
-  float: right;
-  width: 2.5rem;
-  height: 2.5rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: #ffffff;
-  font-size: 1.6rem;
-  color: #6427aa;
-  transition: 0.5s;
-}
-.date_container .date_input_btn :hover {
-  font-size: 1.7rem;
-}
-.date_container a.rotation {
-  rotate: -360deg;
-  color: rgba(136, 39, 155, 0.9333333333);
 }
 .date_container .confirm_btn {
   display: none;
-  float: right;
-  margin: 0.5rem 0.6rem 0 0.6rem;
-  width: 1.5rem;
-  height: 0.5rem;
-  transition: 0.2s;
+  margin: 0.5rem 0.8rem 0 0.6rem;
+  width: 1rem;
+  height: 1rem;
+  transition-duration: 0.2s;
   font-size: 1.5rem;
   color: #6427aa;
 }
@@ -333,4 +248,39 @@ h1 {
 .date_container .confirm_btn :active {
   font-size: 1.5rem;
   color: #385ab9;
+}
+.date_container .confirm_btn.active {
+  display: inline-block;
+}
+
+@media (max-height: 260px) {
+  .counter_container p {
+    font-size: 90px;
+    margin: 0 3vw;
+  }
+  .counter_container span {
+    display: none;
+  }
+  .menu_container {
+    display: none;
+  }
+  .date_number {
+    display: none;
+  }
+  h1 {
+    display: none;
+  }
+  .second-pair :nth-child(2) {
+    width: 120px;
+  }
+}
+@media (max-height: 80px) {
+  .counter_container p {
+    font-size: 70px;
+  }
+}
+@media (max-width: 550px) {
+  .menu_container {
+    display: none;
+  }
 }
