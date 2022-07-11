@@ -60,18 +60,55 @@ h1
     div
         text-align: center
 
-// .fog img
-    // position: absolute
-    // z-index: 1
-    // bottom: 0
-    // height: 80%
-    // width: 100%
-    // opacity: 0.2
-    // filter: blur(3px)
-    // animation: anim 7s linear infinite
+.fog img
+    position: absolute
+    z-index: 1
+    bottom: 0
+    left: 0
+    height: 80%
+    width: 100%
+    opacity: 0
+    filter: blur(6px)
+    transform: scale(2)
 
-// @keyframes anim
-//     .counter_container
+.fog img:nth-child(1)
+    animation: anim 20s linear infinite alternate
+.fog img:nth-child(2)
+    animation: anim-easy 30s linear infinite alternate-reverse 15s
+.fog img:nth-child(3)
+    animation: anim 20s linear infinite alternate 5s
+.fog img:nth-child(4)
+    bottom: 20vh
+    animation: anim-easy 30s linear infinite alternate-reverse 
+.fog img:nth-child(5)
+    animation: anim-easy 20s linear infinite alternate 20s
+
+@keyframes anim
+    0% 
+        opacity: 0
+        transform: translate(-30vw 0) 
+        transform: scale(2)
+    50%
+        opacity: 0.2
+        transform: scale(3)
+    100%
+        opacity: 0
+        transform: translate(30vw 0) 
+        transform: scale(4)
+
+@keyframes anim-easy
+    0% 
+        opacity: 0
+        transform: translate(-70vw 0)  
+        transform: scale(1)
+    50%
+        opacity: 0.1
+        transform: scale(2)
+    100%
+        opacity: 0
+        transform: translate(70vw 0)
+        transform: scale(3)
+
 
 
 
@@ -88,6 +125,7 @@ $right : 2.5vw
 
 .menu_container
     display: flex
+    z-index: 2
     flex-direction: column-reverse
     position: absolute
     bottom: $bottom

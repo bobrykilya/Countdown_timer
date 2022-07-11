@@ -131,6 +131,107 @@ h1 {
   text-align: center;
 }
 
+.fog img {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  height: 80%;
+  width: 100%;
+  opacity: 0;
+  filter: blur(6px);
+  transform: scale(2);
+}
+
+.fog img:nth-child(1) {
+  -webkit-animation: anim 20s linear infinite alternate;
+          animation: anim 20s linear infinite alternate;
+}
+
+.fog img:nth-child(2) {
+  animation: anim-easy 30s linear infinite alternate-reverse 15s;
+}
+
+.fog img:nth-child(3) {
+  -webkit-animation: anim 20s linear infinite alternate 5s;
+          animation: anim 20s linear infinite alternate 5s;
+}
+
+.fog img:nth-child(4) {
+  bottom: 20vh;
+  animation: anim-easy 30s linear infinite alternate-reverse;
+}
+
+.fog img:nth-child(5) {
+  -webkit-animation: anim-easy 20s linear infinite alternate 20s;
+          animation: anim-easy 20s linear infinite alternate 20s;
+}
+
+@-webkit-keyframes anim {
+  0% {
+    opacity: 0;
+    transform: translate(-30vw 0);
+    transform: scale(2);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(3);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(30vw 0);
+    transform: scale(4);
+  }
+}
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+    transform: translate(-30vw 0);
+    transform: scale(2);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(3);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(30vw 0);
+    transform: scale(4);
+  }
+}
+@-webkit-keyframes anim-easy {
+  0% {
+    opacity: 0;
+    transform: translate(-70vw 0);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(70vw 0);
+    transform: scale(3);
+  }
+}
+@keyframes anim-easy {
+  0% {
+    opacity: 0;
+    transform: translate(-70vw 0);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(70vw 0);
+    transform: scale(3);
+  }
+}
 .date_number {
   position: absolute;
   bottom: 3vmin;
@@ -140,6 +241,7 @@ h1 {
 
 .menu_container {
   display: flex;
+  z-index: 2;
   flex-direction: column-reverse;
   position: absolute;
   bottom: 4vh;
