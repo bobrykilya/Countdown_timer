@@ -75,7 +75,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 70vmin;
+  min-height: 100vh;
   overflow: hidden;
   color: white;
   font-family: "Comfortaa";
@@ -114,11 +114,14 @@ h1 {
   justify-content: center;
 }
 .counter_container p {
+  position: relative;
+  z-index: 1;
   font-family: "Dosis";
   font-size: 27vmin;
   margin: 0 8vmin;
   line-height: 1;
   text-shadow: 0.2rem 0.2rem 3rem #230674;
+  transition-duration: 0.5s;
 }
 .counter_container span {
   font-size: 1.5vmax;
@@ -128,6 +131,30 @@ h1 {
   text-align: center;
 }
 
+.fog img {
+  display: none;
+}
+
+@media (max-height: 150px) {
+  .counter_container p {
+    font-size: 70px;
+    margin: 0 2.5vw;
+  }
+  h1 {
+    display: none;
+  }
+  .date_number {
+    display: none;
+  }
+  .second-pair :nth-child(2) {
+    width: 80px;
+  }
+}
+@media (max-width: 550px) {
+  .menu_container {
+    display: none;
+  }
+}
 .date_number {
   position: absolute;
   bottom: 3vmin;
@@ -135,12 +162,17 @@ h1 {
   color: rgba(195, 198, 230, 0.3215686275);
 }
 
+.menu_container {
+  display: absolute;
+  z-index: 2;
+}
+
 .text_container {
   display: flex;
   border-radius: 2.5rem;
   position: absolute;
-  top: 2rem;
-  right: 4vh;
+  bottom: 3vh;
+  right: 2vw;
   padding: 1vh;
   background-color: #fff;
 }
@@ -209,8 +241,8 @@ h1 {
 .date_container {
   border-radius: 2.5rem;
   position: absolute;
-  top: 7rem;
-  right: 4vh;
+  bottom: 13vh;
+  right: 2vw;
   padding: 1vh;
   background-color: #fff;
 }
