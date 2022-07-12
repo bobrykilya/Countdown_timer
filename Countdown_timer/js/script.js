@@ -69,10 +69,16 @@ function htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds){
     const minutesNumber = document.querySelector('.minutes p');
     const secondsNumber = document.querySelector('.seconds p');
 
-    dayNumber.innerText = resultDays;
-    hoursNumber.innerText = resultHours;
-    minutesNumber.innerText = resultMinutes;
-    secondsNumber.innerText = resultSeconds;
+    
+    dayNumber.innerText = zeroAdding(resultDays);
+    hoursNumber.innerText = zeroAdding(resultHours);
+    minutesNumber.innerText = zeroAdding(resultMinutes);
+    secondsNumber.innerText = zeroAdding(resultSeconds);
+};
+
+function zeroAdding(number){
+    if (number < 10) number = "0" + number
+    return number
 };
 
 // Heart beats of the timer

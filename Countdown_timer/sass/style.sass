@@ -11,23 +11,14 @@
     left: 0
     height: 100%
     width: 100%
-    animation: bg-night 120s linear infinite alternate
 
-@keyframes bg-night
-    0%
-        filter: brightness(1)
-    100%
-        filter: brightness(0.6)
+.night-mode
+    filter: brightness(0.5)
 
-@keyframes body-night
-    0%
-        filter: brightness(1)
-    100%
-        filter: brightness(0.8)
-
+.night-mode-body
+    filter: brightness(0.8)
 
 body
-    // background: url('../img/bg.jpg') center center / cover no-repeat
     display: flex
     flex-direction: column
     align-items: center
@@ -37,7 +28,6 @@ body
     color: white
     font-family: 'Comfortaa'
     font-weight: 700
-    animation: body-night 120s linear infinite alternate
 
 h1
     letter-spacing: -0.7vmin
@@ -48,17 +38,22 @@ h1
     color: #ffffffd2
     text-shadow: 0.1rem 0.1rem 3rem #230674a2
 
-.first-pair, .second-pair
-    display: inline-flex
+.first-pair
+    display: flex
     margin-bottom: 5vmin
-
-.second-pair :nth-child(2)
-    width: 40vmin
+    // border: 2px solid white
+.second-pair
+    display: flex
+    margin-bottom: 5vmin
+    // border: 2px solid black
+.second-pair :nth-child(2) 
+    width: 45vmin
+    // border: 2px solid #000
 
 .counter_container
     display: flex
-    flex-direction: row
     flex-wrap: wrap
+    justify-content: space-between
     align-items: center
     justify-content: center
     p
@@ -81,23 +76,23 @@ h1
     z-index: 1
     bottom: 0
     left: 0
-    height: 80%
+    height: 60%
     width: 100%
     opacity: 0
     filter: blur(6px)
     transform: scale(2)
 
 .fog img:nth-child(1)
-    animation: anim 20s linear infinite alternate
+    animation: anim 15s linear infinite alternate
 .fog img:nth-child(2)
-    animation: anim-easy 30s linear infinite alternate-reverse 15s
+    animation: anim-easy 20s linear infinite alternate-reverse 15s
 .fog img:nth-child(3)
-    animation: anim 20s linear infinite alternate 5s
+    animation: anim 15s linear infinite alternate 5s
 .fog img:nth-child(4)
     bottom: 20vh
-    animation: anim-easy 30s linear infinite alternate-reverse 
+    animation: anim-easy 20s linear infinite alternate-reverse 
 .fog img:nth-child(5)
-    animation: anim-easy 20s linear infinite alternate 20s
+    animation: anim-easy 15s linear infinite alternate 20s
 
 @keyframes anim
     0% 
@@ -105,7 +100,7 @@ h1
         transform: translate(-30vw 0) 
         transform: scale(2)
     50%
-        opacity: 0.2
+        opacity: 0.25
         transform: scale(3)
     100%
         opacity: 0
@@ -124,8 +119,6 @@ h1
         opacity: 0
         transform: translate(70vw 0)
         transform: scale(3)
-
-
 
 
 .date_number
@@ -255,10 +248,10 @@ $right : 2.5vw
     .second-pair :nth-child(2)
         width: 120px
 
-@media (max-height: 80px) 
-    .counter_container p
-        font-size: 70px
+@media (max-width: 810px)
+    .counter_container
+        flex-direction: column
 
-@media (max-width: 550px)
+@media (max-width: 371px)
     .menu_container
         display: none
