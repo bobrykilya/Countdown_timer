@@ -77,7 +77,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   height: 100%;
   width: 100%;
-  transition: brightness 5s;
+  transition: filter 5s;
 }
 
 .night-mode {
@@ -94,6 +94,11 @@ body {
   color: white;
   font-family: "Comfortaa";
   font-weight: 700;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 h1 {
@@ -137,7 +142,6 @@ h1 {
   line-height: 1;
   text-shadow: 0.2rem 0.2rem 3rem #230674;
   transition-duration: 0.5s;
-  transition: brightness 5s;
 }
 .counter_container span {
   font-size: 1.5vmax;
@@ -155,48 +159,47 @@ h1 {
   height: 60%;
   width: 100%;
   opacity: 0;
-  filter: blur(6px);
-  transform: scale(2);
+  filter: blur(4px);
 }
 
 .fog img:nth-child(1) {
-  -webkit-animation: anim 15s linear infinite alternate;
-          animation: anim 15s linear infinite alternate;
+  -webkit-animation: anim 20s linear infinite alternate;
+          animation: anim 20s linear infinite alternate;
 }
 
 .fog img:nth-child(2) {
-  animation: anim-easy 20s linear infinite alternate-reverse 15s;
+  animation: anim-easy 30s linear infinite alternate-reverse 15s;
 }
 
 .fog img:nth-child(3) {
-  -webkit-animation: anim 15s linear infinite alternate 5s;
-          animation: anim 15s linear infinite alternate 5s;
+  -webkit-animation: anim 20s linear infinite alternate 5s;
+          animation: anim 20s linear infinite alternate 5s;
 }
 
 .fog img:nth-child(4) {
   bottom: 20vh;
-  animation: anim-easy 20s linear infinite alternate-reverse;
+  animation: anim-easy 30s linear infinite alternate-reverse;
 }
 
 .fog img:nth-child(5) {
-  -webkit-animation: anim-easy 15s linear infinite alternate 20s;
-          animation: anim-easy 15s linear infinite alternate 20s;
+  -webkit-animation: anim-easy 20s linear infinite alternate 20s;
+          animation: anim-easy 20s linear infinite alternate 20s;
 }
 
 @-webkit-keyframes anim {
   0% {
     opacity: 0;
     transform: translate(-30vw 0);
-    transform: scale(2);
+    transform: scale(1);
   }
   50% {
-    opacity: 0.25;
-    transform: scale(3);
+    opacity: 0.15;
+    transform: scale(2);
   }
   100% {
     opacity: 0;
     transform: translate(30vw 0);
-    transform: scale(4);
+    transform: scale(3);
   }
 }
 
@@ -204,16 +207,16 @@ h1 {
   0% {
     opacity: 0;
     transform: translate(-30vw 0);
-    transform: scale(2);
+    transform: scale(1);
   }
   50% {
-    opacity: 0.25;
-    transform: scale(3);
+    opacity: 0.15;
+    transform: scale(2);
   }
   100% {
     opacity: 0;
     transform: translate(30vw 0);
-    transform: scale(4);
+    transform: scale(3);
   }
 }
 @-webkit-keyframes anim-easy {
@@ -273,6 +276,10 @@ h1 {
   background-color: #fff;
   border-radius: 2.5rem;
   margin-top: 2vh;
+  transition: box-shadow 0.15s;
+}
+.cont.error {
+  box-shadow: 0 0 2rem rgba(253, 0, 0, 0.8235294118);
 }
 
 .btn {
@@ -397,21 +404,18 @@ h1 {
   position: relative;
   z-index: 2;
 }
-.reload_btn.rotation {
-  transform: rotate(360deg);
-  color: rgba(136, 39, 155, 0.9333333333);
-}
 
 .reset_text {
   position: absolute;
   top: 3.2rem;
-  color: rgba(100, 39, 170, 0.8078431373);
+  color: rgba(100, 39, 170, 0.4235294118);
   font-size: 0.2rem;
   margin: 0.5rem -1rem;
   transition-duration: 0.2s;
   transform: translateY(-2rem);
 }
 .reset_text.active {
+  cursor: auto;
   transform: translateY(0);
   font-size: 0.8rem;
 }
@@ -422,17 +426,22 @@ h1 {
   font-size: 1rem;
   line-height: 2.1rem;
   transition-duration: 0.2s;
+  cursor: auto;
 }
 .ok_btn :hover {
   font-size: 1.8rem;
 }
 .ok_btn.active {
-  height: 4.5rem;
+  height: 2.5rem;
   font-size: 2rem;
+  margin-bottom: 2rem;
 }
 .ok_btn :active {
   font-size: 1.7rem;
   color: #385ab9;
+}
+.ok_btn i {
+  cursor: pointer;
 }
 
 @media (max-height: 260px) {

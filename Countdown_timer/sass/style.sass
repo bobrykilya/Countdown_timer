@@ -11,7 +11,7 @@
     left: 0
     height: 100%
     width: 100%
-    transition: brightness 5s 
+    transition: filter 5s
 
 .night-mode
     filter: brightness(0.5)
@@ -26,6 +26,12 @@ body
     color: white
     font-family: 'Comfortaa'
     font-weight: 700
+    // Selection ban
+    -webkit-touch-callout: none // iOS Safari 
+    -webkit-user-select: none   // Chrome/Safari/Opera
+    -khtml-user-select: none    // Konqueror
+    -moz-user-select: none     // Firefox
+    -ms-user-select: none      // Internet Explorer/Edge
 
 h1
     letter-spacing: -0.7vmin
@@ -65,7 +71,6 @@ h1
         line-height: 1
         text-shadow: 0.2rem 0.2rem 3rem #230674
         transition-duration: 0.5s
-        transition: brightness 5s
     span
         font-size: 1.5vmax
         color: #c3c6e6ab
@@ -80,33 +85,32 @@ h1
     height: 60%
     width: 100%
     opacity: 0
-    filter: blur(6px)
-    transform: scale(2)
+    filter: blur(4px)
 
 .fog img:nth-child(1)
-    animation: anim 15s linear infinite alternate
+    animation: anim 20s linear infinite alternate
 .fog img:nth-child(2)
-    animation: anim-easy 20s linear infinite alternate-reverse 15s
+    animation: anim-easy 30s linear infinite alternate-reverse 15s
 .fog img:nth-child(3)
-    animation: anim 15s linear infinite alternate 5s
+    animation: anim 20s linear infinite alternate 5s
 .fog img:nth-child(4)
     bottom: 20vh
-    animation: anim-easy 20s linear infinite alternate-reverse 
+    animation: anim-easy 30s linear infinite alternate-reverse 
 .fog img:nth-child(5)
-    animation: anim-easy 15s linear infinite alternate 20s
+    animation: anim-easy 20s linear infinite alternate 20s
 
 @keyframes anim
     0% 
         opacity: 0
         transform: translate(-30vw 0) 
-        transform: scale(2)
+        transform: scale(1)
     50%
-        opacity: 0.25
-        transform: scale(3)
+        opacity: 0.15
+        transform: scale(2)
     100%
         opacity: 0
         transform: translate(30vw 0) 
-        transform: scale(4)
+        transform: scale(3)
 
 @keyframes anim-easy
     0% 
@@ -152,6 +156,9 @@ $right : 2.5vw
     background-color: #fff
     border-radius: $size
     margin-top: 2vh
+    transition: box-shadow 0.15s
+    &.error
+        box-shadow: 0 0 2rem #fd0000d2
     // border: 2px solid orange
 .btn
     position: relative
@@ -257,20 +264,18 @@ $right : 2.5vw
 .reload_btn
     position: relative
     z-index: 2
-    &.rotation
-        transform: rotate(360deg)
-        color: #88279bee
 
 .reset_text
     position: absolute
     top: 3.2rem
-    color: #6427aace
+    color: #6427aa6c
     font-size: 0.2rem
     margin: 0.5rem -1rem
     transition-duration: 0.2s
     // border: 2px solid brown
     transform: translateY(-2rem)
     &.active
+        cursor: auto
         transform: translateY(0)
         font-size: 0.8rem
 
@@ -283,11 +288,15 @@ $right : 2.5vw
     :hover 
         font-size: 1.8rem
     &.active
-        height: $size + 2rem
+        height: $size
         font-size: 2rem
+        margin-bottom: 2rem
     :active
         font-size: 1.7rem
         color: #385ab9
+    cursor: auto
+    i
+        cursor: pointer
     // border: 2px solid brown
 
 @media (max-height: 260px) 

@@ -22,8 +22,8 @@ const date_confirm_button = document.querySelector('.date-confirm');
 const date_number = document.querySelector('.date_number');
 
 const bg_image = document.querySelector('.bg-image');
-
 const ok_reset = document.querySelector('.ok_btn');
+const ok_reset_i = document.querySelector('.ok_btn_i');
 const reload_btn = document.querySelector('.reload_btn');
 const reset_text = document.querySelector('.reset_text');
 const reload_cont = document.querySelector('.reload_container');
@@ -35,10 +35,11 @@ const currentDate = new Date();
 function currentDateShort(){
     year = currentDate.getFullYear();
     month = currentDate.getMonth() + 1;
-    day = currentDate.getDate();
+    day = currentDate.getDate() + 1;
     if (month < 10) month = '0' + month;
     if (day < 10) day = '0' + day;
-    return [`${year}-${month}-${day}`, `${year + 200}-${month}-${day}`];
+    // console.log(day);
+    return [`${year}-${month}-${day}`, `${year + 27}-${month}-${day}`];
 };
 
 
@@ -91,8 +92,8 @@ function htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds){
 };
 
 function zeroAdding(number){
-    if (number < 10) number = "0" + number
-    return number
+    if (number < 10) number = "0" + number;
+    return number;
 };
 
 // Heart beats of the timer
@@ -100,9 +101,9 @@ setInterval(countdown, 1000);
 
 //Dive into the night
 function nightMode(){
-    currentHour = currentDate.getHours();
+    const currentHour = String(new Date()).slice(15,18);
     // console.log(currentHour);
-    if (currentHour > 20 || currentHour < 7) 
+    if (currentHour > 20 || currentHour < 7)
     bg_image.classList.add('night-mode');
     else bg_image.classList.remove('night-mode');
 };
@@ -144,6 +145,23 @@ function reset_toggleOfBtn(){
 };
 
 
+// Resetting data on the doc
+function reset_doc(){
+    myCelebration = newYear;
+    date_number.innerText = 'bobrikilya';
+    input_area.value = "";
+    input_area.blur();
+    date_inputCleaning();
+    celebName.innerText = 'Until the new year';
+};
+
+function highlithError(class_name){
+    class_name.classList.add('error')
+    setTimeout(() => {
+        class_name.classList.remove('error');
+        },500);
+};
+
 // Clicking on the button 
 button.addEventListener('click', toggleOfBtn);
 clr_button.addEventListener('click', inputCleaning);
@@ -151,7 +169,7 @@ text_confirm_button.addEventListener('click', () => {
     if (input_area.value != "") {
         celebName.innerText = input_area.value;
         toggleOfBtn();
-    };
+    } else highlithError(input_cont);
 });
 
 
@@ -161,25 +179,24 @@ date_clr_button.addEventListener('click', () => {
     recordCurrDate();
 });
 date_confirm_button.addEventListener('click', () => {
-    if (date_input_area.value == currentDateShort()[0]) return
-
+    if (date_input_area.value > currentDateShort()[1] || 
+    date_input_area.value < currentDateShort()[0]) {
+        highlithError(date_input_cont);
+        return
+    };
+    console.log(date_input_area.value);
     if (date_input_area.value != "") {
         myCelebration = date_input_area.value;
         date_toggleOfBtn();
         recordCurrDate();
-    };
+    } else highlithError(date_input_cont);
 });
 
 
 reload_btn.addEventListener('click', reset_toggleOfBtn);
-ok_reset.addEventListener('click', () =>{
+ok_reset_i.addEventListener('click', () =>{
     reset_toggleOfBtn();
-    myCelebration = newYear;
-    date_number.innerText = 'bobrikilya';
-    input_area.blur();
-    input_area.value = "";
-    date_inputCleaning();
-    celebName.innerText = 'Until the new year';
+    reset_doc();
 });
 
 // Date signature calculation
@@ -199,7 +216,9 @@ document.addEventListener('keyup', (event) => {
     input_area.classList.contains('active')) {
         celebName.innerText = input_area.value;
         toggleOfBtn();
-    };
+    }else if ((event.code === 'Enter' || event.code === 'NumpadEnter') & 
+    input_area.value == "" & 
+    input_area.classList.contains('active')) highlithError(input_cont);
 });
 
 
@@ -252,8 +271,9 @@ document.addEventListener('click', (event) => {
 function finishFun(){
     const celebName = document.querySelector('h1');
     if (!alert(`Bro, your timer \"${celebName.innerText}\" has been finished. Good luck!!!`)) {
+        inputCleaning();
+        date_inputCleaning();
+        reset_doc();
         window.location.reload();
-        // inputCleaning();
-        // date_inputCleaning();
     };
 };
