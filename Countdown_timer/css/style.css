@@ -77,14 +77,11 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   height: 100%;
   width: 100%;
+  transition: brightness 5s;
 }
 
 .night-mode {
   filter: brightness(0.5);
-}
-
-.night-mode-body {
-  filter: brightness(0.8);
 }
 
 body {
@@ -117,6 +114,7 @@ h1 {
 .second-pair {
   display: flex;
   margin-bottom: 5vmin;
+  justify-content: space-between;
 }
 
 .second-pair :nth-child(2) {
@@ -134,11 +132,12 @@ h1 {
   position: relative;
   z-index: 1;
   font-family: "Dosis";
-  font-size: 27vmin;
+  font-size: 24vmin;
   margin: 0 8vmin;
   line-height: 1;
   text-shadow: 0.2rem 0.2rem 3rem #230674;
   transition-duration: 0.5s;
+  transition: brightness 5s;
 }
 .counter_container span {
   font-size: 1.5vmax;
@@ -264,17 +263,21 @@ h1 {
   bottom: 4vh;
   right: 2.5vw;
   align-items: flex-end;
+  flex: 0 1 33.3333%;
 }
 
 .cont {
   display: flex;
   border-radius: size;
-  padding: 1.2vh;
+  padding: 0.5rem;
   background-color: #fff;
   border-radius: 2.5rem;
+  margin-top: 2vh;
 }
 
 .btn {
+  position: relative;
+  z-index: 2;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
@@ -312,12 +315,12 @@ h1 {
   font-size: 1.2rem;
   width: 1rem;
   height: 1rem;
-  rotate: 7deg;
+  transform: rotate(7deg);
   color: #6427aa;
 }
 .clear :hover {
   font-size: 1.3rem;
-  rotate: 15deg;
+  transform: rotate(15deg);
 }
 .clear :active {
   font-size: 1.2rem;
@@ -327,10 +330,8 @@ h1 {
   display: inline-block;
 }
 
-.text_container {
-  margin-top: 3vh;
-}
 .text_container .input_area {
+  color: #585858;
   max-width: 0;
 }
 .text_container .input_area.active {
@@ -339,6 +340,13 @@ h1 {
   padding-left: 1rem;
 }
 
+.date_container {
+  position: relative;
+  z-index: 1;
+}
+.date_container .date_input_area {
+  color: #585858;
+}
 .date_container .date_input_area :-webkit-inner-spin-button {
   -webkit-appearance: none;
   display: none;
@@ -350,26 +358,81 @@ h1 {
 .date_container .date_input_area.active {
   width: 10rem;
   padding-left: 2vh;
+  margin-right: 3.5rem;
 }
-.date_container .confirm_btn {
-  display: none;
-  margin: 0.5rem 0.8rem 0 0.6rem;
+
+.confirm_btn {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  transform: translateX(0.5rem);
+  margin: 0.5rem 1.5rem 0 0;
   width: 1rem;
   height: 1rem;
   transition-duration: 0.2s;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #6427aa;
 }
-.date_container .confirm_btn :hover {
+.confirm_btn :hover {
   font-size: 1.6rem;
   text-shadow: 1px 1px 5px rgba(205, 181, 233, 0.5019607843);
 }
-.date_container .confirm_btn :active {
+.confirm_btn :active {
   font-size: 1.5rem;
   color: #385ab9;
 }
-.date_container .confirm_btn.active {
-  display: inline-block;
+.confirm_btn.active {
+  transform: translateX(-3rem);
+  font-size: 1.5rem;
+}
+
+.reload_container {
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.reload_btn {
+  position: relative;
+  z-index: 2;
+}
+.reload_btn.rotation {
+  transform: rotate(360deg);
+  color: rgba(136, 39, 155, 0.9333333333);
+}
+
+.reset_text {
+  position: absolute;
+  top: 3.2rem;
+  color: rgba(100, 39, 170, 0.8078431373);
+  font-size: 0.2rem;
+  margin: 0.5rem -1rem;
+  transition-duration: 0.2s;
+  transform: translateY(-2rem);
+}
+.reset_text.active {
+  transform: translateY(0);
+  font-size: 0.8rem;
+}
+
+.ok_btn {
+  z-index: 0;
+  height: 0;
+  font-size: 1rem;
+  line-height: 2.1rem;
+  transition-duration: 0.2s;
+}
+.ok_btn :hover {
+  font-size: 1.8rem;
+}
+.ok_btn.active {
+  height: 4.5rem;
+  font-size: 2rem;
+}
+.ok_btn :active {
+  font-size: 1.7rem;
+  color: #385ab9;
 }
 
 @media (max-height: 260px) {
@@ -393,12 +456,12 @@ h1 {
     width: 120px;
   }
 }
-@media (max-width: 810px) {
+@media (max-width: 809px) {
   .counter_container {
     flex-direction: column;
   }
 }
-@media (max-width: 371px) {
+@media (max-width: 374px) {
   .menu_container {
     display: none;
   }

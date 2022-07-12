@@ -11,12 +11,10 @@
     left: 0
     height: 100%
     width: 100%
+    transition: brightness 5s 
 
 .night-mode
     filter: brightness(0.5)
-
-.night-mode-body
-    filter: brightness(0.8)
 
 body
     display: flex
@@ -41,10 +39,12 @@ h1
 .first-pair
     display: flex
     margin-bottom: 5vmin
+    // justify-content: space-between
     // border: 2px solid white
 .second-pair
     display: flex
     margin-bottom: 5vmin
+    justify-content: space-between
     // border: 2px solid black
 .second-pair :nth-child(2) 
     width: 45vmin
@@ -60,11 +60,12 @@ h1
         position: relative
         z-index: 1
         font-family: 'Dosis'
-        font-size: 27vmin
+        font-size: 24vmin
         margin: 0 8vmin
         line-height: 1
         text-shadow: 0.2rem 0.2rem 3rem #230674
         transition-duration: 0.5s
+        transition: brightness 5s
     span
         font-size: 1.5vmax
         color: #c3c6e6ab
@@ -140,16 +141,21 @@ $right : 2.5vw
     bottom: $bottom
     right: $right
     align-items: flex-end
+    // border: 2px solid green
+    flex: 0 1 33.3333%
 
 .cont
     display: flex
     border-radius: size
-    padding: 1.2vh 
+    padding: 0.5rem 
+    // padding: 1.2vh 
     background-color: #fff
     border-radius: $size
-    // border: 2px solid #000
-
+    margin-top: 2vh
+    // border: 2px solid orange
 .btn
+    position: relative
+    z-index: 2
     width: $size
     height: $size
     border-radius: 50%
@@ -164,6 +170,7 @@ $right : 2.5vw
         color: #88279bee
     text-align: center
     line-height: $size + 0.2rem
+    // border: 2px solid red
     
 .input_cl
     border: none
@@ -183,11 +190,11 @@ $right : 2.5vw
     font-size: 1.2rem
     width: 1rem
     height: 1rem
-    rotate: 7deg
+    transform: rotate(7deg)
     color: #6427aa
     :hover 
         font-size: 1.3rem
-        rotate: 15deg
+        transform: rotate(15deg)
     :active
         font-size: 1.2rem
         color: #385ab9
@@ -196,8 +203,8 @@ $right : 2.5vw
         display: inline-block
 
 .text_container
-    margin-top: 3vh
     .input_area
+        color: #585858
         max-width: 0
         &.active
             width: 28vw
@@ -205,7 +212,10 @@ $right : 2.5vw
             padding-left: 1rem
     
 .date_container
+    position: relative
+    z-index: 1
     .date_input_area
+        color: #585858
         :-webkit-inner-spin-button
             -webkit-appearance: none
             display: none
@@ -215,23 +225,70 @@ $right : 2.5vw
         &.active
             width: 10rem
             padding-left: 2vh
-    .confirm_btn
-        display: none
-        margin: 0.5rem 0.8rem 0 0.6rem
-        width: 1rem
-        height: 1rem
-        transition-duration: 0.2s
+            margin-right: 3.5rem
+            
+.confirm_btn
+    position: absolute
+    z-index: 0
+    right: 0
+    transform: translateX(0.5rem)
+    margin: 0.5rem 1.5rem 0 0
+    width: 1rem
+    height: 1rem
+    transition-duration: 0.2s
+    font-size: 1rem
+    color: #6427aa
+    :hover 
+        font-size: 1.6rem
+        text-shadow: 1px 1px 5px #cdb5e980
+    :active
         font-size: 1.5rem
-        color: #6427aa
-        :hover 
-            font-size: 1.6rem
-            text-shadow: 1px 1px 5px #cdb5e980
-        :active
-            font-size: 1.5rem
-            color: #385ab9
-        &.active
-            display: inline-block
+        color: #385ab9
+    &.active
+        transform: translateX(-3rem)
+        font-size: 1.5rem
 
+.reload_container
+    flex-direction: column
+    align-items: center
+    position: relative
+    z-index: 1
+
+.reload_btn
+    position: relative
+    z-index: 2
+    &.rotation
+        transform: rotate(360deg)
+        color: #88279bee
+
+.reset_text
+    position: absolute
+    top: 3.2rem
+    color: #6427aace
+    font-size: 0.2rem
+    margin: 0.5rem -1rem
+    transition-duration: 0.2s
+    // border: 2px solid brown
+    transform: translateY(-2rem)
+    &.active
+        transform: translateY(0)
+        font-size: 0.8rem
+
+.ok_btn
+    z-index: 0
+    height: 0
+    font-size: 1rem
+    line-height: 2.1rem
+    transition-duration: 0.2s
+    :hover 
+        font-size: 1.8rem
+    &.active
+        height: $size + 2rem
+        font-size: 2rem
+    :active
+        font-size: 1.7rem
+        color: #385ab9
+    // border: 2px solid brown
 
 @media (max-height: 260px) 
     .counter_container p
@@ -248,10 +305,10 @@ $right : 2.5vw
     .second-pair :nth-child(2)
         width: 120px
 
-@media (max-width: 810px)
+@media (max-width: 809px)
     .counter_container
         flex-direction: column
 
-@media (max-width: 371px)
+@media (max-width: 374px)
     .menu_container
         display: none
