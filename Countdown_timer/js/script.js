@@ -222,12 +222,12 @@ date_clr_button.addEventListener('click', () => {
     // recordCurrDate();
 });
 date_confirm_button.addEventListener('click', () => {
-    // if (date_input_area.value > currentDateShort()[1] || 
-    // date_input_area.value < currentDateShort()[0]) {
-    //     highlithError(date_input_cont);
-    //     highlithError(date_button);
-    //     return;
-    // };
+    if (date_input_area.value > currentDateShort()[1] || 
+    date_input_area.value < currentDateShort()[0]) {
+        highlithError(date_input_cont);
+        highlithError(date_button);
+        return;
+    };
     // console.log(date_input_area.value);
     if (date_input_area.value != "") {
         myCelebration = date_input_area.value;
