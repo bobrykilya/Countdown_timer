@@ -1,6 +1,6 @@
 // Default date (12.00) 
 const nextYear = new Date().getFullYear() + 1;
-const newYear = `1 Jan ${nextYear}`;
+const newYear = `${nextYear}-01-1`;
 let myCelebration = newYear;
 
 // Document elems
@@ -30,14 +30,35 @@ const reload_cont = document.querySelector('.reload_container');
 
 const confetti_cont = document.querySelector('.confetti_container');
 
+// date_input_area.value = newYear;
 
+// Local storage handling
+// let celeb_title
+// let celeb_date
+
+// localStorage.clear();
+
+chekingData();
+function chekingData(){
+    if (localStorage.getItem('celeb_title')){
+        celebName.innerText = localStorage.getItem('celeb_title');
+        input_area.value = localStorage.getItem('celeb_title');
+    };
+    if (localStorage.getItem('celeb_date')){
+        myCelebration = localStorage.getItem('celeb_date');
+        recordCurrDate();
+        date_input_area.value = localStorage.getItem('celeb_date');
+    };
+};
 
 const currentDate = new Date();
 
 pastDateCancel();
 
 // Heart beats of the timer
+countdown();
 let secondInterval = setInterval(countdown, 1000);
+
 
 // Countdown timer algorithm
 function countdown(){
@@ -122,6 +143,7 @@ function nightMode(){
 function inputCleaning(){
     input_area.value = "";
     input_area.focus();
+    celebName.innerText = 'Until the new year';
 };
 
 function date_inputCleaning(){
@@ -146,6 +168,10 @@ function date_toggleOfBtn(){
     date_button.classList.toggle('rotation');
     date_clr_button.classList.toggle('active');
     date_confirm_button.classList.toggle('active');
+    // console.log(date_input_area.value);
+    // console.log(myCelebration);
+    if (date_input_area.value != myCelebration) 
+    setTimeout(() => {date_input_area.value = myCelebration}, 200);
 };
 
 function reset_toggleOfBtn(){
@@ -157,6 +183,7 @@ function reset_toggleOfBtn(){
 
 // Resetting data on the doc
 function reset_doc(){
+    localStorage.clear();
     myCelebration = newYear;
     date_number.innerText = 'bobrikilya';
     input_area.value = "";
@@ -178,6 +205,7 @@ clr_button.addEventListener('click', inputCleaning);
 text_confirm_button.addEventListener('click', () => {
     if (input_area.value != "") {
         celebName.innerText = input_area.value;
+        localStorage.setItem('celeb_title', input_area.value);
         toggleOfBtn();
     } else {
     highlithError(input_cont);
@@ -198,9 +226,10 @@ date_confirm_button.addEventListener('click', () => {
         highlithError(date_button);
         return;
     };
-    console.log(date_input_area.value);
+    // console.log(date_input_area.value);
     if (date_input_area.value != "") {
         myCelebration = date_input_area.value;
+        localStorage.setItem('celeb_date', myCelebration);
         date_toggleOfBtn();
         recordCurrDate();
     } else highlithError(date_input_cont);
@@ -229,6 +258,7 @@ document.addEventListener('keyup', (event) => {
     input_area.value != "" & 
     input_area.classList.contains('active')) {
         celebName.innerText = input_area.value;
+        localStorage.setItem('celeb_title', input_area.value);
         toggleOfBtn();
     }else if ((event.code === 'Enter' || event.code === 'NumpadEnter') & 
     input_area.value == "" & 

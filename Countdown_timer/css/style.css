@@ -102,6 +102,7 @@ body {
 }
 
 h1 {
+  transition-duration: font-size 0.2s;
   letter-spacing: -0.7vmin;
   text-align: center;
   text-transform: capitalize;
