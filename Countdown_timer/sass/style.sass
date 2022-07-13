@@ -55,7 +55,7 @@ h1
     justify-content: space-between
     // border: 2px solid black
 .second-pair :nth-child(2) 
-    width: 40vmin
+    width: 42vmin
     // border: 2px solid #000
 
 .counter_container
@@ -84,7 +84,7 @@ h1
     z-index: 1
     bottom: 0
     left: 0
-    height: 60%
+    height: 40%
     width: 100%
     opacity: 0
     -webkit-filter: blur(4px)
@@ -202,16 +202,15 @@ $right : 2.5vw
 .text_container
     .input_area
         color: #585858
-        max-width: 0
         &.active
-            width: 28vw
-            max-width: 20rem
+            width: 20rem
             padding-left: 1rem
     
 .date_container
     position: relative
     z-index: 1
     .date_input_area
+        cursor: pointer
         color: #585858
         :-webkit-inner-spin-button
             -webkit-appearance: none
@@ -220,7 +219,7 @@ $right : 2.5vw
             -webkit-appearance: none
             display: none
         &.active
-            width: 10rem
+            width: 12rem
             padding-left: 2vh
             margin-right: 3.5rem
             
@@ -330,15 +329,15 @@ $right : 2.5vw
     // Party flags 
 .confetti_container img:nth-child(6)
     opacity: 1
-    left: -25%
-    top: -50%
-    animation: flag_4 0.6s forwards
+    left: -50vh
+    top: -25vh
+    animation: flag_1 0.6s forwards
 .confetti_container img:nth-child(7)
     z-index: -1
     opacity: 1
-    left: 15%
-    top: -50%
-    animation: flag_5 1s forwards
+    left: 15vh
+    top: -50vh
+    animation: flag_2 1s forwards
 
 
 @keyframes confetti_1
@@ -377,17 +376,17 @@ $right : 2.5vw
         opacity: 0
         transform: scale(1.4) translateX(-25%) translateY(30%) rotate(-20deg)
 
-@keyframes flag_4
+@keyframes flag_1
     0%
         transform: scale(0.3)
     100%
-        transform: translateY(65%) translateX(5%) rotate(-10deg) scale(0.7)
+        transform: translateY(10vh) translateX(10vh) rotate(-10deg) scale(0.7) 
 
-@keyframes flag_5
+@keyframes flag_2
     0%
         transform: scale(0.3)
     100%
-        transform: translateY(30%) translateX(15%) rotate(25deg) scale(0.6) 
+        transform: translateY(25vh) translateX(45vh) rotate(25deg) scale(0.6) 
 
 
 
@@ -406,9 +405,32 @@ $right : 2.5vw
     .second-pair :nth-child(2)
         width: 120px
 
+
+@media (max-width: 1200px)
+    .confetti_container img:nth-child(6)
+        left: -35vh
+        top: -16vh
+    .confetti_container img:nth-child(7)
+        left: 10vh
+        top: -25vh
+
 @media (max-width: 809px)
     .counter_container
         flex-direction: column
+    .confetti_container img:nth-child(6)
+        left: -27vh
+        top: -12vh
+    .confetti_container img:nth-child(7)
+        left: -10vh
+        top: -27vh
+
+@media (max-width: 425px)
+    .confetti_container img:nth-child(6)
+        left: -20vh
+        top: -11vh
+    .confetti_container img:nth-child(7)
+        left: -30vh
+        top: -25vh
 
 @media (max-width: 374px)
     .menu_container
