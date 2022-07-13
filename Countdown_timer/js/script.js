@@ -144,7 +144,7 @@ function inputCleaning(){
     input_area.value = "";
     input_area.focus();
     celebName.innerText = 'Until the new year';
-    if (localStorage.getItem('celeb_date')) 
+    if (localStorage.getItem('celeb_title')) 
         localStorage.removeItem('celeb_title');
 };
 
@@ -234,7 +234,7 @@ date_confirm_button.addEventListener('click', () => {
         localStorage.setItem('celeb_date', myCelebration);
         date_toggleOfBtn();
         recordCurrDate();
-    } else highlithError(date_input_cont);
+    };
 });
 
 
@@ -257,27 +257,42 @@ function recordCurrDate(){
 // Writer of celebration name from text area and cleaning of area
 document.addEventListener('keyup', (event) => {
     if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
-    input_area.value != "" & 
-    input_area.classList.contains('active')) {
+        input_area.classList.contains('active')) {
+        if (input_area.value == ""){
+            highlithError(input_cont);
+            return;
+        };
         celebName.innerText = input_area.value;
         localStorage.setItem('celeb_title', input_area.value);
         toggleOfBtn();
-    }else if ((event.code === 'Enter' || event.code === 'NumpadEnter') & 
-    input_area.value == "" & 
-    input_area.classList.contains('active')) highlithError(input_cont);
+    };
 });
 
 
-// 'Enter' confirmation of date 
-// document.addEventListener('keyup', (event) => {
-//     if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
-//     date_input_area.value != "" & 
-//     date_input_area.classList.contains('active')) {
-//         myCelebration = date_input_area.value;
-//         date_toggleOfBtn();
-//         recordCurrDate();
-//     };
-// });
+// Date'Enter' confirmation of  
+document.addEventListener('keyup', (event) => {
+    if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
+        date_input_area.classList.contains('active')) {
+        date_input_area.blur();
+        date_confirm_button.focus();
+        if (date_input_area.value > currentDateShort()[1] || 
+            date_input_area.value < currentDateShort()[0]) {
+            highlithError(date_input_cont);
+            highlithError(date_button);
+            return;
+        };
+        if (date_input_area.value != ""){
+            myCelebration = date_input_area.value;
+            localStorage.setItem('celeb_date', myCelebration);
+            date_toggleOfBtn();
+            recordCurrDate();
+            date_confirm_button.blur();
+        }else {
+            highlithError(date_input_cont);
+            highlithError(date_button);
+        };
+    };
+});
 
 
 //Escape tap handling
