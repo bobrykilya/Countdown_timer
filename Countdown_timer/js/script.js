@@ -144,6 +144,8 @@ function inputCleaning(){
     input_area.value = "";
     input_area.focus();
     celebName.innerText = 'Until the new year';
+    if (localStorage.getItem('celeb_date')) 
+        localStorage.removeItem('celeb_title');
 };
 
 function date_inputCleaning(){
@@ -159,8 +161,8 @@ function toggleOfBtn(){
     clr_button.classList.toggle('active');
     text_confirm_button.classList.toggle('active');
     if (input_area.classList.contains('active')) 
-    input_area.focus() // focus deleting from input
-    else input_area.blur(); // focus on input
+    input_area.focus() // focus on input
+    else input_area.blur(); // focus deleting from input
 };
 
 function date_toggleOfBtn(){
