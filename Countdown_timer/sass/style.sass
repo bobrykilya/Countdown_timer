@@ -14,7 +14,8 @@
     transition: filter 5s
 
 .night-mode
-    filter: brightness(0.5)
+    -webkit-filter: brightness(0.5) sepia(0.3)
+    filter: brightness(0.5) sepia(0.3)
 
 body
     display: flex
@@ -85,45 +86,28 @@ h1
     height: 60%
     width: 100%
     opacity: 0
+    -webkit-filter: blur(4px)
     filter: blur(4px)
 
 .fog img:nth-child(1)
-    animation: anim 20s linear infinite alternate
+    animation: anim 25s linear infinite alternate
 .fog img:nth-child(2)
-    animation: anim-easy 30s linear infinite alternate-reverse 15s
+    -webkit-filter: blur(6px)
+    filter: blur(6px)
+    animation: anim 35s linear infinite alternate-reverse 15s
 .fog img:nth-child(3)
-    animation: anim 20s linear infinite alternate 5s
-.fog img:nth-child(4)
-    bottom: 20vh
-    animation: anim-easy 30s linear infinite alternate-reverse 
-.fog img:nth-child(5)
-    animation: anim-easy 20s linear infinite alternate 20s
+    animation: anim 25s linear infinite alternate 5s
 
 @keyframes anim
     0% 
         opacity: 0
-        transform: translate(-30vw 0) 
-        transform: scale(1)
+        transform: translateX(-20%) scale(0.5)
     50%
         opacity: 0.15
         transform: scale(2)
     100%
         opacity: 0
-        transform: translate(30vw 0) 
-        transform: scale(3)
-
-@keyframes anim-easy
-    0% 
-        opacity: 0
-        transform: translate(-70vw 0)  
-        transform: scale(1)
-    50%
-        opacity: 0.1
-        transform: scale(2)
-    100%
-        opacity: 0
-        transform: translate(70vw 0)
-        transform: scale(3)
+        transform: translateX(20%) scale(3.5)
 
 
 .date_number
@@ -157,7 +141,9 @@ $right : 2.5vw
     border-radius: $size
     margin-top: 2vh
     transition: box-shadow 0.15s
+    box-shadow: 0.2 0.2 1rem #8f8b8b71
     &.error
+        // background-color: #fce5e5
         box-shadow: 0 0 2rem #fd0000d2
     // border: 2px solid orange
 .btn
@@ -177,7 +163,10 @@ $right : 2.5vw
         color: #88279bee
     text-align: center
     line-height: $size + 0.2rem
-    // border: 2px solid red
+    &.error
+        background-color: #ffbdbd
+        // text-shadow: 0rem -0.05rem 0rem #af0f0fd2
+    // border: 1px solid red
     
 .input_cl
     border: none
@@ -242,7 +231,7 @@ $right : 2.5vw
     margin: 0.5rem 1.5rem 0 0
     width: 1rem
     height: 1rem
-    transition-duration: 0.2s
+    transition: transform 0.2s
     font-size: 1rem
     color: #6427aa
     :hover 
@@ -277,7 +266,7 @@ $right : 2.5vw
     &.active
         cursor: auto
         transform: translateY(0)
-        font-size: 0.8rem
+        font-size: 0.7rem
 
 .ok_btn
     z-index: 0
@@ -298,6 +287,108 @@ $right : 2.5vw
     i
         cursor: pointer
     // border: 2px solid brown
+
+
+.confetti_container
+    display: none
+    &.active
+        display: block
+
+.confetti_container img
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    opacity: 0
+    text-shadow: 0 0 2rem #fd0000d2
+    -webkit-filter: drop-shadow(0.5px 0.5px 3px #5f5f5f5d)
+    filter: drop-shadow(0.5px 0.5px 3px #5f5f5f5d)
+    
+    // Huge top confetti
+.confetti_container img:nth-child(1)
+    animation: confetti_1 5s linear infinite 0.2s
+.confetti_container img:nth-child(2)
+    left: -40vw
+    animation: confetti_1 6s linear infinite 1.2s
+.confetti_container img:nth-child(3)
+    left: 40vw
+    animation: confetti_1 5s linear infinite 3.2s
+
+    // Little lateral confetti
+.confetti_container img:nth-child(4)
+    left: -50%
+    top: -20%
+    -webkit-filter: drop-shadow(3px 2px 2px #5f5f5f5d)
+    filter: drop-shadow(3px 2px 2px #5f5f5f5d)
+    animation: confetti_2 0.8s linear
+.confetti_container img:nth-child(5)
+    left: 50%
+    top: -20%
+    animation: confetti_3 0.7s linear 0.3s
+
+    // Party flags 
+.confetti_container img:nth-child(6)
+    opacity: 1
+    left: -25%
+    top: -50%
+    animation: flag_4 0.6s forwards
+.confetti_container img:nth-child(7)
+    z-index: -1
+    opacity: 1
+    left: 15%
+    top: -50%
+    animation: flag_5 1s forwards
+
+
+@keyframes confetti_1
+    0%
+        transform: scale(0.7) translateY(-100%)
+        opacity: 0
+    10%
+        opacity: 1
+    90%
+        opacity: 1
+    100%
+        opacity: 0
+        transform: scale(1.4) translateY(70%)
+
+@keyframes confetti_2
+    0%
+        transform: scale(0.4)
+        opacity: 0
+    5%
+        opacity: 1
+    80%
+        opacity: 1
+    100%
+        opacity: 0
+        transform: scale(1.4) translateX(20%) translateY(25%) rotate(30deg) 
+
+@keyframes confetti_3
+    0%
+        transform: scale(0.2)
+        opacity: 0
+    5%
+        opacity: 1
+    80%
+        opacity: 1
+    100%
+        opacity: 0
+        transform: scale(1.4) translateX(-25%) translateY(30%) rotate(-20deg)
+
+@keyframes flag_4
+    0%
+        transform: scale(0.3)
+    100%
+        transform: translateY(65%) translateX(5%) rotate(-10deg) scale(0.7)
+
+@keyframes flag_5
+    0%
+        transform: scale(0.3)
+    100%
+        transform: translateY(30%) translateX(15%) rotate(25deg) scale(0.6) 
+
+
 
 @media (max-height: 260px) 
     .counter_container p

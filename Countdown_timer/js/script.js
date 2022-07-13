@@ -28,8 +28,65 @@ const reload_btn = document.querySelector('.reload_btn');
 const reset_text = document.querySelector('.reset_text');
 const reload_cont = document.querySelector('.reload_container');
 
+const confetti_cont = document.querySelector('.confetti_container');
+
+
 
 const currentDate = new Date();
+
+pastDateCancel();
+
+// Heart beats of the timer
+let secondInterval = setInterval(countdown, 1000);
+
+// Countdown timer algorithm
+function countdown(){
+    const currentDate = new Date();
+    const myCelebrationDate = new Date(myCelebration);
+    let resultDate = myCelebrationDate - currentDate;
+    if (resultDate < 0) resultDate = 0;
+    
+
+    //Hour cheking for night mode
+    nightMode();
+    
+    // Timing calculation
+    const totalSeconds = Math.floor(resultDate / 1000);
+    
+    const resultDays = Math.floor(totalSeconds / 60 / 60 / 24);
+    let resultHours = Math.floor(totalSeconds / 60 / 60) % 24 - 3;
+    if (resultHours < 0) resultHours = 0;
+    const resultMinutes = Math.floor(totalSeconds / 60) % 60;
+    const resultSeconds = Math.floor(totalSeconds) % 60;
+    
+    htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds);
+    if (resultDays + resultHours + resultMinutes + resultSeconds === 0){ 
+        clearInterval(secondInterval);
+        setTimeout(finishFun, 500);
+    }
+    // setTimeout(finishFun, 5000);
+}; 
+
+
+// Writer of numbers in HTML from timer
+function htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds){
+    const dayNumber = document.querySelector('.days p');
+    const hoursNumber = document.querySelector('.hours p');
+    const minutesNumber = document.querySelector('.minutes p');
+    const secondsNumber = document.querySelector('.seconds p');
+    
+    
+    dayNumber.innerText = zeroAdding(resultDays);
+    hoursNumber.innerText = zeroAdding(resultHours);
+    minutesNumber.innerText = zeroAdding(resultMinutes);
+    secondsNumber.innerText = zeroAdding(resultSeconds);
+};
+
+function zeroAdding(number){
+    if (number < 10) number = "0" + number;
+    return number;
+};
+
 
 //Calculation short form of current date
 function currentDateShort(){
@@ -50,54 +107,7 @@ function pastDateCancel(){
     document.querySelector('.date_input_area').setAttribute('min', minDate);
     document.querySelector('.date_input_area').setAttribute('max', maxDate);
 };
-pastDateCancel();
 
-
-// Countdown timer algorithm
-function countdown(){
-    const currentDate = new Date();
-    const myCelebrationDate = new Date(myCelebration);
-    let resultDate = myCelebrationDate - currentDate;
-    if (resultDate < 0) resultDate = 0;
-    
-    //Hour cheking for night mode
-    nightMode();
-    
-    // Timing calculation
-    const totalSeconds = Math.floor(resultDate / 1000);
-    
-    const resultDays = Math.floor(totalSeconds / 60 / 60 / 24);
-    let resultHours = Math.floor(totalSeconds / 60 / 60) % 24 - 3;
-    if (resultHours < 0) resultHours = 0;
-    const resultMinutes = Math.floor(totalSeconds / 60) % 60;
-    const resultSeconds = Math.floor(totalSeconds) % 60;
-    
-    htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds);
-    if (resultDays + resultHours + resultMinutes + resultSeconds === 0) finishFun();
-}; 
-
-
-// Writer of numbers in HTML from timer
-function htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds){
-    const dayNumber = document.querySelector('.days p');
-    const hoursNumber = document.querySelector('.hours p');
-    const minutesNumber = document.querySelector('.minutes p');
-    const secondsNumber = document.querySelector('.seconds p');
-
-
-    dayNumber.innerText = zeroAdding(resultDays);
-    hoursNumber.innerText = zeroAdding(resultHours);
-    minutesNumber.innerText = zeroAdding(resultMinutes);
-    secondsNumber.innerText = zeroAdding(resultSeconds);
-};
-
-function zeroAdding(number){
-    if (number < 10) number = "0" + number;
-    return number;
-};
-
-// Heart beats of the timer
-setInterval(countdown, 1000);
 
 //Dive into the night
 function nightMode(){
@@ -169,7 +179,10 @@ text_confirm_button.addEventListener('click', () => {
     if (input_area.value != "") {
         celebName.innerText = input_area.value;
         toggleOfBtn();
-    } else highlithError(input_cont);
+    } else {
+    highlithError(input_cont);
+    // highlithError(button);
+    }
 });
 
 
@@ -182,7 +195,8 @@ date_confirm_button.addEventListener('click', () => {
     if (date_input_area.value > currentDateShort()[1] || 
     date_input_area.value < currentDateShort()[0]) {
         highlithError(date_input_cont);
-        return
+        highlithError(date_button);
+        return;
     };
     console.log(date_input_area.value);
     if (date_input_area.value != "") {
@@ -222,6 +236,7 @@ document.addEventListener('keyup', (event) => {
 });
 
 
+// 'Enter' confirmation of date 
 // document.addEventListener('keyup', (event) => {
 //     if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
 //     date_input_area.value != "" & 
@@ -261,6 +276,7 @@ document.addEventListener('click', (event) => {
     const insideInput1 = event.composedPath().includes(input_cont);
     const insideInput2 = event.composedPath().includes(date_input_cont);
     const insideInput3 = event.composedPath().includes(reload_cont);
+    
     if (!insideInput1 & input_area.classList.contains('active')) toggleOfBtn();
     if (!insideInput2 & date_input_area.classList.contains('active')) date_toggleOfBtn();
     if (!insideInput3 & ok_reset.classList.contains('active')) reset_toggleOfBtn();
@@ -269,11 +285,18 @@ document.addEventListener('click', (event) => {
 
 // Notification of timer finish
 function finishFun(){
+    confetti_cont.classList.add('active');
+    bg_image.classList.remove('night-mode');
     const celebName = document.querySelector('h1');
-    if (!alert(`Bro, your timer \"${celebName.innerText}\" has been finished. Good luck!!!`)) {
-        inputCleaning();
-        date_inputCleaning();
-        reset_doc();
-        window.location.reload();
+    setTimeout(alertReset, 1500);
+    function alertReset(){
+        if (!alert(`Bro, your timer \"${celebName.innerText}\" has been finished. Good luck!!!`)) {
+            confetti_cont.classList.remove('active');
+            inputCleaning();
+            date_inputCleaning();
+            reset_doc();
+            secondInterval = setInterval(countdown, 1000);
+            // window.location.reload();
+        };
     };
 };
