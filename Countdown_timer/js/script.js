@@ -134,7 +134,7 @@ function pastDateCancel(){
 function nightMode(){
     const currentHour = String(new Date()).slice(15,18);
     // console.log(currentHour);
-    if (currentHour > 20 || currentHour < 7)
+    if (currentHour > 19 || currentHour < 7)
     bg_image.classList.add('night-mode');
     else bg_image.classList.remove('night-mode');
 };
@@ -219,15 +219,15 @@ text_confirm_button.addEventListener('click', () => {
 date_button.addEventListener('click',  date_toggleOfBtn);
 date_clr_button.addEventListener('click', () => {
     date_inputCleaning();
-    recordCurrDate();
+    // recordCurrDate();
 });
 date_confirm_button.addEventListener('click', () => {
-    if (date_input_area.value > currentDateShort()[1] || 
-    date_input_area.value < currentDateShort()[0]) {
-        highlithError(date_input_cont);
-        highlithError(date_button);
-        return;
-    };
+    // if (date_input_area.value > currentDateShort()[1] || 
+    // date_input_area.value < currentDateShort()[0]) {
+    //     highlithError(date_input_cont);
+    //     highlithError(date_button);
+    //     return;
+    // };
     // console.log(date_input_area.value);
     if (date_input_area.value != "") {
         myCelebration = date_input_area.value;

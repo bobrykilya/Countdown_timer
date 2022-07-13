@@ -124,7 +124,7 @@ h1 {
 }
 
 .second-pair :nth-child(2) {
-  width: 40vmin;
+  width: 42vmin;
 }
 
 .counter_container {
@@ -157,7 +157,7 @@ h1 {
   z-index: 1;
   bottom: 0;
   left: 0;
-  height: 60%;
+  height: 40%;
   width: 100%;
   opacity: 0;
   filter: blur(4px);
@@ -299,11 +299,9 @@ h1 {
 
 .text_container .input_area {
   color: #585858;
-  max-width: 0;
 }
 .text_container .input_area.active {
-  width: 28vw;
-  max-width: 20rem;
+  width: 20rem;
   padding-left: 1rem;
 }
 
@@ -312,6 +310,7 @@ h1 {
   z-index: 1;
 }
 .date_container .date_input_area {
+  cursor: pointer;
   color: #585858;
 }
 .date_container .date_input_area :-webkit-inner-spin-button {
@@ -455,19 +454,19 @@ h1 {
 
 .confetti_container img:nth-child(6) {
   opacity: 1;
-  left: -25%;
-  top: -50%;
-  -webkit-animation: flag_4 0.6s forwards;
-          animation: flag_4 0.6s forwards;
+  left: -50vh;
+  top: -25vh;
+  -webkit-animation: flag_1 0.6s forwards;
+          animation: flag_1 0.6s forwards;
 }
 
 .confetti_container img:nth-child(7) {
   z-index: -1;
   opacity: 1;
-  left: 15%;
-  top: -50%;
-  -webkit-animation: flag_5 1s forwards;
-          animation: flag_5 1s forwards;
+  left: 15vh;
+  top: -50vh;
+  -webkit-animation: flag_2 1s forwards;
+          animation: flag_2 1s forwards;
 }
 
 @-webkit-keyframes confetti_1 {
@@ -567,36 +566,36 @@ h1 {
     transform: scale(1.4) translateX(-25%) translateY(30%) rotate(-20deg);
   }
 }
-@-webkit-keyframes flag_4 {
+@-webkit-keyframes flag_1 {
   0% {
     transform: scale(0.3);
   }
   100% {
-    transform: translateY(65%) translateX(5%) rotate(-10deg) scale(0.7);
+    transform: translateY(10vh) translateX(10vh) rotate(-10deg) scale(0.7);
   }
 }
-@keyframes flag_4 {
+@keyframes flag_1 {
   0% {
     transform: scale(0.3);
   }
   100% {
-    transform: translateY(65%) translateX(5%) rotate(-10deg) scale(0.7);
+    transform: translateY(10vh) translateX(10vh) rotate(-10deg) scale(0.7);
   }
 }
-@-webkit-keyframes flag_5 {
+@-webkit-keyframes flag_2 {
   0% {
     transform: scale(0.3);
   }
   100% {
-    transform: translateY(30%) translateX(15%) rotate(25deg) scale(0.6);
+    transform: translateY(25vh) translateX(45vh) rotate(25deg) scale(0.6);
   }
 }
-@keyframes flag_5 {
+@keyframes flag_2 {
   0% {
     transform: scale(0.3);
   }
   100% {
-    transform: translateY(30%) translateX(15%) rotate(25deg) scale(0.6);
+    transform: translateY(25vh) translateX(45vh) rotate(25deg) scale(0.6);
   }
 }
 @media (max-height: 260px) {
@@ -620,9 +619,37 @@ h1 {
     width: 120px;
   }
 }
+@media (max-width: 1200px) {
+  .confetti_container img:nth-child(6) {
+    left: -35vh;
+    top: -16vh;
+  }
+  .confetti_container img:nth-child(7) {
+    left: 10vh;
+    top: -25vh;
+  }
+}
 @media (max-width: 809px) {
   .counter_container {
     flex-direction: column;
+  }
+  .confetti_container img:nth-child(6) {
+    left: -27vh;
+    top: -12vh;
+  }
+  .confetti_container img:nth-child(7) {
+    left: -10vh;
+    top: -27vh;
+  }
+}
+@media (max-width: 425px) {
+  .confetti_container img:nth-child(6) {
+    left: -20vh;
+    top: -11vh;
+  }
+  .confetti_container img:nth-child(7) {
+    left: -30vh;
+    top: -25vh;
   }
 }
 @media (max-width: 374px) {
