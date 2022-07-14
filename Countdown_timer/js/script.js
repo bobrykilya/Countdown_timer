@@ -18,9 +18,6 @@ const date_clr_button = document.querySelector('.date_clear_btn');
 const date_confirm_button = document.querySelector('.date-confirm');
 
 
-
-const date_number = document.querySelector('.date_number');
-
 const bg_image = document.querySelector('.bg-image');
 const ok_reset = document.querySelector('.ok_btn');
 const ok_reset_i = document.querySelector('.ok_btn_i');
@@ -28,16 +25,14 @@ const reload_btn = document.querySelector('.reload_btn');
 const reset_text = document.querySelector('.reset_text');
 const reload_cont = document.querySelector('.reload_container');
 
+const date_number = document.querySelector('.date_number');
+
 const confetti_cont = document.querySelector('.confetti_container');
 
-date_input_area.value = newYear;
+// date_input_area.value = myCelebration;
+
 
 // Local storage handling
-// let celeb_title
-// let celeb_date
-
-// localStorage.clear();
-
 chekingData();
 function chekingData(){
     if (localStorage.getItem('celeb_title')){
@@ -51,9 +46,10 @@ function chekingData(){
     };
 };
 
-const currentDate = new Date();
 
+const currentDate = new Date();
 pastDateCancel();
+
 
 // Heart beats of the timer
 countdown();
@@ -84,7 +80,7 @@ function countdown(){
     if (resultDays + resultHours + resultMinutes + resultSeconds === 0){ 
         clearInterval(secondInterval);
         setTimeout(finishFun, 500);
-    }
+    };
     // setTimeout(finishFun, 5000);
 }; 
 
