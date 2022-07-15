@@ -1,5 +1,8 @@
 
 // Document elems
+const bg_image = document.querySelector('.bg-image');
+
+
 const input_area = document.querySelector('.input_area');
 const button = document.querySelector('.input_btn');
 const input_cont = document.querySelector('.text_container');
@@ -7,14 +10,20 @@ const clr_button = document.querySelector('.clear_btn');
 const celebName = document.querySelector('h1');
 const text_confirm_button = document.querySelector('.text_confirm');
 
+
 const date_input_area = document.querySelector('.date_input_area');
 const date_button = document.querySelector('.date_input_btn');
 const date_input_cont = document.querySelector('.date_container');
 const date_clr_button = document.querySelector('.date_clear_btn');
 const date_confirm_button = document.querySelector('.date-confirm');
 
+const time_zone = document.querySelector('.time-zone');
+const time__hours = document.querySelector('.time-cont_hours');
+const time__minutes = document.querySelector('.time-cont_minutes');
+const time_clr_button = document.querySelector('.time-clear');
+const time_text = document.querySelector('.time-text');
 
-const bg_image = document.querySelector('.bg-image');
+
 const ok_reset = document.querySelector('.ok_btn');
 const ok_reset_i = document.querySelector('.ok_btn_i');
 const reload_btn = document.querySelector('.reload_btn');
@@ -139,6 +148,8 @@ function nightMode(){
     else bg_image.classList.remove('night-mode');
 };
 
+
+
 // Input area cleaning
 function inputCleaning(){
     input_area.value = "";
@@ -153,6 +164,13 @@ function date_inputCleaning(){
     // myCelebration = newYear;
 };
 
+function timeCleaning(){
+    time__hours.value = "";
+    time__minutes.value = "";
+    // highlithError(time_text);
+    // highlithError(date_input_cont);
+};
+
 
 // Input openning and closing 
 function toggleOfBtn(){
@@ -160,7 +178,7 @@ function toggleOfBtn(){
     button.classList.toggle('rotation');
     clr_button.classList.toggle('active');
     text_confirm_button.classList.toggle('active');
-    if (input_area.classList.contains('active')) 
+    if (input_area.classList.contains('active'))
     input_area.focus() // focus on input
     else input_area.blur(); // focus deleting from input
 };
@@ -170,6 +188,8 @@ function date_toggleOfBtn(){
     date_button.classList.toggle('rotation');
     date_clr_button.classList.toggle('active');
     date_confirm_button.classList.toggle('active');
+    time_zone.classList.toggle('active');
+    time_clr_button.classList.toggle('active');
     // console.log(date_input_area.value);
     // console.log(myCelebration);
     if (localStorage.getItem('celeb_date') & 
@@ -248,6 +268,7 @@ date_confirm_button.addEventListener('click', () => {
         recordCurrDate();
     };
 });
+time_clr_button.addEventListener('click',  timeCleaning);
 
 
 reload_btn.addEventListener('click', reset_toggleOfBtn);

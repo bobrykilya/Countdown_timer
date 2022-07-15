@@ -126,9 +126,9 @@ $right : 2.5vw
 
 .menu_container
     display: flex
+    position: absolute
     z-index: 2
     flex-direction: column-reverse
-    position: absolute
     bottom: $bottom
     right: $right
     align-items: flex-end
@@ -151,24 +151,25 @@ $right : 2.5vw
     // border: 2px solid orange
 .btn
     position: relative
-    z-index: 2
+    z-index: 3
     width: $size
     height: $size
     border-radius: 50%
-    background-color: #fff
+    background-color: transparent
     color: #6427aa
     transition-duration: 0.5s
     font-size: 1.8rem
     :hover 
         font-size: 1.7rem
+    text-align: center
+    line-height: $size + 0.2rem
     &.rotation
         transform: rotate(-360deg)
         color: #88279bee
-    text-align: center
-    line-height: $size + 0.2rem
     &.error
-        background-color: #ffbdbd
-        // text-shadow: 0rem -0.05rem 0rem #af0f0fd2
+        color: #f14242
+        text-shadow: 0 0 2rem #af0f0fd2
+        // background-color: #ffbdbd
     // border: 1px solid red
     
 .input_cl
@@ -183,8 +184,10 @@ $right : 2.5vw
     line-height: $size
 
 .clear
+    position: relative
+    z-index: 1
     display: none
-    margin: 0.4rem 0 0 0.6rem
+    margin: 0.2rem 0 0 0.6rem
     transition-duration: 0.2s
     font-size: 1.2rem
     width: 1rem
@@ -205,16 +208,18 @@ $right : 2.5vw
 .text_container
     .input_area
         color: #585858
+        // border-bottom: 1px solid #c5c5c5
         &.active
-            width: 20rem
-            padding-left: 1.5rem
+            width: 16rem
+            margin-left: 1.5rem
+            margin-right: 3rem
     
 .date_container
-    position: relative
-    z-index: 1
     .date_input_area
         cursor: pointer
         color: #585858
+        // border-bottom: 1px solid #c5c5c5
+        // transition: width 0.4s
         :-webkit-inner-spin-button
             -webkit-appearance: none
             display: none
@@ -222,19 +227,19 @@ $right : 2.5vw
             -webkit-appearance: none
             display: none
         &.active
-            width: 11rem
-            padding-left: 1.5rem
-            margin-right: 4rem
+            width: 8rem
+            margin-left: 0.6rem
+            margin-right: 3.5rem
             
 .confirm_btn
     position: absolute
-    z-index: 0
-    right: 0.5rem
-    transform: translateX(0.5rem)
+    z-index: -1
+    right: -0.2rem
+    transform: translateY(0.3rem)
     margin: 0.5rem 1.5rem 0 0
     width: 1rem
     height: 1rem
-    transition: transform 0.2s
+    transition: 0.2s
     font-size: 1rem
     color: #6427aa
     :hover 
@@ -244,21 +249,18 @@ $right : 2.5vw
         font-size: 1.5rem
         color: #385ab9
     &.active
-        transform: translateX(-2.5rem)
+        z-index: 0
+        transform: translateY(0) translateX(-3rem) 
         font-size: 1.5rem
 
 .reload_container
+    position: relative
     flex-direction: column
     align-items: center
-    position: relative
-    z-index: 1
-
-.reload_btn
-    position: relative
-    z-index: 2
 
 .reset_text
     position: absolute
+    z-index: -1
     top: 3.2rem
     color: #6427aa6c
     font-size: 0.2rem
@@ -267,29 +269,122 @@ $right : 2.5vw
     // border: 2px solid brown
     transform: translateY(-2.5rem)
     &.active
+        z-index: 1
         cursor: auto
         transform: translateY(0)
         font-size: 0.7rem
 
 .ok_btn
-    z-index: -1
+    position: relative
+    z-index: -2
+    width: $size
     height: 0
+    text-align: center
     font-size: 0.2rem
     line-height: 2.1rem
+    color: #6427aa
+    border-radius: 50%
+    background-color: transparent
     transition-duration: 0.2s
     :hover 
         font-size: 1.8rem
-    &.active
-        height: $size
-        font-size: 2rem
-        margin-bottom: 2rem
     :active
         font-size: 1.7rem
         color: #385ab9
     cursor: auto
+    &.active
+        z-index: 0
+        height: $size
+        font-size: 2rem
+        margin-bottom: 2rem
     i
+        position: relative
+        z-index: -1
         cursor: pointer
     // border: 2px solid brown
+
+
+.time-zone
+    position: relative
+    // display: none
+    display: flex
+    width: 0
+    opacity: 0
+    position: relative
+    align-content: center
+    justify-content: flex-start
+    transition-duration: 0.25s
+    // border: 2px solid brown
+    &.active
+        margin-right: 0.8rem
+        margin-left: 0.5rem
+        width: 7rem
+        opacity: 1
+
+.time-text 
+    display: flex
+    height: 1.2rem
+    color: #6427aa6c
+    font-size: 1rem
+    transform: rotate(270deg)
+    margin-top: 0.65rem
+    margin-left: -0.1rem
+    transition-duration: 0.5s
+    // margin-right: -2.5rem
+    // border: 2px solid black
+    &.error
+        color: #f14242
+        text-shadow: 0px 0px 10px #af0f0fd2
+
+.timer-icon
+    display: none
+    position: absolute
+    z-index: 0
+    top: -0.5rem
+    left: 1rem
+    height: 3.5rem
+    overflow: hidden
+    align-content: center
+    color: #6427aa10
+    // font-size: 1.4rem
+    font-size: 5.7rem
+    // border: 2px solid brown
+    i
+        line-height: 2.4rem
+
+
+.time-cont
+    position: relative
+    z-index: 1
+    display: flex
+    align-content: center
+    justify-content: flex-end
+    // margin-right: 0.3rem
+    margin-left: 0.7rem
+    color: #585858
+    // border: 1px solid red
+    p
+        font-size: 1.1rem
+        font-style: italic
+        line-height: 2.4rem
+        color: grey
+        margin-right: 0.3rem
+        // margin-left: -0.1rem
+    input
+        border: none
+        outline: none
+        background: none
+        text-decoration: none
+        font-size: 1.1rem
+        font-style: italic
+        width: 1.5rem
+        // padding: 0 0.5rem
+        // text-align: center
+        // border: 1px solid black
+
+// .time-clear
+    // transform: scaleX(-1)
+
 
 
 .confetti_container

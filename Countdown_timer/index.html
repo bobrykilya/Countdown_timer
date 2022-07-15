@@ -24,6 +24,20 @@
             </a>
         </div>
         <div class="date_container cont">
+            <div class="time-zone">
+                <a href="#" class="time-clear clear">
+                    <i class="fa-solid fa-shower"></i>
+                </a>
+                <div class="time-cont">
+                    <input class="time-cont_hours" type="text" placeholder="00" maxlength="2" oninput="this.value = this.value.replace(/[^\d]/g,'')">
+                    <p>:</p>
+                    <input class="time-cont_minutes" type="text" placeholder="00" maxlength="2" oninput="this.value = this.value.replace(/[^\d]/g,'')">
+                </div>
+                <div class="timer-icon">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+                <div class="time-text">TIME</div>
+            </div>
             <a href="#" class="date_clear_btn clear"> 
                 <i class="fa-solid fa-shower"></i>
             </a>
@@ -36,7 +50,7 @@
             </a>
         </div>
         <div class="reload_container cont">
-            <a href="#" class="ok_btn btn"> 
+            <a href="#" class="ok_btn"> 
                 <i class="fa-regular fa-circle-check ok_btn_i"></i>
             </a>
             <div class="reset_text">RESET?</div>  
