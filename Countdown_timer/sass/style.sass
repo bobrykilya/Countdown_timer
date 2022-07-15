@@ -9,6 +9,7 @@
     z-index: -1
     top: 0
     left: 0
+    overflow: hidden
     height: 100%
     width: 100%
     transition: filter 5s
@@ -16,6 +17,7 @@
 .night-mode
     -webkit-filter: brightness(0.5) sepia(0.3)
     filter: brightness(0.5) sepia(0.3)
+
 
 body
     display: flex
@@ -47,28 +49,28 @@ h1
 .first-pair
     display: flex
     margin-bottom: 5vmin
-    // justify-content: space-between
     // border: 2px solid white
 .second-pair
     display: flex
     margin-bottom: 5vmin
-    justify-content: space-between
     // border: 2px solid black
-.second-pair :nth-child(2) 
-    width: 42vmin
-    // border: 2px solid #000
+// .second-pair > :nth-child(1) 
+    // border: 2px solid red
+.second-pair > :nth-child(2) 
+    width: 45vmin
+    // border: 2px solid brown
 
 .counter_container
     display: flex
-    flex-wrap: wrap
-    justify-content: space-between
+    flex-wrap: no-wrap
     align-items: center
     justify-content: center
+    // border: 2px solid orange
     p
         position: relative
         z-index: 1
         font-family: 'Dosis'
-        font-size: 22vmin
+        font-size: 24vmin
         margin: 0 8vmin
         line-height: 1
         text-shadow: 0.2rem 0.2rem 3rem #230674
@@ -263,7 +265,7 @@ $right : 2.5vw
     margin: 0.5rem -1rem
     transition-duration: 0.2s
     // border: 2px solid brown
-    transform: translateY(-2rem)
+    transform: translateY(-2.5rem)
     &.active
         cursor: auto
         transform: translateY(0)

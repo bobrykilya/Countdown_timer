@@ -75,6 +75,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1;
   top: 0;
   left: 0;
+  overflow: hidden;
   height: 100%;
   width: 100%;
   transition: filter 5s;
@@ -120,17 +121,15 @@ h1 {
 .second-pair {
   display: flex;
   margin-bottom: 5vmin;
-  justify-content: space-between;
 }
 
-.second-pair :nth-child(2) {
-  width: 42vmin;
+.second-pair > :nth-child(2) {
+  width: 45vmin;
 }
 
 .counter_container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: no-wrap;
   align-items: center;
   justify-content: center;
 }
@@ -138,7 +137,7 @@ h1 {
   position: relative;
   z-index: 1;
   font-family: "Dosis";
-  font-size: 22vmin;
+  font-size: 24vmin;
   margin: 0 8vmin;
   line-height: 1;
   text-shadow: 0.2rem 0.2rem 3rem #230674;
@@ -363,7 +362,7 @@ h1 {
   font-size: 0.2rem;
   margin: 0.5rem -1rem;
   transition-duration: 0.2s;
-  transform: translateY(-2rem);
+  transform: translateY(-2.5rem);
 }
 .reset_text.active {
   cursor: auto;

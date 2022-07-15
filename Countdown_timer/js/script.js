@@ -1,7 +1,3 @@
-// Default date (12.00) 
-const nextYear = new Date().getFullYear() + 1;
-const newYear = `${nextYear}-01-1`;
-let myCelebration = newYear;
 
 // Document elems
 const input_area = document.querySelector('.input_area');
@@ -29,7 +25,16 @@ const date_number = document.querySelector('.date_number');
 
 const confetti_cont = document.querySelector('.confetti_container');
 
-// date_input_area.value = myCelebration;
+// Default date (12.00) 
+const nextYear = new Date().getFullYear() + 1;
+const newYear = `${nextYear}-01-01`;
+let myCelebration = newYear;
+// console.log(myCelebration);
+
+const currentDate = new Date();
+dateLimits();
+
+date_input_area.value = currentDateShort()[0];
 
 
 // Local storage handling
@@ -42,13 +47,11 @@ function chekingData(){
     if (localStorage.getItem('celeb_date')){
         myCelebration = localStorage.getItem('celeb_date');
         recordCurrDate();
-        date_input_area.value = localStorage.getItem('celeb_date');
+        date_input_area.value = myCelebration;
     };
 };
 
 
-const currentDate = new Date();
-pastDateCancel();
 
 
 // Heart beats of the timer
@@ -62,10 +65,7 @@ function countdown(){
     const myCelebrationDate = new Date(myCelebration);
     let resultDate = myCelebrationDate - currentDate;
     if (resultDate < 0) resultDate = 0;
-    
 
-    //Hour cheking for night mode
-    nightMode();
     
     // Timing calculation
     const totalSeconds = Math.floor(resultDate / 1000);
@@ -76,17 +76,20 @@ function countdown(){
     const resultMinutes = Math.floor(totalSeconds / 60) % 60;
     const resultSeconds = Math.floor(totalSeconds) % 60;
     
-    htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds);
+    htmlWriter(resultDays, resultHours, resultMinutes, resultSeconds);
     if (resultDays + resultHours + resultMinutes + resultSeconds === 0){ 
         clearInterval(secondInterval);
         setTimeout(finishFun, 500);
     };
     // setTimeout(finishFun, 5000);
+
+    //Hour cheking for night mode
+    nightMode();
 }; 
 
 
 // Writer of numbers in HTML from timer
-function htmlwriter(resultDays, resultHours, resultMinutes, resultSeconds){
+function htmlWriter(resultDays, resultHours, resultMinutes, resultSeconds){
     const dayNumber = document.querySelector('.days p');
     const hoursNumber = document.querySelector('.hours p');
     const minutesNumber = document.querySelector('.minutes p');
@@ -107,9 +110,10 @@ function zeroAdding(number){
 
 //Calculation short form of current date
 function currentDateShort(){
+    // tomorrow = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
     year = currentDate.getFullYear();
-    month = currentDate.getMonth() + 1;
-    day = currentDate.getDate() + 1;
+    month = currentDate.getMonth() + 1; // Сounting from zero
+    day = currentDate.getDate();
     if (month < 10) month = '0' + month;
     if (day < 10) day = '0' + day;
     // console.log(day);
@@ -118,7 +122,7 @@ function currentDateShort(){
 
 
 // Ban on the use of past dates in calendar
-function pastDateCancel(){
+function dateLimits(){
     minDate = currentDateShort()[0];
     maxDate = currentDateShort()[1];
     document.querySelector('.date_input_area').setAttribute('min', minDate);
@@ -168,8 +172,13 @@ function date_toggleOfBtn(){
     date_confirm_button.classList.toggle('active');
     // console.log(date_input_area.value);
     // console.log(myCelebration);
-    if (date_input_area.value != myCelebration) 
-    setTimeout(() => {date_input_area.value = myCelebration}, 200);
+    if (localStorage.getItem('celeb_date') & 
+        date_input_area.value != localStorage.getItem('celeb_date') & 
+        !date_input_area.classList.contains('active')) 
+        setTimeout(() => {
+            date_input_area.value = localStorage.getItem('celeb_date');
+            console.log(myCelebration);
+        }, 200);
 };
 
 function reset_toggleOfBtn(){
@@ -186,8 +195,9 @@ function reset_doc(){
     date_number.innerText = 'bobrikilya';
     input_area.value = "";
     input_area.blur();
-    date_inputCleaning();
+    // date_inputCleaning();
     celebName.innerText = 'Until the new year';
+    date_input_area.value = currentDateShort()[0];
 };
 
 function highlithError(class_name){
