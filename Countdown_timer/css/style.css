@@ -129,7 +129,7 @@ h1 {
 
 .counter_container {
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
@@ -137,8 +137,8 @@ h1 {
   position: relative;
   z-index: 1;
   font-family: "Dosis";
-  font-size: 24vmin;
-  margin: 0 8vmin;
+  font-size: 23vmin;
+  margin: 0 7vmin;
   line-height: 1;
   text-shadow: 0.2rem 0.2rem 3rem #230674;
   transition-duration: 0.5s;
@@ -301,7 +301,7 @@ h1 {
 }
 .text_container .input_area.active {
   width: 20rem;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 }
 
 .date_container {
@@ -312,10 +312,18 @@ h1 {
   cursor: pointer;
   color: #585858;
 }
+.date_container .date_input_area :-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+.date_container .date_input_area :-webkit-clear-button {
+  -webkit-appearance: none;
+  display: none;
+}
 .date_container .date_input_area.active {
-  width: 10rem;
-  padding-left: 2vh;
-  margin-right: 3.5rem;
+  width: 11rem;
+  padding-left: 1.5rem;
+  margin-right: 4rem;
 }
 
 .confirm_btn {
@@ -371,9 +379,9 @@ h1 {
 }
 
 .ok_btn {
-  z-index: 0;
+  z-index: -1;
   height: 0;
-  font-size: 1rem;
+  font-size: 0.2rem;
   line-height: 2.1rem;
   transition-duration: 0.2s;
   cursor: auto;

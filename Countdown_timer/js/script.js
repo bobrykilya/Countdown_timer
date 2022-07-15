@@ -175,10 +175,16 @@ function date_toggleOfBtn(){
     if (localStorage.getItem('celeb_date') & 
         date_input_area.value != localStorage.getItem('celeb_date') & 
         !date_input_area.classList.contains('active')) 
-        setTimeout(() => {
-            date_input_area.value = localStorage.getItem('celeb_date');
-            console.log(myCelebration);
-        }, 200);
+            setTimeout(() => {
+                date_input_area.value = localStorage.getItem('celeb_date');
+                // console.log(myCelebration);
+            }, 200);
+    if (!localStorage.getItem('celeb_date') &
+        date_input_area.value == "" & 
+        !date_input_area.classList.contains('active')) 
+            setTimeout(() => {
+                date_input_area.value = currentDateShort()[0];
+            }, 200);
 };
 
 function reset_toggleOfBtn(){

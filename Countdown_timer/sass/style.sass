@@ -62,7 +62,7 @@ h1
 
 .counter_container
     display: flex
-    flex-wrap: no-wrap
+    flex-wrap: wrap
     align-items: center
     justify-content: center
     // border: 2px solid orange
@@ -70,8 +70,8 @@ h1
         position: relative
         z-index: 1
         font-family: 'Dosis'
-        font-size: 24vmin
-        margin: 0 8vmin
+        font-size: 23vmin
+        margin: 0 7vmin
         line-height: 1
         text-shadow: 0.2rem 0.2rem 3rem #230674
         transition-duration: 0.5s
@@ -207,7 +207,7 @@ $right : 2.5vw
         color: #585858
         &.active
             width: 20rem
-            padding-left: 1rem
+            padding-left: 1.5rem
     
 .date_container
     position: relative
@@ -215,16 +215,16 @@ $right : 2.5vw
     .date_input_area
         cursor: pointer
         color: #585858
-        // :-webkit-inner-spin-button
-        //     -webkit-appearance: none
-        //     display: none
-        // :-webkit-clear-button
-        //     -webkit-appearance: none
-        //     display: none
+        :-webkit-inner-spin-button
+            -webkit-appearance: none
+            display: none
+        :-webkit-clear-button
+            -webkit-appearance: none
+            display: none
         &.active
-            width: 10rem
-            padding-left: 2vh
-            margin-right: 3.5rem
+            width: 11rem
+            padding-left: 1.5rem
+            margin-right: 4rem
             
 .confirm_btn
     position: absolute
@@ -272,9 +272,9 @@ $right : 2.5vw
         font-size: 0.7rem
 
 .ok_btn
-    z-index: 0
+    z-index: -1
     height: 0
-    font-size: 1rem
+    font-size: 0.2rem
     line-height: 2.1rem
     transition-duration: 0.2s
     :hover 
