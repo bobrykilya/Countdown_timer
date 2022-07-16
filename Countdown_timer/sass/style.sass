@@ -46,6 +46,8 @@ h1
     color: #ffffffd2
     text-shadow: 0.1rem 0.1rem 3rem #230674a2
 
+
+
 .first-pair
     display: flex
     margin-bottom: 5vmin
@@ -182,6 +184,7 @@ $right : 2.5vw
     width: 0 //change
     transition-duration: 0.3s
     line-height: $size
+    color: #585858
 
 .clear
     position: relative
@@ -192,32 +195,41 @@ $right : 2.5vw
     font-size: 1.2rem
     width: 1rem
     height: 1rem
-    transform: rotate(7deg)
+    // transform: rotate(7deg)
     color: #6427aa
     :hover 
         font-size: 1.3rem
-        transform: rotate(15deg)
+        transform: rotate(7deg)
     :active
         font-size: 1.2rem
         color: #385ab9
-    // border: 1px solid #000
+    // border: 1px solid black
     &.active
         display: inline-block
+
 
 // Main containers -------------------------------------
 .text_container
     .input_area
-        color: #585858
+        position: relative
         // border-bottom: 1px solid #c5c5c5
         &.active
             width: 16rem
-            margin-left: 1.5rem
+            margin-left: 0.9rem
             margin-right: 3rem
+        // ::after
+        //     content: ""
+        //     position: absolute
+        //     z-index: 3
+        //     top: 0
+        //     left: 0
+        //     width: 16rem
+        //     height: 0.5rem
+        //     background-color: #000
     
 .date_container
     .date_input_area
         cursor: pointer
-        color: #585858
         // border-bottom: 1px solid #c5c5c5
         // transition: width 0.4s
         :-webkit-inner-spin-button
@@ -227,20 +239,20 @@ $right : 2.5vw
             -webkit-appearance: none
             display: none
         &.active
-            width: 8rem
-            margin-left: 0.6rem
-            margin-right: 3.5rem
-            
+            width: 9rem
+            margin-left: 0.45rem
+            margin-right: 2.2rem
+
 .confirm_btn
     position: absolute
     z-index: -1
     right: -0.2rem
-    transform: translateY(0.3rem)
+    // transform: translateY(0.3rem)
     margin: 0.5rem 1.5rem 0 0
     width: 1rem
     height: 1rem
     transition: 0.2s
-    font-size: 1rem
+    font-size: 1.2rem
     color: #6427aa
     :hover 
         font-size: 1.6rem
@@ -250,7 +262,7 @@ $right : 2.5vw
         color: #385ab9
     &.active
         z-index: 0
-        transform: translateY(0) translateX(-3rem) 
+        transform: translateX(-3rem) 
         font-size: 1.5rem
 
 .reload_container
@@ -312,79 +324,65 @@ $right : 2.5vw
     opacity: 0
     position: relative
     align-content: center
-    justify-content: flex-start
+    justify-content: flex-end
     transition-duration: 0.25s
     // border: 2px solid brown
     &.active
-        margin-right: 0.8rem
-        margin-left: 0.5rem
-        width: 7rem
+        margin-right: -0.8rem
+        margin-left: 2.5rem
+        width: 6.7rem
         opacity: 1
 
 .time-text 
-    display: flex
-    height: 1.2rem
-    color: #6427aa6c
-    font-size: 1rem
-    transform: rotate(270deg)
-    margin-top: 0.65rem
-    margin-left: -0.1rem
-    transition-duration: 0.5s
-    // margin-right: -2.5rem
-    // border: 2px solid black
-    &.error
-        color: #f14242
-        text-shadow: 0px 0px 10px #af0f0fd2
+    // position: relative
+    // z-index: 2
+    // display: flex
+    display: none
+    // height: 1.2rem
+    // color: #6427aa6c
+    // font-size: 1rem
+    // transform: rotate(270deg)
+    // margin-top: 0.65rem
+    // margin-left: -0.1rem
+    // transition: color 0.5s, text-shadow 0.5s
+    // // margin-right: 0.5rem
+    // // border: 2px solid black
+    // &.error
+    //     color: #f14242
+    //     text-shadow: 0px 0px 10px #af0f0fd2
+
 
 .timer-icon
-    display: none
-    position: absolute
-    z-index: 0
-    top: -0.5rem
-    left: 1rem
-    height: 3.5rem
-    overflow: hidden
+    position: relative
+    z-index: 2
     align-content: center
-    color: #6427aa10
-    // font-size: 1.4rem
-    font-size: 5.7rem
+    color: #6427aac2
+    font-size: 1.55rem
+    margin-left: -0.65rem
+    margin-right: 1.3rem
+    transition-duration: 0.5s
     // border: 2px solid brown
     i
-        line-height: 2.4rem
-
+        line-height: 2.5rem
+    &.error
+        color: #f14242
+        text-shadow: 0px 0px 5px #af0f0fd2
 
 .time-cont
     position: relative
     z-index: 1
-    display: flex
-    align-content: center
     justify-content: flex-end
-    // margin-right: 0.3rem
+    padding-top: 0.45rem
     margin-left: 0.7rem
-    color: #585858
     // border: 1px solid red
-    p
-        font-size: 1.1rem
-        font-style: italic
-        line-height: 2.4rem
-        color: grey
-        margin-right: 0.3rem
-        // margin-left: -0.1rem
-    input
-        border: none
-        outline: none
-        background: none
-        text-decoration: none
-        font-size: 1.1rem
-        font-style: italic
-        width: 1.5rem
-        // padding: 0 0.5rem
-        // text-align: center
-        // border: 1px solid black
-
-// .time-clear
-    // transform: scaleX(-1)
-
+    .time
+        width: 0
+        height: 1.5rem
+        background-color: #fff
+        transition-duration: 0.1s
+        // border: 1px solid brown
+        &.active
+            width: 4.8rem
 
 
 .confetti_container

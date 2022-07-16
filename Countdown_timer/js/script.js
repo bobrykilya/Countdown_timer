@@ -18,10 +18,9 @@ const date_clr_button = document.querySelector('.date_clear_btn');
 const date_confirm_button = document.querySelector('.date-confirm');
 
 const time_zone = document.querySelector('.time-zone');
-const time__hours = document.querySelector('.time-cont_hours');
-const time__minutes = document.querySelector('.time-cont_minutes');
+const time = document.querySelector('.time');
 const time_clr_button = document.querySelector('.time-clear');
-const time_text = document.querySelector('.time-text');
+const timer_icon = document.querySelector('.timer-icon');
 
 
 const ok_reset = document.querySelector('.ok_btn');
@@ -148,8 +147,42 @@ function nightMode(){
     else bg_image.classList.remove('night-mode');
 };
 
+// Time input processing and limits
+// document.addEventListener('keyup', (event) => {
+//     // console.log(event.code);
+//     hour_val = time_hours.value;
+//     minute_val = time_minutes.value;
 
+//     minute_pos = time_minutes.selectionStart;
+//     hour_pos = time_hours.selectionStart;
+    
+//     console.log(minute_pos);
+//     console.log(hour_pos);
 
+    // pos = minute_val.slice(0, time_minutes.selectionStart).length;
+    // console.log(pos);
+    // console.log(time_minutes.selectionStart);
+
+    
+    // if (hour_val.length == 2) time_minutes.focus(); 
+    // if (time_minutes == document.activeElement & minute_pos == 0 & 
+    //     event.code == 'ArrowLeft') time_hours.focus();
+    // if (time_hours == document.activeElement & hour_pos == 2 &
+    //     event.code == 'ArrowRight') time_minutes.focus();
+    // if (minute_val == '' & event.code === 'Backspace') {
+    //     console.log(event.code);
+    //     hour_val = hour_val.slice(0, 1);
+    //     time_hours.focus();
+    // };
+    // });
+
+function highlithError(class_name){
+    class_name.classList.add('error')
+    setTimeout(() => {
+        class_name.classList.remove('error');
+        },500);
+};
+    
 // Input area cleaning
 function inputCleaning(){
     input_area.value = "";
@@ -165,10 +198,9 @@ function date_inputCleaning(){
 };
 
 function timeCleaning(){
-    time__hours.value = "";
-    time__minutes.value = "";
-    // highlithError(time_text);
-    // highlithError(date_input_cont);
+    time.value = "";
+    highlithError(timer_icon);
+    highlithError(date_input_cont);
 };
 
 
@@ -189,18 +221,20 @@ function date_toggleOfBtn(){
     date_clr_button.classList.toggle('active');
     date_confirm_button.classList.toggle('active');
     time_zone.classList.toggle('active');
+    time.classList.toggle('active');
     time_clr_button.classList.toggle('active');
     // console.log(date_input_area.value);
     // console.log(myCelebration);
-    if (localStorage.getItem('celeb_date') & 
-        date_input_area.value != localStorage.getItem('celeb_date') & 
-        !date_input_area.classList.contains('active')) 
+    if (date_input_area.value != localStorage.getItem('celeb_date') & 
+        !date_input_area.classList.contains('active')) {
+            console.log(date_input_area.value);
+            console.log(myCelebration);
             setTimeout(() => {
                 date_input_area.value = localStorage.getItem('celeb_date');
                 // console.log(myCelebration);
             }, 200);
+        };
     if (!localStorage.getItem('celeb_date') &
-        date_input_area.value == "" & 
         !date_input_area.classList.contains('active')) 
             setTimeout(() => {
                 date_input_area.value = currentDateShort()[0];
@@ -226,12 +260,6 @@ function reset_doc(){
     date_input_area.value = currentDateShort()[0];
 };
 
-function highlithError(class_name){
-    class_name.classList.add('error')
-    setTimeout(() => {
-        class_name.classList.remove('error');
-        },500);
-};
 
 // Clicking on the button 
 button.addEventListener('click', toggleOfBtn);
