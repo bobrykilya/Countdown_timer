@@ -147,35 +147,48 @@ function nightMode(){
     else bg_image.classList.remove('night-mode');
 };
 
+
+if (getBrowserId() == 0){
+    date_input_area.classList.add('forFirefox');
+    time_zone.classList.add('forFirefox');
+    time.classList.add('forFirefox');
+    timer_icon.classList.add('forFirefox');
+};
+
+// Browser detecting
+function getBrowserId(){
+    let brKeys = ["Firefox", "Safari", "MSIE", "Chrome", "Opera", "Edg"];
+    // console.log(navigator.userAgent);
+
+    brKeys.forEach(brows => { 
+        // console.log(brows);        
+        if (navigator.userAgent.includes(brows)) BrIndx = brKeys.indexOf(brows);
+    });
+    return BrIndx;
+};
+
+
+
 // Time input processing and limits
-// document.addEventListener('keyup', (event) => {
-//     // console.log(event.code);
-//     hour_val = time_hours.value;
-//     minute_val = time_minutes.value;
-
-//     minute_pos = time_minutes.selectionStart;
-//     hour_pos = time_hours.selectionStart;
+document.addEventListener('keydown', (event) => {
+    // console.log(event.code);
+    time_val = time.value;
     
-//     console.log(minute_pos);
-//     console.log(hour_pos);
+    time_pos = time.selectionStart;
+        
+    // console.log(time_pos);
 
-    // pos = minute_val.slice(0, time_minutes.selectionStart).length;
+    pos = time_val.slice(0, time.selectionStart).length;
     // console.log(pos);
-    // console.log(time_minutes.selectionStart);
+    // console.log(time_pos);
+
+
+    if (event.code == 'Backspace') {
+        console.log(event.code);
+    };
+    });
 
     
-    // if (hour_val.length == 2) time_minutes.focus(); 
-    // if (time_minutes == document.activeElement & minute_pos == 0 & 
-    //     event.code == 'ArrowLeft') time_hours.focus();
-    // if (time_hours == document.activeElement & hour_pos == 2 &
-    //     event.code == 'ArrowRight') time_minutes.focus();
-    // if (minute_val == '' & event.code === 'Backspace') {
-    //     console.log(event.code);
-    //     hour_val = hour_val.slice(0, 1);
-    //     time_hours.focus();
-    // };
-    // });
-
 function highlithError(class_name){
     class_name.classList.add('error')
     setTimeout(() => {
@@ -198,7 +211,8 @@ function date_inputCleaning(){
 };
 
 function timeCleaning(){
-    time.value = "";
+    console.log(time.value);
+    time.value = "00:00";
     highlithError(timer_icon);
     highlithError(date_input_cont);
 };
@@ -227,11 +241,8 @@ function date_toggleOfBtn(){
     // console.log(myCelebration);
     if (date_input_area.value != localStorage.getItem('celeb_date') & 
         !date_input_area.classList.contains('active')) {
-            console.log(date_input_area.value);
-            console.log(myCelebration);
             setTimeout(() => {
                 date_input_area.value = localStorage.getItem('celeb_date');
-                // console.log(myCelebration);
             }, 200);
         };
     if (!localStorage.getItem('celeb_date') &
@@ -285,7 +296,7 @@ date_confirm_button.addEventListener('click', () => {
     if (date_input_area.value > currentDateShort()[1] || 
     date_input_area.value < currentDateShort()[0]) {
         highlithError(date_input_cont);
-        highlithError(date_button);
+        // highlithError(date_button);
         return;
     };
     // console.log(date_input_area.value);
@@ -339,7 +350,7 @@ document.addEventListener('keyup', (event) => {
         if (date_input_area.value > currentDateShort()[1] || 
             date_input_area.value < currentDateShort()[0]) {
             highlithError(date_input_cont);
-            highlithError(date_button);
+            // highlithError(date_button);
             return;
         };
         if (date_input_area.value != ""){

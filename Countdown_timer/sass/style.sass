@@ -168,28 +168,33 @@ $right : 2.5vw
     &.rotation
         transform: rotate(-360deg)
         color: #88279bee
-    &.error
-        color: #f14242
-        text-shadow: 0 0 2rem #af0f0fd2
+    // &.error
+    //     color: #f14242
+    //     text-shadow: 0 0 2rem #af0f0fd2
+
         // background-color: #ffbdbd
     // border: 1px solid red
     
 .input_cl
-    border: none
-    outline: none
-    background: none
-    text-decoration: none
+    // border: none
+    // outline: none
+    // background: none
+    // text-decoration: none
     font-size: 1.1rem
     font-style: italic
     width: 0 //change
+    height: 2rem
     transition-duration: 0.3s
     line-height: $size
     color: #585858
+    margin-top: 0.3rem
+    // border: 1px solid red
 
 .clear
+    display: none
     position: relative
     z-index: 1
-    display: none
+    top: 0.45rem
     margin: 0.2rem 0 0 0.6rem
     transition-duration: 0.2s
     font-size: 1.2rem
@@ -199,7 +204,7 @@ $right : 2.5vw
     color: #6427aa
     :hover 
         font-size: 1.3rem
-        transform: rotate(7deg)
+        color: #8d0539
     :active
         font-size: 1.2rem
         color: #385ab9
@@ -215,17 +220,8 @@ $right : 2.5vw
         // border-bottom: 1px solid #c5c5c5
         &.active
             width: 16rem
-            margin-left: 0.9rem
+            margin-left: 0.5rem
             margin-right: 3rem
-        // ::after
-        //     content: ""
-        //     position: absolute
-        //     z-index: 3
-        //     top: 0
-        //     left: 0
-        //     width: 16rem
-        //     height: 0.5rem
-        //     background-color: #000
     
 .date_container
     .date_input_area
@@ -239,9 +235,12 @@ $right : 2.5vw
             -webkit-appearance: none
             display: none
         &.active
-            width: 9rem
-            margin-left: 0.45rem
-            margin-right: 2.2rem
+            width: 8.2rem
+            margin-left: 0.17rem
+            margin-right: 3rem
+            &.forFirefox
+                margin-left: 0.17rem
+                margin-right: 1.5rem
 
 .confirm_btn
     position: absolute
@@ -264,6 +263,8 @@ $right : 2.5vw
         z-index: 0
         transform: translateX(-3rem) 
         font-size: 1.5rem
+
+
 
 .reload_container
     position: relative
@@ -311,9 +312,10 @@ $right : 2.5vw
         margin-bottom: 2rem
     i
         position: relative
-        z-index: -1
+        z-index: 1
         cursor: pointer
     // border: 2px solid brown
+
 
 
 .time-zone
@@ -328,61 +330,48 @@ $right : 2.5vw
     transition-duration: 0.25s
     // border: 2px solid brown
     &.active
-        margin-right: -0.8rem
-        margin-left: 2.5rem
-        width: 6.7rem
+        margin-right: 0.5rem
+        margin-left: 2.7rem
+        width: 4.45rem
         opacity: 1
-
-.time-text 
-    // position: relative
-    // z-index: 2
-    // display: flex
-    display: none
-    // height: 1.2rem
-    // color: #6427aa6c
-    // font-size: 1rem
-    // transform: rotate(270deg)
-    // margin-top: 0.65rem
-    // margin-left: -0.1rem
-    // transition: color 0.5s, text-shadow 0.5s
-    // // margin-right: 0.5rem
-    // // border: 2px solid black
-    // &.error
-    //     color: #f14242
-    //     text-shadow: 0px 0px 10px #af0f0fd2
-
+        &.forFirefox
+            margin-right: -0.8rem
+            margin-left: 2.7rem
+            width: 6.25rem
 
 .timer-icon
+    display: none
     position: relative
     z-index: 2
+    height: 1rem
     align-content: center
     color: #6427aac2
     font-size: 1.55rem
-    margin-left: -0.65rem
-    margin-right: 1.3rem
+    margin-left: -1.15rem
+    margin-right: 1.4rem
     transition-duration: 0.5s
     // border: 2px solid brown
     i
-        line-height: 2.5rem
+        line-height: 2.45rem
     &.error
         color: #f14242
         text-shadow: 0px 0px 5px #af0f0fd2
+    &.forFirefox
+        display: inline-block
 
 .time-cont
     position: relative
     z-index: 1
-    justify-content: flex-end
-    padding-top: 0.45rem
-    margin-left: 0.7rem
+    margin-left: 0.4rem
     // border: 1px solid red
     .time
+        cursor: pointer
         width: 0
-        height: 1.5rem
         background-color: #fff
-        transition-duration: 0.1s
+        transition-duration: 0.25s
         // border: 1px solid brown
         &.active
-            width: 4.8rem
+            width: 5.4rem
 
 
 .confetti_container
