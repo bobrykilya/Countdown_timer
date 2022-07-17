@@ -58,8 +58,8 @@ h1
     // border: 2px solid black
 // .second-pair > :nth-child(1) 
     // border: 2px solid red
-.second-pair > :nth-child(2) 
-    width: 45vmin
+.notZeros
+    width: 43vmin
     // border: 2px solid brown
 
 .counter_container
@@ -141,7 +141,8 @@ $right : 2.5vw
     display: flex
     border-radius: size
     padding: 0.5rem 
-    // padding: 1.2vh 
+    // height: 3.5rem
+    // align-content: center 
     background-color: #fff
     border-radius: $size
     margin-top: 2vh
@@ -168,9 +169,6 @@ $right : 2.5vw
     &.rotation
         transform: rotate(-360deg)
         color: #88279bee
-    // &.error
-    //     color: #f14242
-    //     text-shadow: 0 0 2rem #af0f0fd2
 
 .date_input_btn span
     margin-left: 0.43rem
@@ -231,8 +229,9 @@ $right : 2.5vw
 
 .icon
     position: relative
-    z-index: 1
-    height: 1rem
+    z-index: 0
+    height: 0rem
+    width: 0rem
     align-content: center
     color: #6427aa
     font-size: 1.55rem
@@ -240,9 +239,9 @@ $right : 2.5vw
     // border: 2px solid brown
     i
         line-height: 2.45rem
-    // &.error
-    //     color: #f14242
-    //     text-shadow: 0px 0px 5px #af0f0fd2
+    &.error
+        color: #f14242
+        text-shadow: 0px 0px 5px #af0f0fd2
 
 
 ::-webkit-calendar-picker-indicator 
@@ -255,7 +254,7 @@ $right : 2.5vw
     margin-bottom: 0.2rem
     height: 2rem
     width: 2rem
-    // opacity: 0
+    opacity: 0
     // border: 1px solid red
 ::-webkit-inner-spin-button
     -webkit-appearance: none
@@ -285,29 +284,50 @@ $right : 2.5vw
     input
         z-index: 3
     &.active
-        width: 8.6rem
+        transition-duration: 0.25s
+        width: 8.7rem
         margin-left: 0.24rem
-        margin-right: 3.3rem
         &.forFirefox
             margin-left: 0.17rem
             margin-right: 1.5rem
 
+.calen-zone
+    display: flex
+    width: 0
+    transition-duration: 0.25s
+    opacity: 0
+    &.active
+        width: 13rem
+        opacity: 1
+        margin-right: 1rem
+        &.forFirefox
+            margin-right: 1.5rem
+
+
+.calen-icon
+    font-size: 1.65rem
+    margin-left: -1.85rem
+    margin-right: 1.4rem
+    margin-top: 0.1rem
+    i
+        line-height: 2rem
+    &.forFirefox
+        display: none
 
 .time-zone
     position: relative
-    // display: none
     display: flex
     width: 0
     opacity: 0
     position: relative
     align-content: center
     justify-content: flex-end
-    transition-duration: 0.25s
+    transition-duration: 0.25s,
     // border: 2px solid brown
     &.active
-        margin-right: 1rem
+        margin-right: 3rem
         margin-left: 2.7rem
-        width: 5.3rem
+        width: 3.3rem
         opacity: 1
         &.forFirefox
             margin-right: -0.8rem
@@ -317,9 +337,9 @@ $right : 2.5vw
 .timer-icon
     margin-left: -1.85rem
     &.forFirefox
-        // display: inline-block
         margin-left: -1.15rem
         margin-right: 1.4rem
+
 
 .time-cont
     position: relative
@@ -333,7 +353,7 @@ $right : 2.5vw
         transition-duration: 0.25s
         // border: 1px solid brown
         &.active
-            width: 6rem
+            width: 5.8rem
 
 
 .confirm_btn

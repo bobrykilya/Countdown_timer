@@ -38,18 +38,22 @@
                     <!-- <i class="fa-solid fa-clock"></i> -->
                 </div>
             </div>
-            <a href="#" class="date_clear_btn clear"> 
-                <!-- <i class="fa-regular fa-circle-xmark"></i> -->
-                <i class="fa-solid fa-xmark"></i>
-            </a>
-            <input class="date_input_area input_cl" type="date" required>
+            <div class="calen-zone">
+                <a href="#" class="date_clear_btn clear"> 
+                    <!-- <i class="fa-regular fa-circle-xmark"></i> -->
+                    <i class="fa-solid fa-xmark"></i>
+                </a>
+                <input class="date_input_area input_cl" type="date" required>
+                <div class="calen-icon icon">
+                    <i class="fa-regular fa-calendar"></i>
+                </div>
+            </div>
             <a href="#" class="date-confirm confirm_btn"> 
                 <i class="fa-solid fa-circle-check"></i> 
             </a>
             <a href="#" class="date_input_btn btn"> 
                 <span>
                     <i class="fa-solid fa-calendar-days"></i>
-                    <!-- <i class="fa-solid fa-calendar"></i> -->
                     <i class="fa-solid fa-clock"></i>
                 </span>
             </a>
@@ -81,7 +85,7 @@
                 <p>0</p>
                 <span>minutes</span>
             </div>
-            <div class="seconds">
+            <div id="second-pair_last" class="seconds">
                 <p>0</p>
                 <span>seconds</span>
             </div>
