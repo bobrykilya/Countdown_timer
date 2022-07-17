@@ -172,9 +172,26 @@ $right : 2.5vw
     //     color: #f14242
     //     text-shadow: 0 0 2rem #af0f0fd2
 
-        // background-color: #ffbdbd
-    // border: 1px solid red
-    
+.date_input_btn span
+    margin-left: 0.43rem
+    display: inline-block
+    white-space: nowrap
+    height: $size
+    width: $size - 0.43rem
+    // border: 2px solid red
+
+.date_input_btn span i:nth-child(2)
+    position: relative
+    right: 1.2rem
+    bottom: -0.1rem
+    margin-right: -0.1rem
+    margin-bottom: -10.26rem
+    font-size: 1rem
+    border: 1.5px solid white
+    background-color: white
+    border-radius: 50%
+
+
 .input_cl
     // border: none
     // outline: none
@@ -196,7 +213,7 @@ $right : 2.5vw
     z-index: 1
     top: 0.45rem
     margin: 0.2rem 0 0 0.6rem
-    transition-duration: 0.2s
+    transition: font-size 0.2s
     font-size: 1.2rem
     width: 1rem
     height: 1rem
@@ -206,11 +223,48 @@ $right : 2.5vw
         font-size: 1.3rem
         color: #8d0539
     :active
-        font-size: 1.2rem
+        font-size: 1.25rem
         color: #385ab9
     // border: 1px solid black
     &.active
         display: inline-block
+
+.icon
+    position: relative
+    z-index: 1
+    height: 1rem
+    align-content: center
+    color: #6427aa
+    font-size: 1.55rem
+    transition-duration: 0.5s
+    // border: 2px solid brown
+    i
+        line-height: 2.45rem
+    // &.error
+    //     color: #f14242
+    //     text-shadow: 0px 0px 5px #af0f0fd2
+
+
+::-webkit-calendar-picker-indicator 
+    -webkit-appearance: none
+    position: relative
+    z-index: 3
+    cursor: pointer
+    padding: 0
+    margin: 0
+    margin-bottom: 0.2rem
+    height: 2rem
+    width: 2rem
+    // opacity: 0
+    // border: 1px solid red
+::-webkit-inner-spin-button
+    -webkit-appearance: none
+    display: none
+::-webkit-clear-button
+    -webkit-appearance: none
+    display: none
+::-webkit-datetime-edit-text
+    color: black
 
 
 // Main containers -------------------------------------
@@ -222,25 +276,65 @@ $right : 2.5vw
             width: 16rem
             margin-left: 0.5rem
             margin-right: 3rem
-    
-.date_container
-    .date_input_area
-        cursor: pointer
-        // border-bottom: 1px solid #c5c5c5
-        // transition: width 0.4s
-        :-webkit-inner-spin-button
-            -webkit-appearance: none
-            display: none
-        :-webkit-clear-button
-            -webkit-appearance: none
-            display: none
-        &.active
-            width: 8.2rem
+
+
+.date_input_area
+    position: relative
+    cursor: pointer
+    // border-bottom: 1px solid #c5c5c5
+    input
+        z-index: 3
+    &.active
+        width: 8.6rem
+        margin-left: 0.24rem
+        margin-right: 3.3rem
+        &.forFirefox
             margin-left: 0.17rem
-            margin-right: 3rem
-            &.forFirefox
-                margin-left: 0.17rem
-                margin-right: 1.5rem
+            margin-right: 1.5rem
+
+
+.time-zone
+    position: relative
+    // display: none
+    display: flex
+    width: 0
+    opacity: 0
+    position: relative
+    align-content: center
+    justify-content: flex-end
+    transition-duration: 0.25s
+    // border: 2px solid brown
+    &.active
+        margin-right: 1rem
+        margin-left: 2.7rem
+        width: 5.3rem
+        opacity: 1
+        &.forFirefox
+            margin-right: -0.8rem
+            margin-left: 2.7rem
+            width: 6.25rem
+
+.timer-icon
+    margin-left: -1.85rem
+    &.forFirefox
+        // display: inline-block
+        margin-left: -1.15rem
+        margin-right: 1.4rem
+
+.time-cont
+    position: relative
+    margin-left: 0.5rem
+    // border: 1px solid red
+    input
+        z-index: 3
+        cursor: pointer
+        width: 0
+        background-color: #fff
+        transition-duration: 0.25s
+        // border: 1px solid brown
+        &.active
+            width: 6rem
+
 
 .confirm_btn
     position: absolute
@@ -315,63 +409,6 @@ $right : 2.5vw
         z-index: 1
         cursor: pointer
     // border: 2px solid brown
-
-
-
-.time-zone
-    position: relative
-    // display: none
-    display: flex
-    width: 0
-    opacity: 0
-    position: relative
-    align-content: center
-    justify-content: flex-end
-    transition-duration: 0.25s
-    // border: 2px solid brown
-    &.active
-        margin-right: 0.5rem
-        margin-left: 2.7rem
-        width: 4.45rem
-        opacity: 1
-        &.forFirefox
-            margin-right: -0.8rem
-            margin-left: 2.7rem
-            width: 6.25rem
-
-.timer-icon
-    display: none
-    position: relative
-    z-index: 2
-    height: 1rem
-    align-content: center
-    color: #6427aac2
-    font-size: 1.55rem
-    margin-left: -1.15rem
-    margin-right: 1.4rem
-    transition-duration: 0.5s
-    // border: 2px solid brown
-    i
-        line-height: 2.45rem
-    &.error
-        color: #f14242
-        text-shadow: 0px 0px 5px #af0f0fd2
-    &.forFirefox
-        display: inline-block
-
-.time-cont
-    position: relative
-    z-index: 1
-    margin-left: 0.4rem
-    // border: 1px solid red
-    .time
-        cursor: pointer
-        width: 0
-        background-color: #fff
-        transition-duration: 0.25s
-        // border: 1px solid brown
-        &.active
-            width: 5.4rem
 
 
 .confetti_container

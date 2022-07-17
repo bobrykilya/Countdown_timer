@@ -155,6 +155,7 @@ if (getBrowserId() == 0){
     timer_icon.classList.add('forFirefox');
 };
 
+
 // Browser detecting
 function getBrowserId(){
     let brKeys = ["Firefox", "Safari", "MSIE", "Chrome", "Opera", "Edg"];

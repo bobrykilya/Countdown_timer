@@ -259,6 +259,26 @@ h1 {
   color: rgba(136, 39, 155, 0.9333333333);
 }
 
+.date_input_btn span {
+  margin-left: 0.43rem;
+  display: inline-block;
+  white-space: nowrap;
+  height: 2.5rem;
+  width: 2.07rem;
+}
+
+.date_input_btn span i:nth-child(2) {
+  position: relative;
+  right: 1.2rem;
+  bottom: -0.1rem;
+  margin-right: -0.1rem;
+  margin-bottom: -10.26rem;
+  font-size: 1rem;
+  border: 1.5px solid white;
+  background-color: white;
+  border-radius: 50%;
+}
+
 .input_cl {
   font-size: 1.1rem;
   font-style: italic;
@@ -276,7 +296,7 @@ h1 {
   z-index: 1;
   top: 0.45rem;
   margin: 0.2rem 0 0 0.6rem;
-  transition-duration: 0.2s;
+  transition: font-size 0.2s;
   font-size: 1.2rem;
   width: 1rem;
   height: 1rem;
@@ -287,11 +307,50 @@ h1 {
   color: #8d0539;
 }
 .clear :active {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: #385ab9;
 }
 .clear.active {
   display: inline-block;
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  height: 1rem;
+  align-content: center;
+  color: #6427aa;
+  font-size: 1.55rem;
+  transition-duration: 0.5s;
+}
+.icon i {
+  line-height: 2.45rem;
+}
+
+::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+  position: relative;
+  z-index: 3;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.2rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+::-webkit-clear-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+::-webkit-datetime-edit-text {
+  color: black;
 }
 
 .text_container .input_area {
@@ -303,25 +362,66 @@ h1 {
   margin-right: 3rem;
 }
 
-.date_container .date_input_area {
+.date_input_area {
+  position: relative;
   cursor: pointer;
 }
-.date_container .date_input_area :-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  display: none;
+.date_input_area input {
+  z-index: 3;
 }
-.date_container .date_input_area :-webkit-clear-button {
-  -webkit-appearance: none;
-  display: none;
+.date_input_area.active {
+  width: 8.6rem;
+  margin-left: 0.24rem;
+  margin-right: 3.3rem;
 }
-.date_container .date_input_area.active {
-  width: 8.2rem;
-  margin-left: 0.17rem;
-  margin-right: 3rem;
-}
-.date_container .date_input_area.active.forFirefox {
+.date_input_area.active.forFirefox {
   margin-left: 0.17rem;
   margin-right: 1.5rem;
+}
+
+.time-zone {
+  position: relative;
+  display: flex;
+  width: 0;
+  opacity: 0;
+  position: relative;
+  align-content: center;
+  justify-content: flex-end;
+  transition-duration: 0.25s;
+}
+.time-zone.active {
+  margin-right: 1rem;
+  margin-left: 2.7rem;
+  width: 5.3rem;
+  opacity: 1;
+}
+.time-zone.active.forFirefox {
+  margin-right: -0.8rem;
+  margin-left: 2.7rem;
+  width: 6.25rem;
+}
+
+.timer-icon {
+  margin-left: -1.85rem;
+}
+.timer-icon.forFirefox {
+  margin-left: -1.15rem;
+  margin-right: 1.4rem;
+}
+
+.time-cont {
+  position: relative;
+  margin-left: 0.5rem;
+}
+.time-cont input {
+  z-index: 3;
+  cursor: pointer;
+  width: 0;
+  background-color: #fff;
+  transition-duration: 0.25s;
+}
+.time-cont input.active {
+  width: 6rem;
 }
 
 .confirm_btn {
@@ -403,66 +503,6 @@ h1 {
   position: relative;
   z-index: 1;
   cursor: pointer;
-}
-
-.time-zone {
-  position: relative;
-  display: flex;
-  width: 0;
-  opacity: 0;
-  position: relative;
-  align-content: center;
-  justify-content: flex-end;
-  transition-duration: 0.25s;
-}
-.time-zone.active {
-  margin-right: 0.5rem;
-  margin-left: 2.7rem;
-  width: 4.45rem;
-  opacity: 1;
-}
-.time-zone.active.forFirefox {
-  margin-right: -0.8rem;
-  margin-left: 2.7rem;
-  width: 6.25rem;
-}
-
-.timer-icon {
-  display: none;
-  position: relative;
-  z-index: 2;
-  height: 1rem;
-  align-content: center;
-  color: rgba(100, 39, 170, 0.7607843137);
-  font-size: 1.55rem;
-  margin-left: -1.15rem;
-  margin-right: 1.4rem;
-  transition-duration: 0.5s;
-}
-.timer-icon i {
-  line-height: 2.45rem;
-}
-.timer-icon.error {
-  color: #f14242;
-  text-shadow: 0px 0px 5px rgba(175, 15, 15, 0.8235294118);
-}
-.timer-icon.forFirefox {
-  display: inline-block;
-}
-
-.time-cont {
-  position: relative;
-  z-index: 1;
-  margin-left: 0.4rem;
-}
-.time-cont .time {
-  cursor: pointer;
-  width: 0;
-  background-color: #fff;
-  transition-duration: 0.25s;
-}
-.time-cont .time.active {
-  width: 5.4rem;
 }
 
 .confetti_container {
