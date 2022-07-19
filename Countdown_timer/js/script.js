@@ -207,7 +207,7 @@ function today_activation(){
     else tomorow_notif.classList.remove('active');
 };
 
-function highlightError(class_name, notif_name){
+function highlightError(class_name){
     class_name.classList.add('error');
     setTimeout(() => {
         class_name.classList.remove('error');

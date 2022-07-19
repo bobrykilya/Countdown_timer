@@ -328,6 +328,7 @@ h1 {
   color: #6427aa;
   font-size: 1.55rem;
   transition-duration: 0.15s;
+  pointer-events: none;
 }
 .icon i {
   line-height: 2.45rem;
@@ -487,7 +488,7 @@ h1 {
 }
 
 .time_notif {
-  left: -0.28rem;
+  left: -0.45rem;
   bottom: -0.15rem;
 }
 
