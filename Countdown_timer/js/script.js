@@ -19,6 +19,7 @@ const date_clr_button = document.querySelector('.date_clear_btn');
 const date_confirm_button = document.querySelector('.date-confirm');
 const calen_zone = document.querySelector('.calen-zone');
 const calen_icon = document.querySelector('.calen-icon');
+const today_notif = document.querySelector('.today-notif');
 
 
 const time_zone = document.querySelector('.time-zone');
@@ -44,7 +45,6 @@ let myCelebration = newYear;
 // console.log(myCelebration);
 
 const currentDate = new Date();
-dateLimits();
 
 date_input_area.value = currentDateShort()[0];
 time.value = "00:00";
@@ -97,8 +97,15 @@ function countdown(){
     }else last_seconds.classList.add('notZeros');
     // setTimeout(finishFun, 5000);
 
-    //Hour cheking for night mode
+    if (date_input_area.value == currentDateShort()[0])
+        today_notif.classList.add('active')
+    else today_notif.classList.remove('active');
+
+    // Hour cheking for night mode
     nightMode();
+
+    // Setting date limits
+    dateLimits();
 
     return String(new Date()).slice(16,21);
 }; 
@@ -127,12 +134,11 @@ function zeroAdding(number){
 //Calculation short form of current date
 function currentDateShort(){
     // tomorrow = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
-    year = currentDate.getFullYear();
-    month = currentDate.getMonth() + 1; // Сounting from zero
-    day = currentDate.getDate();
+    year = new Date().getFullYear();
+    month = new Date().getMonth() + 1; // Сounting from zero
+    day = new Date().getDate();
     if (month < 10) month = '0' + month;
     if (day < 10) day = '0' + day;
-    // console.log(day);
     return [`${year}-${month}-${day}`, `${year + 27}-${month}-${day}`];
 };
 
@@ -141,8 +147,8 @@ function currentDateShort(){
 function dateLimits(){
     minDate = currentDateShort()[0];
     maxDate = currentDateShort()[1];
-    document.querySelector('.date_input_area').setAttribute('min', minDate);
-    document.querySelector('.date_input_area').setAttribute('max', maxDate);
+    date_input_area.setAttribute('min', minDate);
+    date_input_area.setAttribute('max', maxDate);
 };
 
 
@@ -219,7 +225,7 @@ function inputCleaning(){
 
 function date_inputCleaning(){
     date_input_area.value = currentDateShort()[0];
-    // myCelebration = newYear;
+    today_notif.classList.add('active');
 };
 
 function timeCleaning(){
@@ -413,6 +419,12 @@ document.addEventListener('keydown', (event) => {
     };
 });
 
+// Handling date input editing
+window.addEventListener('input', () => {
+    if (date_input_area.value == currentDateShort()[0])
+        today_notif.classList.add('active')
+    else today_notif.classList.remove('active');
+});
 
 //Escape tap handling
 document.addEventListener('keyup', (event) => {

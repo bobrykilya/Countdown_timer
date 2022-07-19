@@ -150,7 +150,7 @@ $right : 2.5vw
     box-shadow: 0.2 0.2 1rem #8f8b8b71
     &.error
         // background-color: #fce5e5
-        box-shadow: 0 0 2rem #fd0000d2
+        box-shadow: 0 0 2rem #fd0000d2, inset 0 0 5px #f86868ef
     // border: 2px solid orange
 .btn
     position: relative
@@ -298,6 +298,7 @@ $right : 2.5vw
             // margin-right: -1.5rem
 
 .calen-zone
+    position: relative
     display: flex
     width: 0
     transition-duration: 0.25s
@@ -308,7 +309,7 @@ $right : 2.5vw
         margin-right: 1rem
         &.forFirefox
             width: 10rem
-            margin-right: 2.2rem
+            margin-right: 2rem
 
 
 .calen-icon
@@ -347,7 +348,6 @@ $right : 2.5vw
         margin-left: -1.15rem
         margin-right: 1.4rem
 
-
 .time-cont
     position: relative
     margin-left: 0.5rem
@@ -361,6 +361,19 @@ $right : 2.5vw
         // border: 1px solid brown
         &.active
             width: 5.8rem
+
+.today-notif
+    position: absolute
+    left: 2.2rem
+    bottom: -0.15rem
+    color: #a7a6a6
+    font-size: 0.7rem
+    transition: 0.5s 
+    transform: translateX(-0.7rem)
+    opacity: 0
+    &.active
+        opacity: 1
+        transform: translateX(0rem)
 
 
 .confirm_btn

@@ -235,7 +235,7 @@ h1 {
   box-shadow: 0.2 0.2 1rem rgba(143, 139, 139, 0.4431372549);
 }
 .cont.error {
-  box-shadow: 0 0 2rem rgba(253, 0, 0, 0.8235294118);
+  box-shadow: 0 0 2rem rgba(253, 0, 0, 0.8235294118), inset 0 0 5px rgba(248, 104, 104, 0.937254902);
 }
 
 .btn {
@@ -389,6 +389,7 @@ h1 {
 }
 
 .calen-zone {
+  position: relative;
   display: flex;
   width: 0;
   transition-duration: 0.25s;
@@ -401,7 +402,7 @@ h1 {
 }
 .calen-zone.active.forFirefox {
   width: 10rem;
-  margin-right: 2.2rem;
+  margin-right: 2rem;
 }
 
 .calen-icon {
@@ -460,6 +461,21 @@ h1 {
 }
 .time-cont input.active {
   width: 5.8rem;
+}
+
+.today-notif {
+  position: absolute;
+  left: 2.2rem;
+  bottom: -0.15rem;
+  color: #a7a6a6;
+  font-size: 0.7rem;
+  transition: 0.5s;
+  transform: translateX(-0.7rem);
+  opacity: 0;
+}
+.today-notif.active {
+  opacity: 1;
+  transform: translateX(0rem);
 }
 
 .confirm_btn {
