@@ -103,6 +103,7 @@ body {
 }
 
 h1 {
+  word-wrap: break-word;
   transition-duration: font-size 0.2s;
   letter-spacing: -0.7vmin;
   text-align: center;
@@ -326,7 +327,7 @@ h1 {
   align-content: center;
   color: #6427aa;
   font-size: 1.55rem;
-  transition-duration: 0.5s;
+  transition-duration: 0.15s;
 }
 .icon i {
   line-height: 2.45rem;
@@ -334,6 +335,9 @@ h1 {
 .icon.error {
   color: #f14242;
   text-shadow: 0px 0px 5px rgba(175, 15, 15, 0.8235294118);
+}
+.icon.hover {
+  color: rgba(155, 39, 39, 0.9333333333);
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -437,15 +441,16 @@ h1 {
 .time-zone.active.forFirefox {
   margin-right: 1.2rem;
   margin-left: 2.7rem;
-  width: 5.2rem;
+  width: 4.8rem;
 }
 
 .timer-icon {
   margin-left: -1.85rem;
 }
 .timer-icon.forFirefox {
-  margin-left: -1.15rem;
+  margin-left: -1.55rem;
   margin-right: 1.4rem;
+  color: rgba(100, 39, 170, 0.7607843137);
 }
 
 .time-cont {
@@ -463,19 +468,32 @@ h1 {
   width: 5.8rem;
 }
 
-.day-notif {
+.notif {
   position: absolute;
-  left: 2.1rem;
-  bottom: -0.15rem;
   color: #a7a6a6;
   font-size: 0.7rem;
   transition: 0.5s;
   transform: translateX(-0.7rem);
   opacity: 0;
 }
-.day-notif.active {
+.notif.active {
   opacity: 1;
   transform: translateX(0rem);
+}
+
+.date_notif {
+  left: 2.05rem;
+  bottom: -0.15rem;
+}
+
+.time_notif {
+  left: -0.28rem;
+  bottom: -0.15rem;
+}
+
+.error-notif {
+  width: 6rem;
+  color: #e05454;
 }
 
 .confirm_btn {

@@ -37,6 +37,7 @@ body
     -ms-user-select: none      // Internet Explorer/Edge
 
 h1
+    word-wrap: break-word
     transition-duration: font-size 0.2s
     letter-spacing: -0.7vmin
     text-align: center
@@ -240,13 +241,15 @@ $right : 2.5vw
     align-content: center
     color: #6427aa
     font-size: 1.55rem
-    transition-duration: 0.5s
+    transition-duration: 0.15s
     // border: 2px solid brown
     i
         line-height: 2.45rem
     &.error
         color: #f14242
         text-shadow: 0px 0px 5px #af0f0fd2
+    &.hover
+        color: #9b2727ee
 
 
 ::-webkit-calendar-picker-indicator 
@@ -340,13 +343,14 @@ $right : 2.5vw
         &.forFirefox
             margin-right: 1.2rem
             margin-left: 2.7rem
-            width: 5.2rem
+            width: 4.8rem
 
 .timer-icon
     margin-left: -1.85rem
     &.forFirefox
-        margin-left: -1.15rem
+        margin-left: -1.55rem
         margin-right: 1.4rem
+        color: #6427aac2
 
 .time-cont
     position: relative
@@ -362,10 +366,8 @@ $right : 2.5vw
         &.active
             width: 5.8rem
 
-.day-notif
+.notif
     position: absolute
-    left: 2.1rem
-    bottom: -0.15rem
     color: #a7a6a6
     font-size: 0.7rem
     transition: 0.5s 
@@ -375,12 +377,24 @@ $right : 2.5vw
         opacity: 1
         transform: translateX(0rem)
 
+.date_notif
+    left: 2.05rem
+    bottom: -0.15rem
+    // border: 1px solid black
+
+.time_notif
+    left: -0.28rem
+    bottom: -0.15rem
+
+.error-notif
+    width: 6rem
+    color: #e05454
+    // opacity: 1
 
 .confirm_btn
     position: absolute
     z-index: -1
     right: -0.2rem
-    // transform: translateY(0.3rem)
     margin: 0.5rem 1.5rem 0 0
     width: 1rem
     height: 1rem

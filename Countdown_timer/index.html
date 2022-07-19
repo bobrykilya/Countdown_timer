@@ -26,34 +26,36 @@
         </div>
         <div class="date_container cont">
             <div class="time-zone">
-                <a href="#" class="time-clear clear">
+                <a href="#" class="time-clear clear" tabindex="-1">
                     <!-- <i class="fa-regular fa-circle-xmark"></i> -->
                     <i class="fa-solid fa-xmark"></i>
                 </a>
                 <div class="time-cont">
-                    <input class="time input_cl" type="time" required>
+                    <input class="time input_cl" type="time" tabindex="1" required>
                 </div>
+                <span class="notif time_notif error-notif time_err">invalid time</span>
                 <div class="timer-icon icon">
                     <i class="fa-regular fa-clock"></i>
                     <!-- <i class="fa-solid fa-clock"></i> -->
                 </div>
             </div>
             <div class="calen-zone">
-                <a href="#" class="date_clear_btn clear"> 
+                <a href="#" class="date_clear_btn clear" tabindex="-1"> 
                     <!-- <i class="fa-regular fa-circle-xmark"></i> -->
                     <i class="fa-solid fa-xmark"></i>
                 </a>
-                <input class="date_input_area input_cl" type="date" required>
-                <span class="day-notif today">today</span>
-                <span class="day-notif tomorrow">tomorrow</span>
+                <input class="date_input_area input_cl" type="date" tabindex="2" required>
+                <span class="notif date_notif today">today</span>
+                <span class="notif date_notif tomorrow">tomorrow</span>
+                <span class="notif date_notif error-notif date_err">invalid date</span>
                 <div class="calen-icon icon">
                     <i class="fa-regular fa-calendar"></i>
                 </div>
             </div>
-            <a href="#" class="date-confirm confirm_btn"> 
+            <a href="#" class="date-confirm confirm_btn" tabindex="-1"> 
                 <i class="fa-solid fa-circle-check"></i> 
             </a>
-            <a href="#" class="date_input_btn btn"> 
+            <a href="#" class="date_input_btn btn" tabindex="-1"> 
                 <span>
                     <i class="fa-solid fa-calendar-days"></i>
                     <i class="fa-solid fa-clock"></i>

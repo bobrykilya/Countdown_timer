@@ -5,11 +5,13 @@ const celebName = document.querySelector('h1');
 const last_seconds = document.querySelector('#second-pair_last');
 
 
+
 const input_area = document.querySelector('.input_area');
 const button = document.querySelector('.input_btn');
 const input_cont = document.querySelector('.text_container');
 const clr_button = document.querySelector('.clear_btn');
 const text_confirm_button = document.querySelector('.text_confirm');
+
 
 
 const date_input_area = document.querySelector('.date_input_area');
@@ -19,14 +21,18 @@ const date_clr_button = document.querySelector('.date_clear_btn');
 const date_confirm_button = document.querySelector('.date-confirm');
 const calen_zone = document.querySelector('.calen-zone');
 const calen_icon = document.querySelector('.calen-icon');
-const today_notif = document.querySelector('.today');
-const tomorow_notif = document.querySelector('.tomorrow');
 
 
 const time_zone = document.querySelector('.time-zone');
 const time = document.querySelector('.time');
 const time_clr_button = document.querySelector('.time-clear');
 const time_icon = document.querySelector('.timer-icon');
+
+const today_notif = document.querySelector('.today');
+const tomorow_notif = document.querySelector('.tomorrow');
+const time_err = document.querySelector('.time_err');
+const date_err = document.querySelector('.date_err');
+
 
 
 const ok_reset = document.querySelector('.ok_btn');
@@ -185,7 +191,7 @@ function getBrowserId(){
     // console.log(navigator.userAgent);
 
     brKeys.forEach(brows => { 
-        // console.log(brows);        
+        // console.log(brows);
         if (navigator.userAgent.includes(brows)) BrIndx = brKeys.indexOf(brows);
     });
     return BrIndx;
@@ -200,30 +206,18 @@ function today_activation(){
         tomorow_notif.classList.add('active')
     else tomorow_notif.classList.remove('active');
 };
-// Time input processing and limits
-// document.addEventListener('keydown', (event) => {
-//     // console.log(event.code);
-//     time_val = time.value;
-    
-//     time_pos = time.selectionStart;
-        
-//     // console.log(time_pos);
 
-//     pos = time_val.slice(0, time.selectionStart).length;
-//     // console.log(pos);
-//     // console.log(time_pos);
-
-
-//     if (event.code == 'Backspace') {
-//         console.log(event.code);
-//     };
-//     });
-
-    
-function highlithError(class_name){
-    class_name.classList.add('error')
+function highlightError(class_name, notif_name){
+    class_name.classList.add('error');
     setTimeout(() => {
         class_name.classList.remove('error');
+        },500);
+};
+
+function notificError(notif_name){
+    notif_name.classList.add('active');
+    setTimeout(() => {
+        notif_name.classList.remove('active');
         },500);
 };
     
@@ -243,8 +237,6 @@ function date_inputCleaning(){
 
 function timeCleaning(){
     time.value = "00:00";
-    // highlithError(time_icon);
-    // highlithError(date_input_cont);
 };
 
 
@@ -270,6 +262,7 @@ function date_toggleOfBtn(){
     time_clr_button.classList.toggle('active');
     // console.log(date_input_area.value);
     // console.log(myCelebration);
+
     if (date_input_area.value != localStorage.getItem('celeb_date') & 
         !date_input_area.classList.contains('active')) {
             setTimeout(() => {
@@ -321,16 +314,19 @@ function dateConfirm(){
     date_input_area.value < currentDateShort()[0] || String(date_input_area.value.split('-')[0]).length > 4) {
         // console.log(date_input_area.value);
         if (time.value === "") {
-            highlithError(time_icon);
+            highlightError(time_icon);
+            notificError(time_err);
         };
-        highlithError(date_input_cont);
-        highlithError(calen_icon);
-        highlithError(date_button);
+        highlightError(date_input_cont);
+        highlightError(calen_icon);
+        notificError(date_err);
+        highlightError(date_button);
         return;
     };
     if (time.value === "") {
-        highlithError(date_input_cont);
-        highlithError(time_icon);
+        highlightError(date_input_cont);
+        highlightError(time_icon);
+        notificError(time_err);
         return;
     };
 
@@ -346,10 +342,11 @@ function dateConfirm(){
     if (date_input_area.value === currentDateShort()[0]){ 
         if (val_time_h < curr_time_h || 
             (val_time_h == curr_time_h & val_time_m <= curr_time_m)){ 
-            highlithError(date_input_cont);
-            highlithError(time_icon);
+            highlightError(date_input_cont);
+            highlightError(time_icon);
+            notificError(time_err);
             return;
-        } else if (val_time_h == curr_time_h & val_time_m < curr_time_m);
+        };
     };
 
 
@@ -363,8 +360,7 @@ function dateConfirm(){
         recordCurrDate();
         date_confirm_button.blur();
         // console.log(time.value);
-    };//else {
-        // highlithError(date_input_cont);
+    };
 };
 
 
@@ -377,8 +373,7 @@ text_confirm_button.addEventListener('click', () => {
         localStorage.setItem('celeb_title', input_area.value);
         toggleOfBtn();
     } else {
-    highlithError(input_cont);
-    // highlithError(button);
+    highlightError(input_cont);
     }
 });
 
@@ -413,7 +408,7 @@ document.addEventListener('keyup', (event) => {
     if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
         input_area.classList.contains('active')) {
         if (input_area.value === ""){
-            highlithError(input_cont);
+            highlightError(input_cont);
             return;
         };
         celebName.innerText = input_area.value;
