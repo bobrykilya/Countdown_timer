@@ -68,8 +68,8 @@ function chekingData(){
 
 
 // Heart beats of the timer
-countdown();
 let secondInterval = setInterval(countdown, 1000);
+countdown();
 
 
 // Countdown timer algorithm
@@ -163,6 +163,7 @@ if (getBrowserId() == 0){
     time.classList.add('forFirefox');
     calen_icon.classList.add('forFirefox');
     time_icon.classList.add('forFirefox');
+    date_button.classList.add('forFirefox');
 };
 
 
@@ -222,7 +223,6 @@ function date_inputCleaning(){
 };
 
 function timeCleaning(){
-    // console.log(time.value);
     time.value = "00:00";
     // highlithError(time_icon);
     // highlithError(date_input_cont);
@@ -297,14 +297,16 @@ function reset_doc(){
 };
 
 function dateConfirm(){
-    // Empty input control 
+    // Inputs and date limits control
     if (date_input_area.value > currentDateShort()[1] || 
-    date_input_area.value < currentDateShort()[0]) {
+    date_input_area.value < currentDateShort()[0] || String(date_input_area.value.split('-')[0]).length > 4) {
+        // console.log(date_input_area.value);
         if (time.value === "") {
             highlithError(time_icon);
         };
         highlithError(date_input_cont);
         highlithError(calen_icon);
+        highlithError(date_button);
         return;
     };
     if (time.value === "") {
@@ -313,17 +315,24 @@ function dateConfirm(){
         return;
     };
 
-    // Time control
-    val_time = new Date(time.value.slice(0, 2), time.value.slice(3, 5));
-    current_time = new Date(countdown().slice(0, 2), countdown().slice(3, 5))
-    // console.log(val_time <= current_time);
 
-    if (date_input_area.value === currentDateShort()[0] & 
-    val_time <= current_time) {
-        highlithError(date_input_cont);
-        highlithError(time_icon);
-        return;
+    // Time control
+    val_time_h = time.value.slice(0, 2);
+    val_time_m = time.value.slice(3, 5);
+    curr_time_h = countdown().slice(0, 2);
+    curr_time_m = countdown().slice(3, 5);
+    //console.log(val_time_m);
+    //console.log(current_time_m);
+
+    if (date_input_area.value === currentDateShort()[0]){ 
+        if (val_time_h < curr_time_h || 
+            (val_time_h == curr_time_h & val_time_m <= curr_time_m)){ 
+            highlithError(date_input_cont);
+            highlithError(time_icon);
+            return;
+        } else if (val_time_h == curr_time_h & val_time_m < curr_time_m);
     };
+
 
     // Success 
     if (date_input_area.value != "" & time.value != "") {

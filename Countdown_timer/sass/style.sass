@@ -169,6 +169,11 @@ $right : 2.5vw
     &.rotation
         transform: rotate(-360deg)
         color: #88279bee
+    &.forFirefox
+        &.error
+            color: #f14242
+            text-shadow: 0 0 2rem #af0f0fd2
+
 
 .date_input_btn span
     margin-left: 0.43rem
@@ -288,8 +293,9 @@ $right : 2.5vw
         width: 8.7rem
         margin-left: 0.24rem
         &.forFirefox
-            margin-left: 0.17rem
-            margin-right: 1.5rem
+            width: 7.65rem
+            // margin-left: 0.17rem
+            // margin-right: -1.5rem
 
 .calen-zone
     display: flex
@@ -301,7 +307,8 @@ $right : 2.5vw
         opacity: 1
         margin-right: 1rem
         &.forFirefox
-            margin-right: 1.5rem
+            width: 10rem
+            margin-right: 2.2rem
 
 
 .calen-icon
@@ -330,9 +337,9 @@ $right : 2.5vw
         width: 3.3rem
         opacity: 1
         &.forFirefox
-            margin-right: -0.8rem
+            margin-right: 1.2rem
             margin-left: 2.7rem
-            width: 6.25rem
+            width: 5.2rem
 
 .timer-icon
     margin-left: -1.85rem

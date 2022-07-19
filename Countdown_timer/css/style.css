@@ -258,6 +258,10 @@ h1 {
   transform: rotate(-360deg);
   color: rgba(136, 39, 155, 0.9333333333);
 }
+.btn.forFirefox.error {
+  color: #f14242;
+  text-shadow: 0 0 2rem rgba(175, 15, 15, 0.8235294118);
+}
 
 .date_input_btn span {
   margin-left: 0.43rem;
@@ -381,8 +385,7 @@ h1 {
   margin-left: 0.24rem;
 }
 .date_input_area.active.forFirefox {
-  margin-left: 0.17rem;
-  margin-right: 1.5rem;
+  width: 7.65rem;
 }
 
 .calen-zone {
@@ -397,7 +400,8 @@ h1 {
   margin-right: 1rem;
 }
 .calen-zone.active.forFirefox {
-  margin-right: 1.5rem;
+  width: 10rem;
+  margin-right: 2.2rem;
 }
 
 .calen-icon {
@@ -430,9 +434,9 @@ h1 {
   opacity: 1;
 }
 .time-zone.active.forFirefox {
-  margin-right: -0.8rem;
+  margin-right: 1.2rem;
   margin-left: 2.7rem;
-  width: 6.25rem;
+  width: 5.2rem;
 }
 
 .timer-icon {
