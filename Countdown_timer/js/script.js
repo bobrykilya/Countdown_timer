@@ -19,7 +19,8 @@ const date_clr_button = document.querySelector('.date_clear_btn');
 const date_confirm_button = document.querySelector('.date-confirm');
 const calen_zone = document.querySelector('.calen-zone');
 const calen_icon = document.querySelector('.calen-icon');
-const today_notif = document.querySelector('.today-notif');
+const today_notif = document.querySelector('.today');
+const tomorow_notif = document.querySelector('.tomorrow');
 
 
 const time_zone = document.querySelector('.time-zone');
@@ -42,12 +43,13 @@ const confetti_cont = document.querySelector('.confetti_container');
 const nextYear = new Date().getFullYear() + 1;
 const newYear = `${nextYear}-01-01`;
 let myCelebration = newYear;
+let celebTime = "00:00"
 // console.log(myCelebration);
 
 const currentDate = new Date();
 
 date_input_area.value = currentDateShort()[0];
-time.value = "00:00";
+time.value = celebTime;
 
 
 // Local storage handling
@@ -62,6 +64,10 @@ function chekingData(){
         recordCurrDate();
         date_input_area.value = myCelebration;
     };
+    if (localStorage.getItem('celeb_time')){
+        celebTime = localStorage.getItem('celeb_time');
+        time.value = celebTime;
+    };
 };
 
 
@@ -75,7 +81,7 @@ countdown();
 // Countdown timer algorithm
 function countdown(){
     const currentDate = new Date();
-    const myCelebrationDate = new Date(myCelebration);
+    const myCelebrationDate = new Date(myCelebration).setHours(celebTime.split(':')[0], celebTime.split(':')[1]);
     let resultDate = myCelebrationDate - currentDate;
     if (resultDate < 0) resultDate = 0;
     
@@ -97,9 +103,7 @@ function countdown(){
     }else last_seconds.classList.add('notZeros');
     // setTimeout(finishFun, 5000);
 
-    if (date_input_area.value == currentDateShort()[0])
-        today_notif.classList.add('active')
-    else today_notif.classList.remove('active');
+    today_activation();
 
     // Hour cheking for night mode
     nightMode();
@@ -139,7 +143,9 @@ function currentDateShort(){
     day = new Date().getDate();
     if (month < 10) month = '0' + month;
     if (day < 10) day = '0' + day;
-    return [`${year}-${month}-${day}`, `${year + 27}-${month}-${day}`];
+
+    let tomorrow_day = new Date(new Date().getTime() + (24 * 60 * 60 * 1000)).getDate();
+    return [`${year}-${month}-${day}`, `${year + 27}-${month}-${day}`, `${year}-${month}-${tomorrow_day}`];
 };
 
 
@@ -185,8 +191,15 @@ function getBrowserId(){
     return BrIndx;
 };
 
+function today_activation(){
+    if (date_input_area.value == currentDateShort()[0])
+        today_notif.classList.add('active')
+    else today_notif.classList.remove('active');
 
-
+    if (date_input_area.value == currentDateShort()[2])
+        tomorow_notif.classList.add('active')
+    else tomorow_notif.classList.remove('active');
+};
 // Time input processing and limits
 // document.addEventListener('keydown', (event) => {
 //     // console.log(event.code);
@@ -343,9 +356,9 @@ function dateConfirm(){
     // Success 
     if (date_input_area.value != "" & time.value != "") {
         myCelebration = date_input_area.value;
-        CelebTime = time.value;
+        celebTime = time.value;
         localStorage.setItem('celeb_date', myCelebration);
-        localStorage.setItem('celeb_time', CelebTime);
+        localStorage.setItem('celeb_time', celebTime);
         date_toggleOfBtn();
         recordCurrDate();
         date_confirm_button.blur();
@@ -419,12 +432,10 @@ document.addEventListener('keydown', (event) => {
     };
 });
 
+
 // Handling date input editing
-window.addEventListener('input', () => {
-    if (date_input_area.value == currentDateShort()[0])
-        today_notif.classList.add('active')
-    else today_notif.classList.remove('active');
-});
+window.addEventListener('input', today_activation);
+
 
 //Escape tap handling
 document.addEventListener('keyup', (event) => {
@@ -435,18 +446,6 @@ document.addEventListener('keyup', (event) => {
     if (event.code === 'Escape' &
         ok_reset.classList.contains('active')) reset_toggleOfBtn()
 });
-
-
-// Areas cleaning after reload
-/*
-document.addEventListener("DOMContentLoaded", () => {
-    inputCleaning();
-    input_area.blur();
-    date_inputCleaning();
-    const currentDate = new Date();
-    date_input_area.value = currentDate;
-});
-*/
 
 
 // Inputs closing by click outside 

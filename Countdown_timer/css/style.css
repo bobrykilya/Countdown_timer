@@ -385,7 +385,7 @@ h1 {
   margin-left: 0.24rem;
 }
 .date_input_area.active.forFirefox {
-  width: 7.65rem;
+  width: 7.9rem;
 }
 
 .calen-zone {
@@ -463,9 +463,9 @@ h1 {
   width: 5.8rem;
 }
 
-.today-notif {
+.day-notif {
   position: absolute;
-  left: 2.2rem;
+  left: 2.1rem;
   bottom: -0.15rem;
   color: #a7a6a6;
   font-size: 0.7rem;
@@ -473,7 +473,7 @@ h1 {
   transform: translateX(-0.7rem);
   opacity: 0;
 }
-.today-notif.active {
+.day-notif.active {
   opacity: 1;
   transform: translateX(0rem);
 }
