@@ -4,16 +4,19 @@
 @import "./_stylereset"
 
 .bg-image
-    background: url('../img/bg.jpg') center center / cover no-repeat
-    // background: url('../img/bg.webp') center center / cover no-repeat
     position: absolute
     z-index: -1
     top: 0
     left: 0
-    overflow: hidden
-    height: 100%
     width: 100%
+    height: 100%
+    overflow: hidden
     transition: filter 5s
+
+.bg-image img
+    width: 100%
+    height: 100%
+    object-fit: cover
 
 .night-mode
     -webkit-filter: brightness(0.5) sepia(0.3)
@@ -47,8 +50,6 @@ h1
     margin: -6vmin 0  6vmin 0
     color: #ffffffd2
     text-shadow: 0.1rem 0.1rem 3rem #230674a2
-
-
 
 .first-pair
     display: flex
@@ -203,7 +204,7 @@ $right : 2.5vw
     // background: none
     // text-decoration: none
     font-size: 1.1rem
-    font-style: italic
+    // font-style: italic
     width: 0 //change
     height: 2rem
     transition-duration: 0.3s

@@ -70,15 +70,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-image {
-  background: url("../img/bg.jpg") center center/cover no-repeat;
   position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
-  overflow: hidden;
-  height: 100%;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
   transition: filter 5s;
+}
+
+.bg-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .night-mode {
@@ -286,7 +292,6 @@ h1 {
 
 .input_cl {
   font-size: 1.1rem;
-  font-style: italic;
   width: 0;
   height: 2rem;
   transition-duration: 0.3s;

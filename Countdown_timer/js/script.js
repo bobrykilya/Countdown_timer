@@ -1,6 +1,6 @@
 
 // Document elems
-const bg_image = document.querySelector('.bg-image');
+const bg_image = document.querySelector('.bg-image img');
 const celebName = document.querySelector('h1');
 const last_seconds = document.querySelector('#second-pair_last');
 
@@ -49,7 +49,7 @@ const confetti_cont = document.querySelector('.confetti_container');
 const nextYear = new Date().getFullYear() + 1;
 const newYear = `${nextYear}-01-01`;
 let myCelebration = newYear;
-let celebTime = "00:00"
+let celebTime = "00:00";
 // console.log(myCelebration);
 
 const currentDate = new Date();
@@ -159,8 +159,11 @@ function currentDateShort(){
 function dateLimits(){
     minDate = currentDateShort()[0];
     maxDate = currentDateShort()[1];
-    date_input_area.setAttribute('min', minDate);
-    date_input_area.setAttribute('max', maxDate);
+
+    if (date_input_area.getAttribute('min') != minDate){
+        date_input_area.setAttribute('min', minDate);
+        date_input_area.setAttribute('max', maxDate);
+    };
 };
 
 
@@ -169,7 +172,7 @@ function nightMode(){
     const currentHour = String(new Date()).slice(15,18);
     // console.log(currentHour);
     if (currentHour > 19 || currentHour < 7)
-    bg_image.classList.add('night-mode');
+        bg_image.classList.add('night-mode');
     else bg_image.classList.remove('night-mode');
 };
 
@@ -302,9 +305,8 @@ function reset_doc(){
     date_number.innerText = 'bobrikilya';
     input_area.value = "";
     input_area.blur();
-    // date_inputCleaning();
+    date_inputCleaning();
     celebName.innerText = 'Until the new year';
-    date_input_area.value = currentDateShort()[0];
     time.value = "00:00";
 };
 
@@ -404,7 +406,7 @@ function recordCurrDate(){
 
 
 // Writer of celebration name from text area and cleaning of area
-document.addEventListener('keyup', (event) => {
+document.addEventListener('keydown', (event) => {
     if ((event.code === 'Enter' || event.code === 'NumpadEnter') &
         input_area.classList.contains('active')) {
         if (input_area.value === ""){
@@ -429,11 +431,11 @@ document.addEventListener('keydown', (event) => {
 
 
 // Handling date input editing
-window.addEventListener('input', today_activation);
+date_input_area.addEventListener('input', today_activation);
 
 
 //Escape tap handling
-document.addEventListener('keyup', (event) => {
+document.addEventListener('keydown', (event) => {
     if (event.code === 'Escape' &
         input_area.classList.contains('active')) toggleOfBtn();
     if (event.code === 'Escape' &
@@ -468,7 +470,6 @@ function finishFun(){
             date_inputCleaning();
             reset_doc();
             secondInterval = setInterval(countdown, 1000);
-            // window.location.reload();
         };
     };
 };
