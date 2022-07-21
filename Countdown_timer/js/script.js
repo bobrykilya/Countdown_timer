@@ -1,6 +1,18 @@
 
 // Document elems
 const bg_image = document.querySelector('.bg-image img');
+const bg_1 = document.querySelector('.bg_1');
+const bg_2 = document.querySelector('.bg_2');
+const bg_3 = document.querySelector('.bg_3');
+const bg_4 = document.querySelector('.bg_4');
+
+const bg_container = document.querySelector('.bg-container');
+const bg_all_imgs = document.querySelectorAll('.bg_img_btn');
+const bg_cont = document.querySelector('.bg_cont');
+const bg_btn = document.querySelector('.bg_btn');
+
+
+
 const celebName = document.querySelector('h1');
 const last_seconds = document.querySelector('#second-pair_last');
 
@@ -297,6 +309,13 @@ function reset_toggleOfBtn(){
     reset_text.classList.toggle('active');
 };
 
+function bg_toggleOfBtn(){
+    bg_all_imgs.forEach(bg => bg.classList.toggle('active'));
+    bg_cont.classList.toggle('active');
+    bg_btn.classList.toggle('rotation');
+};
+
+
 
 // Resetting data on the doc
 function reset_doc(){
@@ -365,6 +384,18 @@ function dateConfirm(){
     };
 };
 
+function bgActivation(bg_name, bg_num){
+    bg_image.src = `img/bg_${bg_num}.jpg`;
+
+    bg_1.classList.remove('selected');
+    bg_2.classList.remove('selected');
+    bg_3.classList.remove('selected');
+    bg_4.classList.remove('selected');
+
+    bg_name.classList.add('selected');
+};
+
+
 
 // Clicking on the button 
 button.addEventListener('click', toggleOfBtn);
@@ -394,6 +425,14 @@ ok_reset_i.addEventListener('click', () =>{
     reset_toggleOfBtn();
     reset_doc();
 });
+
+bg_btn.addEventListener('click', bg_toggleOfBtn);
+
+bg_1.addEventListener('click', () =>{bgActivation(bg_1, 1)});
+bg_2.addEventListener('click', () =>{bgActivation(bg_2, 2)});
+bg_3.addEventListener('click', () =>{bgActivation(bg_3, 3)});
+bg_4.addEventListener('click', () =>{bgActivation(bg_4, 4)});
+
 
 // Date signature calculation
 function recordCurrDate(){
@@ -442,6 +481,8 @@ document.addEventListener('keydown', (event) => {
         date_input_area.classList.contains('active')) date_toggleOfBtn()
     if (event.code === 'Escape' &
         ok_reset.classList.contains('active')) reset_toggleOfBtn()
+    if (event.code === 'Escape' &
+        bg_cont.classList.contains('active')) bg_toggleOfBtn()
 });
 
 
@@ -450,10 +491,12 @@ document.addEventListener('click', (event) => {
     const insideInput1 = event.composedPath().includes(input_cont);
     const insideInput2 = event.composedPath().includes(date_input_cont);
     const insideInput3 = event.composedPath().includes(reload_cont);
+    const insideInput4 = event.composedPath().includes(bg_container);
     
     if (!insideInput1 & input_area.classList.contains('active')) toggleOfBtn();
     if (!insideInput2 & date_input_area.classList.contains('active')) date_toggleOfBtn();
     if (!insideInput3 & ok_reset.classList.contains('active')) reset_toggleOfBtn();
+    if (!insideInput4 & bg_cont.classList.contains('active')) bg_toggleOfBtn();
 });
 
 

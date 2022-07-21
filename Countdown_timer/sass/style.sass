@@ -150,11 +150,14 @@ $right : 2.5vw
     border-radius: $size
     margin-top: 2vh
     transition: box-shadow 0.15s
-    box-shadow: 0.2 0.2 1rem #8f8b8b71
+    box-shadow: 1px 1px 20px #00000028
     &.error
         // background-color: #fce5e5
         box-shadow: 0 0 2rem #fd0000d2, inset 0 0 5px #f86868ef
     // border: 2px solid orange
+
+
+
 .btn
     position: relative
     z-index: 3
@@ -176,6 +179,98 @@ $right : 2.5vw
         &.error
             color: #f14242
             text-shadow: 0 0 2rem #af0f0fd2
+
+
+.bg-container
+    position: absolute
+    z-index: 2
+    display: flex
+    justify-content: flex-end
+    // height: 4.6rem
+    top: $bottom
+    right: $right
+    // border: 2px solid black
+
+.bg_cont
+    position: relative
+    margin-top: 0
+    width: 0
+    justify-content: flex-end
+    transition-duration: 0.3s
+    // border: 2px solid green
+    &.active
+        width: 19rem
+
+.bg_img_btn // imgs
+    position: absolute
+    width: 1.5rem
+    height: 1.5rem
+    border-radius: 40%
+    border: 1px solid #000
+    box-shadow: 1px 3px 20px #0000008e
+    transition-duration: 0.3s
+    right: 0
+    top: 0.5rem
+    opacity: 0
+    &.active
+        top: 0
+        width: 2.5rem
+        height: 2.5rem
+        opacity: 1
+    &:hover
+        z-index: 4
+        width: 7rem
+        height: 6rem
+        transform: translateX(2.25rem)
+        border-radius: 20%
+
+$dist : 4.5rem
+$right-m : -2.9rem
+
+.bg_1
+    background: url('../img/sm_bg_1.jpg') center center / cover no-repeat
+    &.selected
+        box-shadow: 0px 0px 10px #ff01dd
+        border: 2px solid #b30a9cb9
+    &:hover
+        box-shadow: 1px 3px 20px #0000008e
+        border: 1px solid #000
+    &.active
+        // transition: width 0.3s 0, right 0.3s 0.1s
+        right: 4*$dist + $right-m
+.bg_2
+    background: url('../img/sm_bg_2.jpg') center center / cover no-repeat
+    &.selected
+        box-shadow: 0px 0px 10px #05772b
+        border: 2px solid #05441a
+    &:hover
+        box-shadow: 1px 3px 20px #0000008e
+        border: 1px solid #000
+    &.active
+        // transition: width 0.3s 0, right 0.3s 0.2s
+        right: 3*$dist + $right-m
+.bg_3
+    background: url('../img/sm_bg_3.jpg') center center / cover no-repeat
+    &.selected
+        box-shadow: 0px 0px 10px #ff5e00
+        border: 2px solid #752f07c9
+    &:hover
+        box-shadow: 1px 3px 20px #0000008e
+        border: 1px solid #000
+    &.active
+        // transition: width 0.3s 0, right 0.3s 0.3s
+        right: 2*$dist + $right-m
+.bg_4
+    background: url('../img/sm_bg_4.jpg') center center / cover no-repeat
+    &.selected
+        box-shadow: 0px 0px 10px #520faa
+        border: 2px solid #520faa
+    &:hover
+        box-shadow: 1px 3px 20px #0000008e
+        border: 1px solid #000
+    &.active
+        // transition: width 0.3s 0, right 0.3s 0.4s
+        right: $dist + $right-m
 
 
 .date_input_btn span

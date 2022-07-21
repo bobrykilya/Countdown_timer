@@ -239,7 +239,7 @@ h1 {
   border-radius: 2.5rem;
   margin-top: 2vh;
   transition: box-shadow 0.15s;
-  box-shadow: 0.2 0.2 1rem rgba(143, 139, 139, 0.4431372549);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1568627451);
 }
 .cont.error {
   box-shadow: 0 0 2rem rgba(253, 0, 0, 0.8235294118), inset 0 0 5px rgba(248, 104, 104, 0.937254902);
@@ -268,6 +268,112 @@ h1 {
 .btn.forFirefox.error {
   color: #f14242;
   text-shadow: 0 0 2rem rgba(175, 15, 15, 0.8235294118);
+}
+
+.bg-container {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  top: 4vh;
+  right: 2.5vw;
+}
+
+.bg_cont {
+  position: relative;
+  margin-top: 0;
+  width: 0;
+  justify-content: flex-end;
+  transition-duration: 0.3s;
+}
+.bg_cont.active {
+  width: 19rem;
+}
+
+.bg_img_btn {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 40%;
+  border: 1px solid #000;
+  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
+  transition-duration: 0.3s;
+  right: 0;
+  top: 0.5rem;
+  opacity: 0;
+}
+.bg_img_btn.active {
+  top: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  opacity: 1;
+}
+.bg_img_btn:hover {
+  z-index: 4;
+  width: 7rem;
+  height: 6rem;
+  transform: translateX(2.25rem);
+  border-radius: 20%;
+}
+
+.bg_1 {
+  background: url("../img/sm_bg_1.jpg") center center/cover no-repeat;
+}
+.bg_1.selected {
+  box-shadow: 0px 0px 10px #ff01dd;
+  border: 2px solid rgba(179, 10, 156, 0.7254901961);
+}
+.bg_1:hover {
+  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
+  border: 1px solid #000;
+}
+.bg_1.active {
+  right: 15.1rem;
+}
+
+.bg_2 {
+  background: url("../img/sm_bg_2.jpg") center center/cover no-repeat;
+}
+.bg_2.selected {
+  box-shadow: 0px 0px 10px #05772b;
+  border: 2px solid #05441a;
+}
+.bg_2:hover {
+  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
+  border: 1px solid #000;
+}
+.bg_2.active {
+  right: 10.6rem;
+}
+
+.bg_3 {
+  background: url("../img/sm_bg_3.jpg") center center/cover no-repeat;
+}
+.bg_3.selected {
+  box-shadow: 0px 0px 10px #ff5e00;
+  border: 2px solid rgba(117, 47, 7, 0.7882352941);
+}
+.bg_3:hover {
+  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
+  border: 1px solid #000;
+}
+.bg_3.active {
+  right: 6.1rem;
+}
+
+.bg_4 {
+  background: url("../img/sm_bg_4.jpg") center center/cover no-repeat;
+}
+.bg_4.selected {
+  box-shadow: 0px 0px 10px #520faa;
+  border: 2px solid #520faa;
+}
+.bg_4:hover {
+  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
+  border: 1px solid #000;
+}
+.bg_4.active {
+  right: 1.6rem;
 }
 
 .date_input_btn span {
