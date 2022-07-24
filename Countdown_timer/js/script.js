@@ -11,6 +11,10 @@ const bg_all_imgs = document.querySelectorAll('.bg_img_btn');
 const bg_cont = document.querySelector('.bg_cont');
 const bg_btn = document.querySelector('.bg_btn');
 
+const time_numbers = document.querySelectorAll('.counter_container p');
+const all_btn = document.querySelectorAll('.btn');
+
+
 
 
 const celebName = document.querySelector('h1');
@@ -62,6 +66,12 @@ const nextYear = new Date().getFullYear() + 1;
 const newYear = `${nextYear}-01-01`;
 let myCelebration = newYear;
 let celebTime = "00:00";
+time_numbers.forEach(el => {
+    el.classList.add(`bg_1_act`); // Shadow color of main numbers
+});
+all_btn.forEach(el => {
+    el.classList.add(`bg_1_act`); // Color of main btns
+});
 // console.log(myCelebration);
 
 const currentDate = new Date();
@@ -73,6 +83,9 @@ time.value = celebTime;
 // Local storage handling
 chekingData();
 function chekingData(){
+    if (localStorage.getItem('bg_picture')){
+        bgActivation(localStorage.getItem('bg_picture'));
+    };
     if (localStorage.getItem('celeb_title')){
         celebName.innerText = localStorage.getItem('celeb_title');
         input_area.value = localStorage.getItem('celeb_title');
@@ -376,7 +389,7 @@ function dateConfirm(){
         myCelebration = date_input_area.value;
         celebTime = time.value;
         localStorage.setItem('celeb_date', myCelebration);
-        localStorage.setItem('celeb_time', celebTime);
+        if (time.value != "00:00") localStorage.setItem('celeb_time', celebTime);
         date_toggleOfBtn();
         recordCurrDate();
         date_confirm_button.blur();
@@ -384,18 +397,27 @@ function dateConfirm(){
     };
 };
 
-function bgActivation(bg_name, bg_num){
-    bg_image.src = `img/bg_${bg_num}.jpg`;
+function bgActivation(bg_num){
+    bg_image.src = `img/${bg_num}.jpg`;
 
     bg_1.classList.remove('selected');
     bg_2.classList.remove('selected');
     bg_3.classList.remove('selected');
     bg_4.classList.remove('selected');
+    eval(bg_num).classList.add('selected');
 
-    bg_name.classList.add('selected');
+    classToggle(time_numbers, bg_num);
+    classToggle(all_btn, bg_num);
 };
 
+function classToggle(list, bg_num){
+    list.forEach(el => {
+        el.classList.remove('bg_1_act', 'bg_2_act', 
+                            'bg_3_act', 'bg_4_act');
 
+        el.classList.add(`${bg_num}_act`);
+    });
+};
 
 // Clicking on the button 
 button.addEventListener('click', toggleOfBtn);
@@ -428,10 +450,18 @@ ok_reset_i.addEventListener('click', () =>{
 
 bg_btn.addEventListener('click', bg_toggleOfBtn);
 
-bg_1.addEventListener('click', () =>{bgActivation(bg_1, 1)});
-bg_2.addEventListener('click', () =>{bgActivation(bg_2, 2)});
-bg_3.addEventListener('click', () =>{bgActivation(bg_3, 3)});
-bg_4.addEventListener('click', () =>{bgActivation(bg_4, 4)});
+bg_1.addEventListener('click', () =>{
+    bgActivation('bg_1');
+    localStorage.setItem('bg_picture', 'bg_1');});
+bg_2.addEventListener('click', () =>{
+    bgActivation('bg_2');
+    localStorage.setItem('bg_picture', 'bg_2');});
+bg_3.addEventListener('click', () =>{
+    bgActivation('bg_3');
+    localStorage.setItem('bg_picture', 'bg_3');});
+bg_4.addEventListener('click', () =>{
+    bgActivation('bg_4');
+    localStorage.setItem('bg_picture', 'bg_4');});
 
 
 // Date signature calculation

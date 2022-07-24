@@ -77,7 +77,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  transition: filter 5s;
 }
 
 .bg-image img {
@@ -85,10 +84,11 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: filter 5s;
 }
 
 .night-mode {
-  filter: brightness(0.5) sepia(0.3);
+  filter: brightness(0.6) sepia(0.3);
 }
 
 body {
@@ -117,7 +117,8 @@ h1 {
   font-size: 11vmin;
   margin: -6vmin 0 6vmin 0;
   color: rgba(255, 255, 255, 0.8235294118);
-  text-shadow: 0.1rem 0.1rem 3rem rgba(35, 6, 116, 0.6352941176);
+  text-shadow: 0.1rem 0.1rem 3rem rgba(23, 5, 73, 0.6352941176);
+  text-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.5960784314);
 }
 
 .first-pair {
@@ -147,12 +148,24 @@ h1 {
   font-size: 23vmin;
   margin: 0 7vmin;
   line-height: 1;
-  text-shadow: 0.2rem 0.2rem 3rem #230674;
   transition-duration: 0.5s;
+}
+.counter_container p.bg_1_act {
+  text-shadow: 0rem 0rem 3rem #230674;
+}
+.counter_container p.bg_2_act {
+  text-shadow: 0rem 0rem 3rem rgba(2, 43, 16, 0.6980392157);
+}
+.counter_container p.bg_3_act {
+  text-shadow: 0rem 0rem 3rem rgba(2, 43, 16, 0.9058823529);
+}
+.counter_container p.bg_4_act {
+  text-shadow: 0rem 0rem 3rem rgba(46, 3, 66, 0.8823529412);
 }
 .counter_container span {
   font-size: 1.5vmax;
   color: rgba(195, 198, 230, 0.6705882353);
+  text-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5960784314);
 }
 .counter_container div {
   text-align: center;
@@ -218,6 +231,7 @@ h1 {
   bottom: 3vmin;
   font-size: 4vmin;
   color: rgba(195, 198, 230, 0.3215686275);
+  text-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5960784314);
 }
 
 .menu_container {
@@ -252,7 +266,6 @@ h1 {
   height: 2.5rem;
   border-radius: 50%;
   background-color: transparent;
-  color: #6427aa;
   transition-duration: 0.5s;
   font-size: 1.8rem;
   text-align: center;
@@ -261,9 +274,32 @@ h1 {
 .btn :hover {
   font-size: 1.7rem;
 }
+.btn.bg_1_act {
+  color: #6427aa;
+}
+.btn.bg_2_act {
+  color: rgba(2, 43, 16, 0.6980392157);
+}
+.btn.bg_3_act {
+  color: rgba(2, 43, 16, 0.9058823529);
+}
+.btn.bg_4_act {
+  color: rgba(93, 18, 128, 0.8823529412);
+}
 .btn.rotation {
   transform: rotate(-360deg);
+}
+.btn.rotation.bg_1_act {
   color: rgba(136, 39, 155, 0.9333333333);
+}
+.btn.rotation.bg_2_act {
+  color: rgba(2, 43, 16, 0.6980392157);
+}
+.btn.rotation.bg_3_act {
+  color: rgba(2, 43, 16, 0.9058823529);
+}
+.btn.rotation.bg_4_act {
+  color: rgba(93, 18, 128, 0.8823529412);
 }
 .btn.forFirefox.error {
   color: #f14242;
@@ -292,14 +328,14 @@ h1 {
 
 .bg_img_btn {
   position: absolute;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   border-radius: 40%;
   border: 1px solid #000;
   box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
   transition-duration: 0.3s;
-  right: 0;
-  top: 0.5rem;
+  right: -1.75rem;
+  top: 0.75rem;
   opacity: 0;
 }
 .bg_img_btn.active {
@@ -308,11 +344,12 @@ h1 {
   height: 2.5rem;
   opacity: 1;
 }
-.bg_img_btn:hover {
+.bg_img_btn.active:hover {
+  transition-duration: 0.2s;
   z-index: 4;
-  width: 7rem;
-  height: 6rem;
-  transform: translateX(2.25rem);
+  width: 6.5rem;
+  height: 5.5rem;
+  transform: translateX(2rem) translateY(-1rem);
   border-radius: 20%;
 }
 
@@ -322,10 +359,6 @@ h1 {
 .bg_1.selected {
   box-shadow: 0px 0px 10px #ff01dd;
   border: 2px solid rgba(179, 10, 156, 0.7254901961);
-}
-.bg_1:hover {
-  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
-  border: 1px solid #000;
 }
 .bg_1.active {
   right: 15.1rem;
@@ -338,10 +371,6 @@ h1 {
   box-shadow: 0px 0px 10px #05772b;
   border: 2px solid #05441a;
 }
-.bg_2:hover {
-  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
-  border: 1px solid #000;
-}
 .bg_2.active {
   right: 10.6rem;
 }
@@ -352,10 +381,6 @@ h1 {
 .bg_3.selected {
   box-shadow: 0px 0px 10px #ff5e00;
   border: 2px solid rgba(117, 47, 7, 0.7882352941);
-}
-.bg_3:hover {
-  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
-  border: 1px solid #000;
 }
 .bg_3.active {
   right: 6.1rem;
@@ -368,12 +393,13 @@ h1 {
   box-shadow: 0px 0px 10px #520faa;
   border: 2px solid #520faa;
 }
-.bg_4:hover {
-  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
-  border: 1px solid #000;
-}
 .bg_4.active {
   right: 1.6rem;
+}
+
+.bg_img_btn:hover {
+  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.5568627451);
+  border: 1px solid #000;
 }
 
 .date_input_btn span {
@@ -659,13 +685,9 @@ h1 {
 .ok_btn {
   position: relative;
   z-index: -2;
-  width: 2.5rem;
   height: 0;
-  text-align: center;
   font-size: 0.2rem;
   line-height: 2.1rem;
-  color: #6427aa;
-  border-radius: 50%;
   background-color: transparent;
   transition-duration: 0.2s;
   cursor: auto;
@@ -702,7 +724,6 @@ h1 {
   left: 0;
   width: 100%;
   opacity: 0;
-  text-shadow: 0 0 2rem rgba(253, 0, 0, 0.8235294118);
   filter: drop-shadow(0.5px 0.5px 3px rgba(95, 95, 95, 0.3647058824));
 }
 

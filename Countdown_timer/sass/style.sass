@@ -11,16 +11,16 @@
     width: 100%
     height: 100%
     overflow: hidden
-    transition: filter 5s
 
 .bg-image img
     width: 100%
     height: 100%
     object-fit: cover
+    transition: filter 5s
 
 .night-mode
-    -webkit-filter: brightness(0.5) sepia(0.3)
-    filter: brightness(0.5) sepia(0.3)
+    -webkit-filter: brightness(0.6) sepia(0.3)
+    filter: brightness(0.6) sepia(0.3)
 
 
 body
@@ -49,7 +49,8 @@ h1
     font-size: 11vmin
     margin: -6vmin 0  6vmin 0
     color: #ffffffd2
-    text-shadow: 0.1rem 0.1rem 3rem #230674a2
+    text-shadow: 0.1rem 0.1rem 3rem #170549a2
+    text-shadow: 0rem 0rem 2rem #00000098
 
 .first-pair
     display: flex
@@ -78,11 +79,19 @@ h1
         font-size: 23vmin
         margin: 0 7vmin
         line-height: 1
-        text-shadow: 0.2rem 0.2rem 3rem #230674
         transition-duration: 0.5s
+        &.bg_1_act
+            text-shadow: 0rem 0rem 3rem #230674
+        &.bg_2_act
+            text-shadow: 0rem 0rem 3rem #022b10b2
+        &.bg_3_act
+            text-shadow: 0rem 0rem 3rem #022b10e7
+        &.bg_4_act
+            text-shadow: 0rem 0rem 3rem #2e0342e1
     span
         font-size: 1.5vmax
         color: #c3c6e6ab
+        text-shadow: 0rem 0rem 1rem #00000098
     div
         text-align: center
 
@@ -123,6 +132,7 @@ h1
     bottom: 3vmin
     font-size: 4vmin
     color: #c3c6e652
+    text-shadow: 0rem 0rem 1rem #00000098
 
 
 $size : 2.5rem
@@ -165,16 +175,31 @@ $right : 2.5vw
     height: $size
     border-radius: 50%
     background-color: transparent
-    color: #6427aa
+    // color: #6427aa
     transition-duration: 0.5s
     font-size: 1.8rem
     :hover 
         font-size: 1.7rem
     text-align: center
     line-height: $size + 0.2rem
+    &.bg_1_act
+        color: #6427aa
+    &.bg_2_act
+        color: #022b10b2
+    &.bg_3_act
+        color: #022b10e7
+    &.bg_4_act
+        color: #5d1280e1
     &.rotation
         transform: rotate(-360deg)
-        color: #88279bee
+        &.bg_1_act
+            color: #88279bee
+        &.bg_2_act
+            color: #022b10b2
+        &.bg_3_act
+            color: #022b10e7
+        &.bg_4_act
+            color: #5d1280e1
     &.forFirefox
         &.error
             color: #f14242
@@ -203,26 +228,27 @@ $right : 2.5vw
 
 .bg_img_btn // imgs
     position: absolute
-    width: 1.5rem
-    height: 1.5rem
+    width: 1rem
+    height: 1rem
     border-radius: 40%
     border: 1px solid #000
     box-shadow: 1px 3px 20px #0000008e
     transition-duration: 0.3s
-    right: 0
-    top: 0.5rem
+    right: -1.75rem
+    top: 0.75rem
     opacity: 0
     &.active
         top: 0
         width: 2.5rem
         height: 2.5rem
         opacity: 1
-    &:hover
-        z-index: 4
-        width: 7rem
-        height: 6rem
-        transform: translateX(2.25rem)
-        border-radius: 20%
+        &:hover
+            transition-duration: 0.2s
+            z-index: 4
+            width: 6.5rem
+            height: 5.5rem
+            transform: translateX(2rem) translateY(-1rem)
+            border-radius: 20%
 
 $dist : 4.5rem
 $right-m : -2.9rem
@@ -232,45 +258,34 @@ $right-m : -2.9rem
     &.selected
         box-shadow: 0px 0px 10px #ff01dd
         border: 2px solid #b30a9cb9
-    &:hover
-        box-shadow: 1px 3px 20px #0000008e
-        border: 1px solid #000
     &.active
-        // transition: width 0.3s 0, right 0.3s 0.1s
         right: 4*$dist + $right-m
 .bg_2
     background: url('../img/sm_bg_2.jpg') center center / cover no-repeat
     &.selected
         box-shadow: 0px 0px 10px #05772b
         border: 2px solid #05441a
-    &:hover
-        box-shadow: 1px 3px 20px #0000008e
-        border: 1px solid #000
     &.active
-        // transition: width 0.3s 0, right 0.3s 0.2s
         right: 3*$dist + $right-m
 .bg_3
     background: url('../img/sm_bg_3.jpg') center center / cover no-repeat
     &.selected
         box-shadow: 0px 0px 10px #ff5e00
         border: 2px solid #752f07c9
-    &:hover
-        box-shadow: 1px 3px 20px #0000008e
-        border: 1px solid #000
     &.active
-        // transition: width 0.3s 0, right 0.3s 0.3s
         right: 2*$dist + $right-m
 .bg_4
     background: url('../img/sm_bg_4.jpg') center center / cover no-repeat
     &.selected
         box-shadow: 0px 0px 10px #520faa
         border: 2px solid #520faa
+    &.active
+        right: $dist + $right-m
+
+.bg_img_btn
     &:hover
         box-shadow: 1px 3px 20px #0000008e
         border: 1px solid #000
-    &.active
-        // transition: width 0.3s 0, right 0.3s 0.4s
-        right: $dist + $right-m
 
 
 .date_input_btn span
@@ -536,13 +551,9 @@ $right-m : -2.9rem
 .ok_btn
     position: relative
     z-index: -2
-    width: $size
     height: 0
-    text-align: center
     font-size: 0.2rem
     line-height: 2.1rem
-    color: #6427aa
-    border-radius: 50%
     background-color: transparent
     transition-duration: 0.2s
     :hover 
@@ -574,7 +585,6 @@ $right-m : -2.9rem
     left: 0
     width: 100%
     opacity: 0
-    text-shadow: 0 0 2rem #fd0000d2
     -webkit-filter: drop-shadow(0.5px 0.5px 3px #5f5f5f5d)
     filter: drop-shadow(0.5px 0.5px 3px #5f5f5f5d)
     
