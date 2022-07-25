@@ -5,7 +5,7 @@
 
 .bg-image
     position: absolute
-    z-index: -1
+    z-index: -2
     top: 0
     left: 0
     width: 100%
@@ -17,6 +17,19 @@
     height: 100%
     object-fit: cover
     transition: filter 5s
+
+.bg-cover
+    img 
+        transition: filter 0s
+    display: none
+    z-index: -1
+    transition-duration: 0.6s
+    border-radius: 50%
+    &.active
+        top: 50%
+        left: 50%
+        width: 0
+        height: 0
 
 .night-mode
     -webkit-filter: brightness(0.6) sepia(0.3)
@@ -61,7 +74,7 @@ h1
     margin-bottom: 5vmin
     // border: 2px solid black
 // .second-pair > :nth-child(1) 
-    // border: 2px solid red
+//     border: 2px solid red
 .notZeros
     width: 43vmin
     // border: 2px solid brown
@@ -83,11 +96,11 @@ h1
         &.bg_1_act
             text-shadow: 0rem 0rem 3rem #230674
         &.bg_2_act
-            text-shadow: 0rem 0rem 3rem #022b10b2
+            text-shadow: 0rem 0rem 3rem #022b10dc
         &.bg_3_act
-            text-shadow: 0rem 0rem 3rem #022b10e7
+            text-shadow: 0rem 0rem 3rem #022b10
         &.bg_4_act
-            text-shadow: 0rem 0rem 3rem #2e0342e1
+            text-shadow: 0rem 0rem 3rem #2e0342e8
     span
         font-size: 1.5vmax
         color: #c3c6e6ab
@@ -183,13 +196,17 @@ $right : 2.5vw
     text-align: center
     line-height: $size + 0.2rem
     &.bg_1_act
-        color: #6427aa
-    &.bg_2_act
-        color: #022b10b2
+        color: #59295c
     &.bg_3_act
-        color: #022b10e7
-    &.bg_4_act
-        color: #5d1280e1
+        color: #526c2c
+    // &.bg_1_act
+    //     color: #6427aa
+    &.bg_2_act
+        color: #586912
+    // &.bg_3_act
+    //     color: #022b10e7
+    // &.bg_4_act
+    //     color: #5d1280e1
     &.rotation
         transform: rotate(-360deg)
         &.bg_1_act
@@ -197,7 +214,7 @@ $right : 2.5vw
         &.bg_2_act
             color: #022b10b2
         &.bg_3_act
-            color: #022b10e7
+            color: #e1b985
         &.bg_4_act
             color: #5d1280e1
     &.forFirefox

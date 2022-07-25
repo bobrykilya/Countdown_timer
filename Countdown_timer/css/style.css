@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-image {
   position: absolute;
-  z-index: -1;
+  z-index: -2;
   top: 0;
   left: 0;
   width: 100%;
@@ -85,6 +85,22 @@ h1, h2, h3, h4, h5, h6 {
   -o-object-fit: cover;
      object-fit: cover;
   transition: filter 5s;
+}
+
+.bg-cover {
+  display: none;
+  z-index: -1;
+  transition-duration: 0.6s;
+  border-radius: 50%;
+}
+.bg-cover img {
+  transition: filter 0s;
+}
+.bg-cover.active {
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
 }
 
 .night-mode {
@@ -154,13 +170,13 @@ h1 {
   text-shadow: 0rem 0rem 3rem #230674;
 }
 .counter_container p.bg_2_act {
-  text-shadow: 0rem 0rem 3rem rgba(2, 43, 16, 0.6980392157);
+  text-shadow: 0rem 0rem 3rem rgba(2, 43, 16, 0.862745098);
 }
 .counter_container p.bg_3_act {
-  text-shadow: 0rem 0rem 3rem rgba(2, 43, 16, 0.9058823529);
+  text-shadow: 0rem 0rem 3rem #022b10;
 }
 .counter_container p.bg_4_act {
-  text-shadow: 0rem 0rem 3rem rgba(46, 3, 66, 0.8823529412);
+  text-shadow: 0rem 0rem 3rem rgba(46, 3, 66, 0.9098039216);
 }
 .counter_container span {
   font-size: 1.5vmax;
@@ -275,16 +291,13 @@ h1 {
   font-size: 1.7rem;
 }
 .btn.bg_1_act {
-  color: #6427aa;
-}
-.btn.bg_2_act {
-  color: rgba(2, 43, 16, 0.6980392157);
+  color: #59295c;
 }
 .btn.bg_3_act {
-  color: rgba(2, 43, 16, 0.9058823529);
+  color: #526c2c;
 }
-.btn.bg_4_act {
-  color: rgba(93, 18, 128, 0.8823529412);
+.btn.bg_2_act {
+  color: #586912;
 }
 .btn.rotation {
   transform: rotate(-360deg);
@@ -296,7 +309,7 @@ h1 {
   color: rgba(2, 43, 16, 0.6980392157);
 }
 .btn.rotation.bg_3_act {
-  color: rgba(2, 43, 16, 0.9058823529);
+  color: #e1b985;
 }
 .btn.rotation.bg_4_act {
   color: rgba(93, 18, 128, 0.8823529412);

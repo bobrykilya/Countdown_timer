@@ -1,6 +1,8 @@
 
 // Document elems
-const bg_image = document.querySelector('.bg-image img');
+const bg_image = document.querySelector('.bg-img img');
+const bg_cover = document.querySelector('.bg-cover');
+const bg_cover_image = document.querySelector('.bg-cover img');
 const bg_1 = document.querySelector('.bg_1');
 const bg_2 = document.querySelector('.bg_2');
 const bg_3 = document.querySelector('.bg_3');
@@ -13,8 +15,6 @@ const bg_btn = document.querySelector('.bg_btn');
 
 const time_numbers = document.querySelectorAll('.counter_container p');
 const all_btn = document.querySelectorAll('.btn');
-
-
 
 
 const celebName = document.querySelector('h1');
@@ -84,11 +84,14 @@ time.value = celebTime;
 chekingData();
 function chekingData(){
     if (localStorage.getItem('bg_picture')){
-        bgActivation(localStorage.getItem('bg_picture'));
+        const bg_pic_num = localStorage.getItem('bg_picture');
+        bg_image.src = `img/${bg_pic_num}.jpg`;
+        bgActivation(bg_pic_num);
     };
     if (localStorage.getItem('celeb_title')){
-        celebName.innerText = localStorage.getItem('celeb_title');
-        input_area.value = localStorage.getItem('celeb_title');
+        const title = localStorage.getItem('celeb_title');
+        celebName.innerText = title;
+        input_area.value = title;
     };
     if (localStorage.getItem('celeb_date')){
         myCelebration = localStorage.getItem('celeb_date');
@@ -112,6 +115,7 @@ countdown();
 // Countdown timer algorithm
 function countdown(){
     const currentDate = new Date();
+    // console.log(myCelebration);
     const myCelebrationDate = new Date(myCelebration).setHours(celebTime.split(':')[0], celebTime.split(':')[1]);
     let resultDate = myCelebrationDate - currentDate;
     if (resultDate < 0) resultDate = 0;
@@ -120,12 +124,13 @@ function countdown(){
     const totalSeconds = Math.floor(resultDate / 1000);
     
     const resultDays = Math.floor(totalSeconds / 60 / 60 / 24);
-    let resultHours = Math.floor(totalSeconds / 60 / 60) % 24 - 3;
+    let resultHours = Math.floor(totalSeconds / 60 / 60) % 24;
     if (resultHours < 0) resultHours = 0;
     const resultMinutes = Math.floor(totalSeconds / 60) % 60;
     const resultSeconds = Math.floor(totalSeconds) % 60;
+    // console.log(totalSeconds);
     
-
+    // console.log(resultDays, resultHours, resultMinutes, resultSeconds);
     htmlWriter(resultDays, resultHours, resultMinutes, resultSeconds);
     if (resultDays + resultHours + resultMinutes + resultSeconds === 0){ 
         last_seconds.classList.remove('notZeros');
@@ -196,9 +201,13 @@ function dateLimits(){
 function nightMode(){
     const currentHour = String(new Date()).slice(15,18);
     // console.log(currentHour);
-    if (currentHour > 19 || currentHour < 7)
+    if (currentHour > 19 || currentHour < 7){
         bg_image.classList.add('night-mode');
-    else bg_image.classList.remove('night-mode');
+        bg_cover_image.classList.add('night-mode');
+    } else {
+        bg_image.classList.remove('night-mode');
+        bg_cover_image.classList.remove('night-mode');
+    };
 };
 
 
@@ -398,7 +407,10 @@ function dateConfirm(){
 };
 
 function bgActivation(bg_num){
-    bg_image.src = `img/${bg_num}.jpg`;
+
+    // myColors = mainColors();
+
+    // console.log(myColors.Vibrant);
 
     bg_1.classList.remove('selected');
     bg_2.classList.remove('selected');
@@ -418,6 +430,40 @@ function classToggle(list, bg_num){
         el.classList.add(`${bg_num}_act`);
     });
 };
+
+function mainColors(){
+    bg_image.crossOrigin = "Anonymous";
+    let myColors = new Object();
+    bg_image.addEventListener('load', () => {
+        let vibrant = new Vibrant(bg_image);
+        let swatches = vibrant.swatches();
+        for (let swatch in swatches)
+            if (swatches.hasOwnProperty(swatch) && 
+                swatches[swatch] && 
+                (swatch == "Vibrant" || swatch == "DarkVibrant"))
+                    myColors[`${swatch}`] = `${swatches[swatch].getHex()}`;
+        // console.log(myColors);
+        // return myColors;
+    });
+    return myColors;
+};
+
+function bgChanging(bg_num){
+    bg_cover_image.setAttribute('src', bg_image.getAttribute('src'));
+    // console.log(bg_image.setAttribute('src'));
+    bg_cover.style.display = 'block';
+    setTimeout(() => {
+        bg_image.setAttribute('src' ,`img/${bg_num}.jpg`);
+        setTimeout(() => {
+            bg_cover.classList.add('active');
+            setTimeout(() => {
+                bg_cover.style.display = 'none';
+                bg_cover.classList.remove('active');
+            }, 650);
+        }, 10);
+    }, 10);
+};
+
 
 // Clicking on the button 
 button.addEventListener('click', toggleOfBtn);
@@ -450,19 +496,19 @@ ok_reset_i.addEventListener('click', () =>{
 
 bg_btn.addEventListener('click', bg_toggleOfBtn);
 
-bg_1.addEventListener('click', () =>{
-    bgActivation('bg_1');
-    localStorage.setItem('bg_picture', 'bg_1');});
-bg_2.addEventListener('click', () =>{
-    bgActivation('bg_2');
-    localStorage.setItem('bg_picture', 'bg_2');});
-bg_3.addEventListener('click', () =>{
-    bgActivation('bg_3');
-    localStorage.setItem('bg_picture', 'bg_3');});
-bg_4.addEventListener('click', () =>{
-    bgActivation('bg_4');
-    localStorage.setItem('bg_picture', 'bg_4');});
+bg_1.addEventListener('click', () =>{clickOnBg(1)});
+bg_2.addEventListener('click', () =>{clickOnBg(2)});
+bg_3.addEventListener('click', () =>{clickOnBg(3)});
+bg_4.addEventListener('click', () =>{clickOnBg(4)});
 
+function clickOnBg(bg){
+    let bg_num = `bg_${bg}`;
+    if (bg_num != localStorage.getItem('bg_picture')){
+        bgChanging(bg_num);
+        bgActivation(bg_num);
+        localStorage.setItem('bg_picture', bg_num);
+    };
+};
 
 // Date signature calculation
 function recordCurrDate(){
