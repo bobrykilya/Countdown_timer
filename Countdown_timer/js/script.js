@@ -452,7 +452,7 @@ function bgChanging(bg_num){
             setTimeout(() => {
                 bg_cover.style.display = 'none';
                 bg_cover.classList.remove('active');
-            }, 650);
+            }, 600);
         });
     }, 10);
 };
