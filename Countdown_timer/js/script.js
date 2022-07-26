@@ -7,6 +7,7 @@ const bg_1 = document.querySelector('.bg_1');
 const bg_2 = document.querySelector('.bg_2');
 const bg_3 = document.querySelector('.bg_3');
 const bg_4 = document.querySelector('.bg_4');
+const bg_5 = document.querySelector('.bg_5');
 
 const bg_container = document.querySelector('.bg-container');
 const bg_all_imgs = document.querySelectorAll('.bg_img_btn');
@@ -416,6 +417,7 @@ function bgActivation(bg_num){
     bg_2.classList.remove('selected');
     bg_3.classList.remove('selected');
     bg_4.classList.remove('selected');
+    bg_5.classList.remove('selected');
     eval(bg_num).classList.add('selected');
 
     classToggle(time_numbers, bg_num);
@@ -425,7 +427,7 @@ function bgActivation(bg_num){
 function classToggle(list, bg_num){
     list.forEach(el => {
         el.classList.remove('bg_1_act', 'bg_2_act', 
-                            'bg_3_act', 'bg_4_act');
+                            'bg_3_act', 'bg_4_act', 'bg_5_act');
 
         el.classList.add(`${bg_num}_act`);
     });
@@ -500,6 +502,7 @@ bg_1.addEventListener('click', () =>{clickOnBg(1)});
 bg_2.addEventListener('click', () =>{clickOnBg(2)});
 bg_3.addEventListener('click', () =>{clickOnBg(3)});
 bg_4.addEventListener('click', () =>{clickOnBg(4)});
+bg_5.addEventListener('click', () =>{clickOnBg(5)});
 
 function clickOnBg(bg){
     let bg_num = `bg_${bg}`;
