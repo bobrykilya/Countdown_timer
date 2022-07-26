@@ -9,13 +9,14 @@ const bg_3 = document.querySelector('.bg_3');
 const bg_4 = document.querySelector('.bg_4');
 const bg_5 = document.querySelector('.bg_5');
 
+
 const bg_container = document.querySelector('.bg-container');
 const bg_all_imgs = document.querySelectorAll('.bg_img_btn');
 const bg_cont = document.querySelector('.bg_cont');
 const bg_btn = document.querySelector('.bg_btn');
 
 const time_numbers = document.querySelectorAll('.counter_container p');
-const all_btn = document.querySelectorAll('.btn');
+const all_elms = document.querySelectorAll('i');
 
 
 const celebName = document.querySelector('h1');
@@ -68,9 +69,9 @@ const newYear = `${nextYear}-01-01`;
 let myCelebration = newYear;
 let celebTime = "00:00";
 time_numbers.forEach(el => {
-    el.classList.add(`bg_1_act`); // Shadow color of main numbers
+    el.classList.add(`bg_1_active`); // Shadow color of main numbers
 });
-all_btn.forEach(el => {
+all_elms.forEach(el => {
     el.classList.add(`bg_1_act`); // Color of main btns
 });
 // console.log(myCelebration);
@@ -409,10 +410,6 @@ function dateConfirm(){
 
 function bgActivation(bg_num){
 
-    // myColors = mainColors();
-
-    // console.log(myColors.Vibrant);
-
     bg_1.classList.remove('selected');
     bg_2.classList.remove('selected');
     bg_3.classList.remove('selected');
@@ -420,33 +417,27 @@ function bgActivation(bg_num){
     bg_5.classList.remove('selected');
     eval(bg_num).classList.add('selected');
 
-    classToggle(time_numbers, bg_num);
-    classToggle(all_btn, bg_num);
-};
-
-function classToggle(list, bg_num){
-    list.forEach(el => {
+    all_elms.forEach(el => {
         el.classList.remove('bg_1_act', 'bg_2_act', 
-                            'bg_3_act', 'bg_4_act', 'bg_5_act');
+                            'bg_3_act', 'bg_4_act', 
+                            'bg_5_act');
 
         el.classList.add(`${bg_num}_act`);
     });
+
+    time_numbers.forEach(el => {
+        el.classList.remove('bg_1_active', 'bg_2_active', 
+                            'bg_3_active', 'bg_4_active', 
+                            'bg_5_active');
+
+        el.classList.add(`${bg_num}_active`);
+    });
 };
 
+
 function mainColors(){
-    bg_image.crossOrigin = "Anonymous";
-    let myColors = new Object();
-    bg_image.addEventListener('load', () => {
-        let vibrant = new Vibrant(bg_image);
-        let swatches = vibrant.swatches();
-        for (let swatch in swatches)
-            if (swatches.hasOwnProperty(swatch) && 
-                swatches[swatch] && 
-                (swatch == "Vibrant" || swatch == "DarkVibrant"))
-                    myColors[`${swatch}`] = `${swatches[swatch].getHex()}`;
-        // console.log(myColors);
-        // return myColors;
-    });
+    
+    console.log(myColors);
     return myColors;
 };
 

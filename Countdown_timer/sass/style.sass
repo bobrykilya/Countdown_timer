@@ -8,13 +8,13 @@
     z-index: -2
     top: 0
     left: 0
-    width: 100%
     height: 100%
+    width: 100%
     overflow: hidden
 
 .bg-image img
-    width: 100%
     height: 100%
+    width: 100%
     object-fit: cover
     transition: filter 5s
 
@@ -23,13 +23,11 @@
         transition: filter 0s
     display: none
     z-index: -1
-    transition-duration: 0.6s
-    border-radius: 50%
+    transition: 0.6s
+    // border-radius: 50%
     &.active
-        top: 50%
         left: 50%
         width: 0
-        height: 0
 
 .night-mode
     -webkit-filter: brightness(0.6) sepia(0.3)
@@ -93,14 +91,16 @@ h1
         margin: 0 7vmin
         line-height: 1
         transition-duration: 0.5s
-        &.bg_1_act
-            text-shadow: 0rem 0rem 3rem #230674
-        &.bg_2_act
-            text-shadow: 0rem 0rem 3rem #022b10dc
-        &.bg_3_act
-            text-shadow: 0rem 0rem 3rem #022b10
-        &.bg_4_act
-            text-shadow: 0rem 0rem 3rem #2e0342e8
+        &.bg_1_active
+            text-shadow: 0rem 0rem 3rem #490c4ed3
+        &.bg_2_active
+            text-shadow: 0rem 0rem 3rem #073115dc
+        &.bg_3_active
+            text-shadow: 0rem 0rem 3rem #422908da
+        &.bg_4_active
+            text-shadow: 0rem 0rem 3rem #29033aaf
+        &.bg_5_active
+            text-shadow: 0rem 0rem 3rem #053a53ec 
     span
         font-size: 1.5vmax
         color: #c3c6e6ab
@@ -116,8 +116,8 @@ h1
     height: 40%
     width: 100%
     opacity: 0
-    -webkit-filter: blur(4px)
-    filter: blur(4px)
+    -webkit-filter: blur(5px)
+    filter: blur(5px)
 
 .fog img:nth-child(1)
     animation: anim 25s linear infinite alternate
@@ -133,7 +133,7 @@ h1
         opacity: 0
         transform: translateX(-20%) scale(0.5)
     50%
-        opacity: 0.15
+        opacity: 0.12
         transform: scale(2)
     100%
         opacity: 0
@@ -160,26 +160,33 @@ $right : 2.5vw
     bottom: $bottom
     right: $right
     align-items: flex-end
-    // border: 2px solid green
     flex: 0 1 33.3333%
+    // border: 2px solid green
 
 .cont
     display: flex
     border-radius: size
     padding: 0.5rem 
-    // height: 3.5rem
-    // align-content: center 
     background-color: #fff
     border-radius: $size
     margin-top: 2vh
     transition: box-shadow 0.15s
     box-shadow: 1px 1px 20px #00000028
-    &.error
-        // background-color: #fce5e5
-        box-shadow: 0 0 2rem #fd0000d2, inset 0 0 5px #f86868ef
     // border: 2px solid orange
+    &.error
+        box-shadow: 0 0 2rem #fd0000d2, inset 0 0 5px #f86868ef
 
 
+.bg_1_act
+    color: #6427aa
+.bg_2_act
+    color: #1f411d
+.bg_3_act
+    color: #643209
+.bg_4_act
+    color: #5d1280e1
+.bg_5_act
+    color: #07324ee1
 
 .btn
     position: relative
@@ -188,35 +195,24 @@ $right : 2.5vw
     height: $size
     border-radius: 50%
     background-color: transparent
-    // color: #6427aa
     transition-duration: 0.5s
     font-size: 1.8rem
     :hover 
         font-size: 1.7rem
     text-align: center
     line-height: $size + 0.2rem
-    &.bg_1_act
-        color: #59295c
-    &.bg_3_act
-        color: #526c2c
-    // &.bg_1_act
-    //     color: #6427aa
-    &.bg_2_act
-        color: #586912
-    // &.bg_3_act
-    //     color: #022b10e7
-    // &.bg_4_act
-    //     color: #5d1280e1
     &.rotation
         transform: rotate(-360deg)
-        &.bg_1_act
-            color: #88279bee
-        &.bg_2_act
-            color: #022b10b2
-        &.bg_3_act
-            color: #e1b985
-        &.bg_4_act
-            color: #5d1280e1
+        .bg_1_act
+            color: #700c79e5
+        .bg_2_act
+            color: #285a25
+        .bg_3_act
+            color: #863e04
+        .bg_4_act
+            color: #790cb8e1
+        .bg_5_act
+            color: #0b507ee1
     &.forFirefox
         &.error
             color: #f14242
@@ -274,36 +270,36 @@ $right-m : -2.9rem
 .bg_1
     background: url('../img/sm_bg_1.jpg') center center / cover no-repeat
     &.selected
-        box-shadow: 0px 0px 10px #ff01dd
-        border: 2px solid #b30a9cb9
+        box-shadow: 0px 0px 10px #ff00dd
+        border: 2px solid #cc1360b9
     &.active
         right: 1*$dist + $right-m
 .bg_2
     background: url('../img/sm_bg_2.jpg') center center / cover no-repeat
     &.selected
-        box-shadow: 0px 0px 10px #05772b
+        box-shadow: 0px 0px 15px #00a336
         border: 2px solid #05441a
     &.active
         right: 2*$dist + $right-m
 .bg_3
     background: url('../img/sm_bg_3.jpg') center center / cover no-repeat
     &.selected
-        box-shadow: 0px 0px 10px #ff5e00
+        box-shadow: 0px 0px 15px #ff7b00
         border: 2px solid #752f07c9
     &.active
         right: 3*$dist + $right-m
 .bg_4
     background: url('../img/sm_bg_4.jpg') center center / cover no-repeat
     &.selected
-        box-shadow: 0px 0px 10px #520faa
-        border: 2px solid #520faa
+        box-shadow: 0px 0px 10px #6f00ff
+        border: 2px solid #42088f
     &.active
         right: 4*$dist + $right-m
 .bg_5
     background: url('../img/sm_bg_5.jpg') center center / cover no-repeat
     &.selected
-        box-shadow: 0px 0px 10px #520faa
-        border: 2px solid #520faa
+        box-shadow: 0px 0px 13px #0059ff
+        border: 2px solid #0d475e
     &.active
         right: 5*$dist + $right-m
     
@@ -334,10 +330,10 @@ $right-m : -2.9rem
 
 
 .input_cl
-    // border: none
-    // outline: none
-    // background: none
-    // text-decoration: none
+    border: none
+    outline: none
+    background: none
+    text-decoration: none
     font-size: 1.1rem
     // font-style: italic
     width: 0 //change
@@ -561,7 +557,7 @@ $right-m : -2.9rem
     position: absolute
     z-index: -1
     top: 3.2rem
-    color: #6427aa6c
+    color: #969696c2
     font-size: 0.2rem
     margin: 0.5rem -1rem
     transition-duration: 0.2s

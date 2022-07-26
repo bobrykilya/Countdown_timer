@@ -74,14 +74,14 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -2;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
 .bg-image img {
-  width: 100%;
   height: 100%;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   transition: filter 5s;
@@ -90,17 +90,14 @@ h1, h2, h3, h4, h5, h6 {
 .bg-cover {
   display: none;
   z-index: -1;
-  transition-duration: 0.6s;
-  border-radius: 50%;
+  transition: 0.6s;
 }
 .bg-cover img {
   transition: filter 0s;
 }
 .bg-cover.active {
-  top: 50%;
   left: 50%;
   width: 0;
-  height: 0;
 }
 
 .night-mode {
@@ -166,17 +163,20 @@ h1 {
   line-height: 1;
   transition-duration: 0.5s;
 }
-.counter_container p.bg_1_act {
-  text-shadow: 0rem 0rem 3rem #230674;
+.counter_container p.bg_1_active {
+  text-shadow: 0rem 0rem 3rem rgba(73, 12, 78, 0.8274509804);
 }
-.counter_container p.bg_2_act {
-  text-shadow: 0rem 0rem 3rem rgba(2, 43, 16, 0.862745098);
+.counter_container p.bg_2_active {
+  text-shadow: 0rem 0rem 3rem rgba(7, 49, 21, 0.862745098);
 }
-.counter_container p.bg_3_act {
-  text-shadow: 0rem 0rem 3rem #022b10;
+.counter_container p.bg_3_active {
+  text-shadow: 0rem 0rem 3rem rgba(66, 41, 8, 0.8549019608);
 }
-.counter_container p.bg_4_act {
-  text-shadow: 0rem 0rem 3rem rgba(46, 3, 66, 0.9098039216);
+.counter_container p.bg_4_active {
+  text-shadow: 0rem 0rem 3rem rgba(41, 3, 58, 0.6862745098);
+}
+.counter_container p.bg_5_active {
+  text-shadow: 0rem 0rem 3rem rgba(5, 58, 83, 0.9254901961);
 }
 .counter_container span {
   font-size: 1.5vmax;
@@ -195,7 +195,7 @@ h1 {
   height: 40%;
   width: 100%;
   opacity: 0;
-  filter: blur(4px);
+  filter: blur(5px);
 }
 
 .fog img:nth-child(1) {
@@ -219,7 +219,7 @@ h1 {
     transform: translateX(-20%) scale(0.5);
   }
   50% {
-    opacity: 0.15;
+    opacity: 0.12;
     transform: scale(2);
   }
   100% {
@@ -234,7 +234,7 @@ h1 {
     transform: translateX(-20%) scale(0.5);
   }
   50% {
-    opacity: 0.15;
+    opacity: 0.12;
     transform: scale(2);
   }
   100% {
@@ -275,6 +275,26 @@ h1 {
   box-shadow: 0 0 2rem rgba(253, 0, 0, 0.8235294118), inset 0 0 5px rgba(248, 104, 104, 0.937254902);
 }
 
+.bg_1_act {
+  color: #6427aa;
+}
+
+.bg_2_act {
+  color: #1f411d;
+}
+
+.bg_3_act {
+  color: #643209;
+}
+
+.bg_4_act {
+  color: rgba(93, 18, 128, 0.8823529412);
+}
+
+.bg_5_act {
+  color: rgba(7, 50, 78, 0.8823529412);
+}
+
 .btn {
   position: relative;
   z-index: 3;
@@ -290,29 +310,23 @@ h1 {
 .btn :hover {
   font-size: 1.7rem;
 }
-.btn.bg_1_act {
-  color: #59295c;
-}
-.btn.bg_3_act {
-  color: #526c2c;
-}
-.btn.bg_2_act {
-  color: #586912;
-}
 .btn.rotation {
   transform: rotate(-360deg);
 }
-.btn.rotation.bg_1_act {
-  color: rgba(136, 39, 155, 0.9333333333);
+.btn.rotation .bg_1_act {
+  color: rgba(112, 12, 121, 0.8980392157);
 }
-.btn.rotation.bg_2_act {
-  color: rgba(2, 43, 16, 0.6980392157);
+.btn.rotation .bg_2_act {
+  color: #285a25;
 }
-.btn.rotation.bg_3_act {
-  color: #e1b985;
+.btn.rotation .bg_3_act {
+  color: #863e04;
 }
-.btn.rotation.bg_4_act {
-  color: rgba(93, 18, 128, 0.8823529412);
+.btn.rotation .bg_4_act {
+  color: rgba(121, 12, 184, 0.8823529412);
+}
+.btn.rotation .bg_5_act {
+  color: rgba(11, 80, 126, 0.8823529412);
 }
 .btn.forFirefox.error {
   color: #f14242;
@@ -370,8 +384,8 @@ h1 {
   background: url("../img/sm_bg_1.jpg") center center/cover no-repeat;
 }
 .bg_1.selected {
-  box-shadow: 0px 0px 10px #ff01dd;
-  border: 2px solid rgba(179, 10, 156, 0.7254901961);
+  box-shadow: 0px 0px 10px #ff00dd;
+  border: 2px solid rgba(204, 19, 96, 0.7254901961);
 }
 .bg_1.active {
   right: 1.6rem;
@@ -381,7 +395,7 @@ h1 {
   background: url("../img/sm_bg_2.jpg") center center/cover no-repeat;
 }
 .bg_2.selected {
-  box-shadow: 0px 0px 10px #05772b;
+  box-shadow: 0px 0px 15px #00a336;
   border: 2px solid #05441a;
 }
 .bg_2.active {
@@ -392,7 +406,7 @@ h1 {
   background: url("../img/sm_bg_3.jpg") center center/cover no-repeat;
 }
 .bg_3.selected {
-  box-shadow: 0px 0px 10px #ff5e00;
+  box-shadow: 0px 0px 15px #ff7b00;
   border: 2px solid rgba(117, 47, 7, 0.7882352941);
 }
 .bg_3.active {
@@ -403,8 +417,8 @@ h1 {
   background: url("../img/sm_bg_4.jpg") center center/cover no-repeat;
 }
 .bg_4.selected {
-  box-shadow: 0px 0px 10px #520faa;
-  border: 2px solid #520faa;
+  box-shadow: 0px 0px 10px #6f00ff;
+  border: 2px solid #42088f;
 }
 .bg_4.active {
   right: 15.1rem;
@@ -414,8 +428,8 @@ h1 {
   background: url("../img/sm_bg_5.jpg") center center/cover no-repeat;
 }
 .bg_5.selected {
-  box-shadow: 0px 0px 10px #520faa;
-  border: 2px solid #520faa;
+  box-shadow: 0px 0px 13px #0059ff;
+  border: 2px solid #0d475e;
 }
 .bg_5.active {
   right: 19.6rem;
@@ -447,6 +461,10 @@ h1 {
 }
 
 .input_cl {
+  border: none;
+  outline: none;
+  background: none;
+  text-decoration: none;
   font-size: 1.1rem;
   width: 0;
   height: 2rem;
@@ -693,7 +711,7 @@ h1 {
   position: absolute;
   z-index: -1;
   top: 3.2rem;
-  color: rgba(100, 39, 170, 0.4235294118);
+  color: rgba(150, 150, 150, 0.7607843137);
   font-size: 0.2rem;
   margin: 0.5rem -1rem;
   transition-duration: 0.2s;
