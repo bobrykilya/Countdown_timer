@@ -447,13 +447,13 @@ function bgChanging(bg_num){
     bg_cover.style.display = 'block';
     setTimeout(() => {
         bg_image.setAttribute('src' ,`img/${bg_num}.jpg`);
-        setTimeout(() => {
+        bg_image.addEventListener('load', () => {
             bg_cover.classList.add('active');
             setTimeout(() => {
                 bg_cover.style.display = 'none';
                 bg_cover.classList.remove('active');
             }, 650);
-        }, 10);
+        });
     }, 10);
 };
 

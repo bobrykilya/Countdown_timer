@@ -123,7 +123,7 @@ body {
 
 h1 {
   word-wrap: break-word;
-  transition-duration: font-size 0.2s;
+  transition: font-size 0.2s;
   letter-spacing: -0.7vmin;
   text-align: center;
   text-transform: capitalize;
@@ -263,7 +263,6 @@ h1 {
 
 .cont {
   display: flex;
-  border-radius: size;
   padding: 0.5rem;
   background-color: #fff;
   border-radius: 2.5rem;
