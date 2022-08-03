@@ -183,7 +183,8 @@ function currentDateShort(){
     if (day < 10) day = '0' + day;
 
     let tomorrow_day = new Date(new Date().getTime() + (24 * 60 * 60 * 1000)).getDate();
-    return [`${year}-${month}-${day}`, `${year + 27}-${month}-${day}`, `${year}-${month}-${tomorrow_day}`];
+    // console.log(tomorrow_day);
+    return [`${year}-${month}-${day}`, `${year + 27}-${month}-${day}`, `${year}-${month}-${zeroAdding(tomorrow_day)}`];
 };
 
 
@@ -586,3 +587,4 @@ function finishFun(){
         };
     };
 };
+
